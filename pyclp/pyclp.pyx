@@ -216,9 +216,9 @@ def resume(in_term=None):
     For more details please refer to "Embedding and Interfacing Manual"  
     It accepts optional argument in_term. Used to return a value to the prolog predicate yield/2
     Return:
-        pyclp.SUCCEED: if execution succeed (equivalent to True). 
+        (pyclp.SUCCEED,None): if execution succeed (equivalent to True). 
                        In this case it is possible to call pyclp.cut()
-        pyclp.FAIL: if the goal fails.
+        (pyclp.FAIL,None): if the goal fails.
         (pyclp.FLUSHIO,int stream_number): if some data is present in stream 
                                             identified by <stream_number>
         (pyclp.WAITIO,int stream_number): if eclipse engine try to read data 
@@ -239,9 +239,9 @@ def resume(in_term=None):
         result=pyclp.ec_resume2( (<Term?>in_term).get_pword(),(<Ref>toPython).ref)
     last_resume_result=result
     if pyclp.PSUCCEED == result:
-        return SUCCEED
+        return (SUCCEED, None)
     elif pyclp.PFAIL == result:
-        return FAIL
+        return (FAIL,None)
     elif pyclp.PFLUSHIO== result:
         return (FLUSHIO,toPython.value())
     elif pyclp.PWAITIO ==result:
