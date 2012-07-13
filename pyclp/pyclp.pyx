@@ -155,7 +155,7 @@ class Stream(io.RawIOBase):
         else:
             return returned_value
     def readall(self):
-        self.read(-1)
+        return self.read(-1)
     def readinto(self,b):
         raise NotImplemented()
         
