@@ -15,7 +15,9 @@
 #OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
 #OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF 
 #THE POSSIBILITY OF SUCH DAMAGE.
+
 #@PydevCodeAnalysisIgnore
+#cython: embedsignature=True
 
 cimport pyclp
 cimport cpython
@@ -211,19 +213,25 @@ def cut():
     
 
 def resume(in_term=None):
-    """Resume eclipse engine.
+    """
+    Resume eclipse engine.
     Include the functionality of ec_resume,ec_resume1,ec_resume2. 
     For more details please refer to "Embedding and Interfacing Manual"  
     It accepts optional argument in_term. Used to return a value to the prolog predicate yield/2
+    
     Return:
-        (pyclp.SUCCEED,None): if execution succeed (equivalent to True). 
-                       In this case it is possible to call pyclp.cut()
-        (pyclp.FAIL,None): if the goal fails.
-        (pyclp.FLUSHIO,int stream_number): if some data is present in stream 
-                                            identified by <stream_number>
-        (pyclp.WAITIO,int stream_number): if eclipse engine try to read data 
-                                          from stream identified by stream_number
-        (pyclp.PYIELD, yield_returned_value): in case of predicate call YIELD/2.
+    
+        (pyclp.SUCCEED,None)
+            if execution succeed (equivalent to True). In this case it is possible to call pyclp.cut()
+        (pyclp.FAIL,None)
+            if the goal fails.
+        (pyclp.FLUSHIO,\ *stream_number*\ )
+            if some data is present in stream identified by *stream_number*
+        (pyclp.WAITIO,\ *stream_number*\ )
+            if eclipse engine try to read data from stream identified by *stream_number*
+        (pyclp.PYIELD, *yield_returned_value*)
+            in case of predicate call `YIELD/2 <http://www.eclipseclp.org/doc/bips/kernel/externals/yield-2.html>`_.
+            
     Important: After receiving FLUSHIO or WAITIO a new resume shall be issued
                before creating variable or calling post_goal to avoid undefined
                 /unpredictable behavior 
@@ -350,7 +358,8 @@ cdef class Term:
 cdef extern object pword2object(pyclp.pword in_pword)    
             
 cdef class Atom(Term):
-    """Class to create Atom.
+    """
+    Class to create Atom.
     This is required to distinguish strings from atoms.
     In normal use case the user shall provide a string when creating the object 
     """
@@ -377,11 +386,11 @@ cdef class Atom(Term):
         return string
 
 cdef class PList(Term):
-    """Class to create and read Prolog lists.
+    """
+    Class to create and read Prolog lists.
     When creating a new instance a list or tuple shall be provided.
     string,float and integer are automatically transformed in term as in
     Compound class.
-    As for Compound objects, at
     Supported operation:
         all comparison as for compare/3 (see Eclipse documentation)
         iterator over items in the list e.g. for x in PList([1,2,3,4]).
