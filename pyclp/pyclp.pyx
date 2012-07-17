@@ -18,7 +18,9 @@
 
 #@PydevCodeAnalysisIgnore
 #cython: embedsignature=True
-
+"""
+PyCLP Module
+"""
 cimport pyclp
 cimport cpython
 cimport libc.stdlib
@@ -189,9 +191,12 @@ def init():
 
 def cleanup():
     """This shutdown the Eclipse engine.
-    Any operation on pyclp object or class could crash the program.
-    If after a cleanup it is called again init() all terms created before the cleanup are not valid and they need 
-    to be rebuilt.
+    After calling this function any operation on pyclp object or class could crash the program.
+    
+    .. warning::
+    
+        If after a cleanup it is called again :py:func:`pyclp.init` all terms created before the cleanup are not valid and they need 
+        to be rebuilt.
     """
     destroy_all_refs()
     last_resume_result=None
@@ -203,8 +208,13 @@ def cleanup():
 def cut():
     """
     Cut all choice point of succeeded goal.
-    Equivalent to void ec_cut_to_chp(ec_ref)
+    Equivalent to void `ec_cut_to_chp(ec_ref) <http://www.eclipseclp.org/doc/embedding/embroot081.html>`_
     It can be called only if previous resume call SUCCEED.
+    
+    .. seealso::
+    
+        `ec_cut_to_chp <http://www.eclipseclp.org/doc/embedding/embroot081.html>`_
+            cut function in ECLiPSe in C interface library
     """
     if last_resume_result==pyclp.PSUCCEED:
         pyclp.ec_cut_to_chp((<Var>toPython).ref.ref)
@@ -214,10 +224,11 @@ def cut():
 
 def resume(in_term=None):
     """
-    Resume eclipse engine.
-    Include the functionality of ec_resume,ec_resume1,ec_resume2. 
-    For more details please refer to "Embedding and Interfacing Manual"  
-    It accepts optional argument in_term. Used to return a value to the prolog predicate yield/2
+    Resume Eclipse engine.
+    Implements the functionality of 
+    `ec_resume,ec_resume1,ec_resume2 <http://www.eclipseclp.org/doc/embedding/embroot081.html>`_.  
+    It accepts optional argument *in_term*. Used to return a value to the prolog predicate 
+    `yield/2 <http://www.eclipseclp.org/doc/bips/kernel/externals/yield-2.html>`_
     
     Return:
     
@@ -230,11 +241,31 @@ def resume(in_term=None):
         (pyclp.WAITIO,\ *stream_number*\ )
             if eclipse engine try to read data from stream identified by *stream_number*
         (pyclp.PYIELD, *yield_returned_value*)
-            in case of predicate call `YIELD/2 <http://www.eclipseclp.org/doc/bips/kernel/externals/yield-2.html>`_.
+            in case of predicate call `yield/2 <http://www.eclipseclp.org/doc/bips/kernel/externals/yield-2.html>`_.
             
-    Important: After receiving FLUSHIO or WAITIO a new resume shall be issued
-               before creating variable or calling post_goal to avoid undefined
-                /unpredictable behavior 
+
+    
+    
+      
+    .. warning::
+    
+        After receiving FLUSHIO or WAITIO a new resume shall be issued 
+        before creating variable or calling post_goal to complete the 
+        goal execution and avoid unpredictable behavior.
+    
+    .. note:: Differences between ECLiPSe embedded libraries and PyCLP
+    
+        PyCLP have a different behavior compared to C/C++/Java default libraries provided by ECLiPsE.
+    
+        Standard resume execution destroys all the terms built before the execution of resume function while PyCLP is 
+        preserving them creating a reference and storing the created term in this.
+    
+    .. seealso::
+    
+        `ec_resume,ec_resume1,ec_resume2 <http://www.eclipseclp.org/doc/embedding/embroot081.html>`_
+            Resume functions in ECLiPSe in C interface library.
+        
+    
     """
     cdef int result
     cdef pyclp.pword in_pword
@@ -266,7 +297,7 @@ cdef class Term:
     """
     cdef Ref ref
     cdef pyclp.pword cached_pword
-    def __init__(self,init_arg=None):
+    def __init__(self,init_arg):
         cdef char* c_string
         cdef int index
         cdef pyclp.pword* array_pword 
@@ -352,6 +383,8 @@ cdef class Term:
                 return False
                            
     def post_goal(self):
+        """Post goal
+        """
         pyclp.ec_post_goal(self.ref.get())
         
 
@@ -360,13 +393,14 @@ cdef extern object pword2object(pyclp.pword in_pword)
 cdef class Atom(Term):
     """
     Class to create Atom.
-    This is required to distinguish strings from atoms.
-    In normal use case the user shall provide a string when creating the object 
+    
+    *string* is a string that defines the atom.
+    This class is required to distinguish strings from atoms.
     """
     cdef pyclp.dident ec_dict_ptr
-    def __init__(self,string=None):
+    def __init__(self,string):
         cdef char* c_string
-        Term.__init__(self)
+        Term.__init__(self,None)
         if string is not None:
             if not isinstance(string,str):
                 raise TypeError("Atom constructor accept only string")
@@ -380,6 +414,8 @@ cdef class Atom(Term):
             raise pyclpEx("Failed retrieving of Atom dictionary item")
             
     def __str__(self):
+        """Convert to string for pretty printing
+        """
         cdef char* Name
         Name=DidName(self.ec_dict_ptr)
         string=tounicode(Name)
@@ -397,11 +433,11 @@ cdef class PList(Term):
         iterheadtail() return a iterator over tuple (head,tail)
         p[index] indexed access of items in the list 
     """
-    def __init__(self,in_list=None):
+    def __init__(self,in_list):
         cdef int list_lenght
         cdef int index
         cdef pyclp.pword tail
-        Term.__init__(self)
+        Term.__init__(self,None)
         if in_list is not None:
             if not( isinstance(in_list,list) or isinstance(in_list,tuple)):
                 raise TypeError("PList constructor accept only list or tuple")
@@ -498,12 +534,12 @@ cdef class PList(Term):
     
 cdef class Compound(Term):
     cdef pyclp.dident ec_dict_ptr
-    def __init__(self,functor_string=None,*args):
+    def __init__(self,functor_string,*args):
         cdef int arity
         cdef int index
         cdef pyclp.pword * array_pword
         cdef char* c_string
-        Term.__init__(self)
+        Term.__init__(self,None)
         args=list(args)
         if functor_string is not None:
             arity=len(args)
@@ -611,10 +647,10 @@ cdef object pword2object(pyclp.pword in_pword):
     cdef pyclp.pword head
     #Check if it is a Compound term
     if pyclp.ec_get_list(in_pword,&head,&tail)== pyclp.PSUCCEED:
-        result=PList()
+        result=PList(None)
         (<PList>result).set_pword(in_pword)
     elif pyclp.ec_get_functor(in_pword,&dummy_dident)== pyclp.PSUCCEED:
-        result=Compound()
+        result=Compound(None)
         (<Compound>result).set_pword(in_pword)
     elif pyclp.ec_get_long(in_pword,&c_int)== pyclp.PSUCCEED:
         result=c_int
@@ -622,7 +658,7 @@ cdef object pword2object(pyclp.pword in_pword):
         result=() 
     # Check for Atom
     elif pyclp.ec_get_atom(in_pword,&dummy_dident)== pyclp.PSUCCEED:
-        result=Atom()
+        result=Atom(None)
         (<Atom>result).set_pword(in_pword)
     elif ec_get_string_length(in_pword,&c_string,&length)==pyclp.PSUCCEED:
         result=tounicode_with_length(c_string,length)
@@ -646,7 +682,7 @@ cdef class Var(Term):
     None
     """
     def __init__(self):
-        Term.__init__(self)
+        Term.__init__(self,None)
     cdef value(self):
         cdef pyclp.pword pword_value
         pword_value=self.ref.get()
