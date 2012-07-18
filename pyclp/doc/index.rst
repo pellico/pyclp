@@ -4,19 +4,23 @@
    contain the root `toctree` directive.
 
 Welcome to ..'s documentation!
-==============================
+##############################
 
 Contents:
 
 .. toctree::
    :maxdepth: 4
-
+   
+   introduction
+   installation
+   examples
    pyclp
+   
 
 
 
 Indices and tables
-==================
+##################
 
 * :ref:`genindex`
 * :ref:`modindex`

@@ -41,8 +41,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = '..'
-copyright = '2012, Author'
+project = 'PyCLP'
+copyright = '2012, Oreste Bernardi'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -79,7 +79,7 @@ exclude_patterns = ['_build']
 
 # If true, sectionauthor and moduleauthor directives will be shown in the
 # output. They are ignored by default.
-#show_authors = False
+show_authors = True
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -184,8 +184,8 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', '.tex', '.. Documentation',
-   'Author', 'manual'),
+  ('index', '.tex', 'PyCLP Documentation',
+   'Oreste Bernardi', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -214,8 +214,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', '', '.. Documentation',
-     ['Author'], 1)
+    ('index', '', 'PyCLP Documentation',
+     ['Oreste Bernardi'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -228,8 +228,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', '', '.. Documentation',
-   'Author', '', 'One line description of project.',
+  ('index', '', 'PyCLP Documentation',
+   'Oreste Bernardi', '', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -246,10 +246,10 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = '..'
-epub_author = 'Author'
-epub_publisher = 'Author'
-epub_copyright = '2012, Author'
+epub_title = 'PyCLP'
+epub_author = 'Oreste Bernardi'
+epub_publisher = 'Oreste Bernardi'
+epub_copyright = '2012, Oreste Bernardi'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
