@@ -1,5 +1,5 @@
 pyclp Module
-===============
+############
 
 
 
@@ -7,28 +7,38 @@ pyclp Module
     :members: init,cleanup,cut
     :show-inheritance:
 
+
 .. autofunction:: resume(in_term=None)
 
 
-.. autoclass:: Atom (string)
-    :show-inheritance:
+.. autoclass:: Atom (atom_id)
     :members: 
     :inherited-members:
 
     .. automethod:: __str__
 
-.. autoclass:: Compound
-    :show-inheritance:
-    :inherited-members:
+.. autoclass:: Compound (functor_string,*args)
+   :members:
+   :inherited-members:
+    
+    .. automethod:: __str__
+
+    
 .. autoclass:: Var
-    :show-inheritance:
+
+
 
 .. autoclass:: PList
-    :show-inheritance:
     :inherited-members:
+    
+    .. automethod:: __str__
+    
 .. autoclass:: Stream
     :show-inheritance:
     :inherited-members:
+    
+.. autoexception:: pyclpEx
+
 
 
 
