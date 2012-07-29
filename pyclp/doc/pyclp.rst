@@ -1,15 +1,11 @@
-pyclp Module
-############
+PyCLP Module Reference
+######################
 
 
 
 .. automodule:: pyclp
-    
     :members: init,cleanup,cut
     
-    :show-inheritance:
-
-
 .. autofunction:: resume(in_term=None)
 
 
@@ -27,8 +23,12 @@ pyclp Module
      .. automethod:: __str__
 
     
-.. autoclass:: Var
-
+.. autoclass:: Var()
+   :members: value
+   
+   :inherited-members:
+   
+      .. automethod:: __str__
 
 
 .. autoclass:: PList
@@ -36,9 +36,15 @@ pyclp Module
     
     .. automethod:: __str__
     
-.. autoclass:: Stream
-    :show-inheritance:
-    :inherited-members:
+.. autoclass:: Stream(name)
+   :members: readall 
+   
+   .. automethod:: read(n=-1)
+   .. automethod:: write(buffer)
+      
+   
+    
+
     
 .. autoexception:: pyclpEx
 
