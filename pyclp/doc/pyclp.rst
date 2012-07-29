@@ -4,7 +4,9 @@ pyclp Module
 
 
 .. automodule:: pyclp
+    
     :members: init,cleanup,cut
+    
     :show-inheritance:
 
 
@@ -12,16 +14,17 @@ pyclp Module
 
 
 .. autoclass:: Atom (atom_id)
-    :members: 
+    
     :inherited-members:
 
     .. automethod:: __str__
 
 .. autoclass:: Compound (functor_string,*args)
-   :members:
-   :inherited-members:
+    :members: functor, arity
+   
+    :inherited-members:
     
-    .. automethod:: __str__
+     .. automethod:: __str__
 
     
 .. autoclass:: Var
