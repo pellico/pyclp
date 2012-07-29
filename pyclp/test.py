@@ -280,6 +280,37 @@ class Test_Var(unittest.TestCase):
         Compound("=",list_var.value[0],3).post_goal()
         self.assertNotEqual(resume(),False)
         self.assertEqual(my_var.value,3)
+        
+        
+class Test_Persistence(unittest.TestCase):
+    """Check persistence of constructed terms after
+    resume.
+    """
+    def setUp(self):
+        if not init():
+            raise
+        self.stdout=Stream('stdout')
+    def tearDown(self):
+        self.stdout.close()
+        if not cleanup():
+            raise
+    def testCompound(self):
+        """
+        Test persistence of constructed compound
+        """
+        Compound("lib",Atom("listut")).post_goal()
+        self.assertEqual(resume(), (SUCCEED,None), "Failed loading library")
+        args_list=[1,2,3,4,5,6,7,8,10]
+        my_compound=Compound("pippo",*args_list) #This term shall persist across the invocation
+        for index in range(len(args_list)):
+            Compound("lib",Atom("listut")).post_goal()
+            list_var=Var()
+            element_var=Var()
+            Compound("=..",my_compound,list_var).post_goal()
+            Compound("nth0",index+1,list_var,element_var).post_goal()
+            self.assertEqual(resume(),(SUCCEED,None),"Failed resume at element {0}".format((index,)))
+            self.assertEqual(element_var.value,args_list[index],"Failed recovering of element {0}".format((index,)))
+    
 
 if __name__ == '__main__':
    unittest.main()
