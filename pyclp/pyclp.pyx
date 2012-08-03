@@ -19,8 +19,6 @@
 #@PydevCodeAnalysisIgnore
 
 """
-PyCLP Module
-
 Pyclp is a Python library to interface ECLiPSe Constraint Programmig System.
 
 .. note:: 
@@ -228,7 +226,7 @@ def init():
         True if init fails
     """
     global toPython
-    last_resume_result=None #It shall be None at init.Defensive programming
+    last_resume_result=None #It shall be None at init. Defensive programming
     pyclp.ec_set_option_long(pyclp.EC_OPTION_IO, pyclp.MEMORY_IO)
     if (pyclp.ec_init()):
         return False
@@ -268,9 +266,12 @@ def cut():
     
         `ec_cut_to_chp <http://www.eclipseclp.org/doc/embedding/embroot081.html>`_
             cut function in ECLiPSe in C interface library
+            
+    For an example see :ref:`Cut Example <cut-example>` 
+    
     """
     if last_resume_result==pyclp.PSUCCEED:
-        pyclp.ec_cut_to_chp((<Var>toPython).ref.ref)
+        pyclp.ec_cut_to_chp(toPython.ref.ref)
     else:
         raise pyclpEx("Cut it is possible only after a resume that returns SUCCEED.")
     
@@ -309,10 +310,9 @@ def resume(in_term=None):
         before creating variable or calling post_goal to complete the 
         goal execution and avoid unpredictable behavior.
     
-    .. note:: Differences between ECLiPSe embedded libraries and PyCLP
+    .. note::
     
         PyCLP have a different behavior compared to C/C++/Java default libraries provided by ECLiPsE.
-    
         Standard resume execution destroys all the terms built before the execution of resume function while PyCLP is 
         preserving them creating a reference and storing the created term in this.
     
@@ -331,8 +331,8 @@ def resume(in_term=None):
     if in_term is None:
         result=pyclp.ec_resume1(in_ref)
     else:
-        result=pyclp.ec_resume2( (<Term?>in_term).get_pword(),(<Ref>toPython).ref)
-    last_resume_result=result
+        result=pyclp.ec_resume2( (<Term?>in_term).get_pword(),in_ref)
+    last_resume_result=result # Save last result in a global to be used in cut and init.
     if pyclp.PSUCCEED == result:
         return (SUCCEED, None)
     elif pyclp.PFAIL == result:
