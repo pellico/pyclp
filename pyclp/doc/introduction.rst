@@ -19,7 +19,14 @@ destroys the corrisponded python object (garbage collection). This consumes more
 the python object and teh corrispondent ECLiPSe object have the same *lifetime*.
 
 Moreover, in the definition of the API I tried to take advantage of a common propety of python and 
-ECLiPSe: both are weak typed languages.  
+ECLiPSe: both are weak typed languages.
+
+
+Next steps
+**********
+
+Release installers for Windows platform
+  
 
 
 
