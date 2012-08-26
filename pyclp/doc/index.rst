@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to PyCLP's documentation!
-#################################
+Welcome to `PyCLP <http://developer.berlios.de/projects/pyclp/>`_ 's documentation!
+###################################################################################
 
 Contents:
 
@@ -20,7 +20,10 @@ Contents:
    examples
 
    
+Project website
+###############
 
+`PyCLP website <http://developer.berlios.de/projects/pyclp/>`_
 
 
 Indices and tables

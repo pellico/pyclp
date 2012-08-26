@@ -16,6 +16,9 @@ Following packages shall be preinstalled before proceeding the installation of P
 * `Cython <http://www.cython.org/>`_
 * `ECLiPSe Constraint Programming System <http://www.eclipseclp.org/>`_
 
+Download
+========
+Download source files from `PyCLP sources <http://developer.berlios.de/project/showfiles.php?group_id=12904>`_
 
 Compilation & Installation
 ==========================
