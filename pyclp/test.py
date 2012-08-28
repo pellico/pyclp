@@ -41,22 +41,14 @@ class Test_atom(unittest.TestCase):
         self.assertEqual(atom.__str__(),'ciao','Wrong atom name')
   
 class Test_Compound(unittest.TestCase):
-    @classmethod
-    def setUpClass(self):
+    def setUp(self):
         if not init():
             raise
-    @classmethod
-    def tearDownClass(self):
-        if not cleanup():
-            raise
-    def setUp(self):
-#        if not init():
-#            raise
         self.stdout=Stream('stdout')
     def tearDown(self):
         self.stdout.close()
-#        if not cleanup():
-#            raise
+        if not cleanup():
+            raise
     def test_str(self):
         func=Compound('ciao',1,2,"pippo")
         self.assertEqual(func.__str__(),'ciao(1,2,"pippo")','Wrong functor name')
@@ -136,22 +128,14 @@ class Test_Compound(unittest.TestCase):
             
 
 class Test_Term(unittest.TestCase):
-    @classmethod
-    def setUpClass(self):
+    def setUp(self):
         if not init():
             raise
-    @classmethod
-    def tearDownClass(self):
-        if not cleanup():
-            raise
-    def setUp(self):
-#        if not init():
-#            raise
         self.stdout=Stream('stdout')
     def tearDown(self):
         self.stdout.close()
-#        if not cleanup():
-#            raise
+        if not cleanup():
+            raise
     
     def test_post_resume(self):
         my_goal=Compound('writeln',Term('Ciao'))
@@ -170,28 +154,19 @@ class Test_Term(unittest.TestCase):
         self.assertEqual(resume(),(SUCCEED,None),'Failed resume')
 
 class Test_PList(unittest.TestCase):
-    @classmethod
-    def setUpClass(self):
+    def setUp(self):
         if not init():
             raise
-    @classmethod
-    def tearDownClass(self):
-        if not cleanup():
-            raise
-    def setUp(self):
-#        if not init():
-#            raise
         self.stdout=Stream('stdout')
     def tearDown(self):
         self.stdout.close()
-#        if not cleanup():
-#            raise
+        if not cleanup():
+            raise
     def testInit(self): 
-        my_var=Var()
-        my_list=PList([1,2,3,"A",Atom("ciao"),Compound("my_func",1,"ciao",PList((1,2,my_var)))])
+        my_list=PList([1,2,3,"A",Atom("ciao"),Compound("my_func",1,"ciao",PList((1,2,"hello")))])
         Compound("writeln",my_list).post_goal()
         self.assertNotEqual(resume(),False)
-        self.assertEqual(self.stdout.read(),b'[1, 2, 3, A, ciao, my_func(1, ciao, [1, 2, _14675])]\n')
+        self.assertEqual(self.stdout.read(),b'[1, 2, 3, A, ciao, my_func(1, ciao, [1, 2, hello])]\n')
         self.assertNotEqual(resume(),False)
     def testConversion2String(self):
         my_list=PList([1,2,3,"A",Atom("ciao"),Compound("my_func",1,"ciao",PList((1,2,Var())))])
