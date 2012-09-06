@@ -58,6 +58,21 @@ cdef extern from "eclipse.h":
         EC_OPTION_IO
         MEMORY_IO
         RANGE_ERROR
+        EC_OPTION_MAPFILE
+        EC_OPTION_PARALLEL_WORKER
+        EC_OPTION_ARGC
+        EC_OPTION_ARGV
+        EC_OPTION_LOCALSIZE
+        EC_OPTION_GLOBALSIZE
+        EC_OPTION_PRIVATESIZE
+        EC_OPTION_SHAREDSIZE
+        EC_OPTION_PANIC
+        EC_OPTION_ALLOCATION
+        EC_OPTION_DEFAULT_MODULE
+        EC_OPTION_ECLIPSEDIR
+        EC_OPTION_INIT
+        EC_OPTION_DEBUG_LEVEL
+
         
     int ec_get_string ( pword,char**)
     int ec_get_string_length ( pword,char**,long*)
