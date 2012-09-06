@@ -48,6 +48,21 @@ FLUSHIO=pyclp.PFLUSHIO
 WAITIO=pyclp.PWAITIO
 FAIL=False
 YIELD=pyclp.PYIELD
+OPTION_IO=pyclp.EC_OPTION_IO
+OPTION_MAPFILE=pyclp.EC_OPTION_MAPFILE
+OPTION_PARALLEL_WORKER=pyclp.EC_OPTION_PARALLEL_WORKER
+OPTION_ARGC=pyclp.EC_OPTION_ARGC
+OPTION_ARGV=pyclp.EC_OPTION_ARGV
+OPTION_LOCALSIZE=pyclp.EC_OPTION_LOCALSIZE
+OPTION_GLOBALSIZE=pyclp.EC_OPTION_GLOBALSIZE
+OPTION_PRIVATESIZE=pyclp.EC_OPTION_PRIVATESIZE
+OPTION_SHAREDSIZE=pyclp.EC_OPTION_SHAREDSIZE
+OPTION_PANIC=pyclp.EC_OPTION_PANIC
+OPTION_ALLOCATION=pyclp.EC_OPTION_ALLOCATION
+OPTION_DEFAULT_MODULE=pyclp.EC_OPTION_DEFAULT_MODULE
+OPTION_ECLIPSEDIR=pyclp.EC_OPTION_ECLIPSEDIR
+OPTION_INIT=pyclp.EC_OPTION_INIT
+OPTION_DEBUG_LEVEL=pyclp.EC_OPTION_DEBUG_LEVEL
 
 class pyclpEx(Exception):
     def __init__(self,arg):
@@ -345,6 +360,39 @@ def resume(in_term=None):
         return (YIELD,toPython.value())
     else:
         assert False,"Unrecognized result from ec_resume"
+        
+        
+def set_option(option,value):
+    """
+    Set options of eclipse engine. Equivalent to 
+    `ec_set_option_long(int, long) <http://www.eclipseclp.org/doc/embedding/embroot079.html>`_
+    and `int ec_set_option_ptr(int, char *) <http://www.eclipseclp.org/doc/embedding/embroot079.html>`_.
+    
+    This function must be used before initializing the ECLiPSe engine using :py:func:`pyclp.init`
+    
+    :param option: option supported:
+        pyclp.OPTION_LOCALSIZE (value shall be int)
+        pyclp.OPTION_GLOBALSIZE (value shall be int)
+        pyclp.EC_OPTION_ECLIPSEDIR (value shall be a string)
+        
+    :param value: int or string depends on which option used.
+    
+    """
+    if option == pyclp.EC_OPTION_ECLIPSEDIR:
+        if isinstance(value,str):
+            py_byte_string = tobytes(value)
+            c_string = py_byte_string
+            if pyclp.ec_set_option_ptr(option,c_string) != pyclp.PSUCCEED:
+                raise pyclpEx("Invalid option in set_option")
+        else:
+            raise TypeError("value shall be a string")
+    elif option == pyclp.EC_OPTION_LOCALSIZE or option == pyclp.EC_OPTION_GLOBALSIZE:
+        if isinstance(value,int):
+            ec_set_option_long(option,value)
+        else:
+            raise TypeError("value shall be a int")       
+    else:
+        raise pyclpEx("Unsupported option")
         
 cdef class Term:
     """Class for prolog Term.
