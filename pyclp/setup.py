@@ -52,12 +52,11 @@ else:
 
 eclise_include_path=os.path.join(eclipsedir,'include',arch)
 eclipse_lib_path=os.path.join(eclipsedir,'lib',arch)
-#ext_modules = [Extension("pyclp", ["pyclp.pyx"])]
-pyclp_module = Extension('pyclp',
-                           ['pyclp.pyx'],
+pyclp_module = Extension('pyclp.pyclp',
+                           ['src/pyclp/pyclp.pyx'],
                            library_dirs=[eclipse_lib_path],
                            libraries=['eclipse'],
-                           include_dirs=[eclise_include_path]
+                           include_dirs=[eclise_include_path,'src/pyclp/']
                            )
 
 setup (name = 'PyCLP',
@@ -69,5 +68,7 @@ setup (name = 'PyCLP',
        license= "Simplified BSD",
        cmdclass = {'build_ext': build_ext},
        ext_modules = [pyclp_module],
-       py_modules = ["pyclp"],
+       package_dir={'': 'src'},
+       packages=['pyclp'],
+       #py_modules = ["pyclp"],
        )
