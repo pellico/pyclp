@@ -18,6 +18,8 @@ Contents:
    pyclp
    
    examples
+   
+   license
 
    
 Project website
