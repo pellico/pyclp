@@ -21,15 +21,37 @@
 setup.py file for pyclp
 """
 
-
-
+import distutils
 from distutils.core import setup
 from distutils.extension import Extension
+from distutils.msvccompiler import MSVCCompiler as oldMSVCCompiler
+import platform
+
+class mymsvcompiler(oldMSVCCompiler):
+    def link (self,*arg,**kargs):
+		#Generate .lib file if not yet done
+        self.announce("Microsoft Visual C requires eclipse.lib\n Building it") 
+        bits, linkage= platform.architecture()
+        if bits=="32bit":
+            machine_option="/MACHINE:X86"
+        elif bits=="64bit":
+            machine_option="/MACHINE:X64"
+        else:
+            raise "Architecture not supported"
+        lib_cmd=self.find_exe('lib.exe')
+        option="/def:" + os.path.join(eclipse_lib_path,"eclipse.def")
+        self.spawn([lib_cmd,machine_option,option])
+        oldMSVCCompiler.link(self,*arg,**kargs)
+
+#Substitute msvcompiler with one subclass.       
+distutils.msvccompiler.MSVCCompiler=mymsvcompiler
+
+
 from Cython.Distutils import build_ext
 from os import environ
 import os.path
-import platform
 
+    
 
 if "ECLIPSEDIR" not in environ:
     while(1):
@@ -63,7 +85,7 @@ with open('README.txt') as file:
     long_description_read = file.read()
 
 setup (name = 'PyCLP',
-       version = '0.2',
+       version = '0.3',
        author      = "Oreste Bernardi",
        maintainer = "Oreste Bernardi",
        author_email= "<name>@<name>.eu  name=oreste",
