@@ -304,7 +304,20 @@ class Test_Others(unittest.TestCase):
         resume()
         self.assertEqual(A_var.value(),2,"Failed A_var result")
         self.assertEqual(B_var.value(),3,"Failed B_var result")
-    
+
+    def testAbort(self):
+        """
+        Test when a query abort
+        """
+        Compound("asd","dsa").post_goal()
+        result,stream_id=resume()
+        outStream=Stream(stream_id)
+        self.assertEqual(outStream.readall(),"calling an undefined procedure asd(\"dsa\") in module eclipse\n")
+        result,myAtom=resume()
+        self.assertEqual(result,THROW)
+        self.assertIsInstance(myAtom,Atom)
+        self.assertEqual(myAtom.__str__(),"abort")
+        
 class Test_set_option(unittest.TestCase):
     """Test set_option.
     """

@@ -52,6 +52,7 @@ cdef extern from "eclipse.h":
     cdef enum dummy:
         PSUCCEED
         PFAIL
+        PTHROW		
         PFLUSHIO
         PWAITIO
         PYIELD
