@@ -21,6 +21,7 @@ Created on Apr 20, 2012
 
 @author: radice
 '''
+#@PydevCodeAnalysisIgnore
 import unittest
 
 from pyclp import *
@@ -29,26 +30,22 @@ from pyclp import *
   
 class Test_atom(unittest.TestCase):
     def setUp(self):
-        if not init():
-            raise
+        init()
         self.stdout=Stream('stdout')
     def tearDown(self):
         self.stdout.close()
-        if not cleanup():
-            raise
+        cleanup()
     def test_atom(self):
         atom=Atom('ciao')
         self.assertEqual(atom.__str__(),'ciao','Wrong atom name')
   
 class Test_Compound(unittest.TestCase):
     def setUp(self):
-        if not init():
-            raise
+        init()
         self.stdout=Stream('stdout')
     def tearDown(self):
         self.stdout.close()
-        if not cleanup():
-            raise
+        cleanup()
     def test_str(self):
         func=Compound('ciao',1,2,"pippo")
         self.assertEqual(func.__str__(),'ciao(1,2,"pippo")','Wrong functor name')
@@ -129,13 +126,11 @@ class Test_Compound(unittest.TestCase):
 
 class Test_Term(unittest.TestCase):
     def setUp(self):
-        if not init():
-            raise
+        init()
         self.stdout=Stream('stdout')
     def tearDown(self):
         self.stdout.close()
-        if not cleanup():
-            raise
+        cleanup()
     
     def test_post_resume(self):
         my_goal=Compound('writeln',Term('Ciao'))
@@ -155,13 +150,11 @@ class Test_Term(unittest.TestCase):
 
 class Test_PList(unittest.TestCase):
     def setUp(self):
-        if not init():
-            raise
+        init()
         self.stdout=Stream('stdout')
     def tearDown(self):
         self.stdout.close()
-        if not cleanup():
-            raise
+        cleanup()
     def testInit(self): 
         my_list=PList([1,2,3,"A",Atom("ciao"),Compound("my_func",1,"ciao",PList((1,2,"hello")))])
         Compound("writeln",my_list).post_goal()
@@ -205,11 +198,9 @@ class Test_PList(unittest.TestCase):
         
 class Test_Stream(unittest.TestCase):
     def setUp(self):
-        if not init():
-            raise
+        init()
     def tearDown(self):
-        if not cleanup():
-            raise
+        cleanup()
     def test_read(self):
         Compound("writeln","ciao").post_goal()
         self.assertEqual(resume(),(FLUSHIO,1))
@@ -236,13 +227,11 @@ class Test_Stream(unittest.TestCase):
         
 class Test_Var(unittest.TestCase):
     def setUp(self):
-        if not init():
-            raise
+        init()
         self.stdout=Stream('stdout')
     def tearDown(self):
         self.stdout.close()
-        if not cleanup():
-            raise
+        cleanup()
     def testDoubleReference(self):
         """This test verify if a Var (alias Reference) is
         correctly returned by a predicate after resume.
@@ -262,13 +251,11 @@ class Test_Others(unittest.TestCase):
     resume.
     """
     def setUp(self):
-        if not init():
-            raise
+        init()
         self.stdout=Stream('stdout')
     def tearDown(self):
         self.stdout.close()
-        if not cleanup():
-            raise
+        cleanup()
     def testCompound(self):
         """
         Test persistence of constructed compound
@@ -312,7 +299,7 @@ class Test_Others(unittest.TestCase):
         Compound("asd","dsa").post_goal()
         result,stream_id=resume()
         outStream=Stream(stream_id)
-        self.assertEqual(outStream.readall(),"calling an undefined procedure asd(\"dsa\") in module eclipse\n")
+        self.assertEqual(outStream.readall(),b"calling an undefined procedure asd(\"dsa\") in module eclipse\n")
         result,myAtom=resume()
         self.assertEqual(result,THROW)
         self.assertIsInstance(myAtom,Atom)
@@ -323,7 +310,7 @@ class Test_set_option(unittest.TestCase):
     """
     def test_local_size(self):
         set_option(OPTION_LOCALSIZE,50*1024*1024)
-        self.assertTrue(init(), "Failed init")
+        init()
         my_var=Var()
         Compound('get_flag',Atom("max_local_control"),my_var).post_goal()
         resume()
@@ -331,12 +318,27 @@ class Test_set_option(unittest.TestCase):
         cleanup()
     def test_global_size(self):
         set_option(OPTION_GLOBALSIZE,122*1024*1024)
-        self.assertTrue(init(), "Failed init")
+        init()
         my_var=Var()
         Compound('get_flag',Atom("max_global_trail"),my_var).post_goal()
         resume()
         self.assertEqual(my_var.value(), 122*1024*1024, "Failed test OPTION_LOCALSIZE")
         cleanup()
+        
+        
+class Test_initialization(unittest.TestCase):
+    def test_init_cleanup_loop(self):
+        my_var=None
+        for x in range(4):
+            init()
+            my_var=Var()
+            Compound("=",Atom("test"),my_var).post_goal()
+            resume()
+            self.assertEqual(my_var.__str__(),"test","Failed unification with multi init")
+            cleanup()
+            
+            
+            
 
 if __name__ == '__main__':
    unittest.main()

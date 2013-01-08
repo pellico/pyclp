@@ -41,7 +41,9 @@ cdef Var toPython=None
 last_resume_result=None 
 # Store a weak reference in order to support cleanup function
 # All reference need to be destroyed before cleanup of eclipse engine
-all_active_refs=weakref.WeakSet() 
+all_active_refs=weakref.WeakSet()
+# Flag to signal when eclipse engine is initialized.
+cdef int eclipse_initialized=0 
 
 
 SUCCEED=True
@@ -252,40 +254,45 @@ def init():
     """This shall be called before calling any other function.
     This initialize Eclipse engine.
     
-    :returns:
-        False if init succeed.
-        True if init fails
+    :raise:
+        pyclpEx in case of failure or if eclipse engine is already initialized
+
     """
-    global toPython
+    global toPython,eclipse_initialized
+    if eclipse_initialized != 0:
+        raise pyclpEx("Tried to initialize an already initialized eclipse engine")
     last_resume_result=None #It shall be None at init. Defensive programming
     pyclp.ec_set_option_long(pyclp.EC_OPTION_IO, pyclp.MEMORY_IO)
     if (pyclp.ec_init()):
-        return False
+        raise pyclpEx("Failed initialization")
     else:
+        eclipse_initialized=1
         recreate_all_refs()
         if toPython is None:
             toPython=Var()
-        return True
+
 
 def cleanup():
     """This shutdown the Eclipse engine.
     After calling this function any operation on pyclp object or class could crash the program.
     
-    :returns:
-        False if cleanup succeed.
-        True if cleanup fails
+    :raise:
+        pyclpEx in case of failure or if eclipse engine is already shutdown
         
     .. warning::
     
         If after a cleanup it is called again :py:func:`pyclp.init` all terms created before the cleanup are not valid and they need 
         to be rebuilt.
     """
+    global eclipse_initialized
+    if eclipse_initialized == 0:
+        raise pyclpEx("Tried to cleanup an already shutdown engine")
     destroy_all_refs()
+    eclipse_initialized=0
     last_resume_result=None
     if (pyclp.ec_cleanup()):
-        return False
-    else:
-        return True
+        raise pyclpEx("Failed cleanup operation")
+
 
 def cut():
     """
@@ -335,7 +342,7 @@ def resume(in_term=None):
         `yield/2 <http://www.eclipseclp.org/doc/bips/kernel/externals/yield-2.html>`_.
 
         (pyclp.THROW, *Term TagExit*) an event have been thrown and no one have catched it \
-        `exit_block/1 <http://www.eclipseclp.org/doc/bips/kernel/control/exit_block-1.html`_.
+        `exit_block/1 <http://www.eclipseclp.org/doc/bips/kernel/control/exit_block-1.html>`_.
         
             
       
