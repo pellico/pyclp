@@ -336,6 +336,17 @@ class Test_initialization(unittest.TestCase):
             resume()
             self.assertEqual(my_var.__str__(),"test","Failed unification with multi init")
             cleanup()
+    def test_double_init(self):
+        init()
+        with self.assertRaises(pyclpEx):
+            init()
+        cleanup()
+    def test_double_cleanup(self):
+        init()
+        cleanup()
+        with self.assertRaises(pyclpEx):
+            cleanup()
+        
             
             
             
