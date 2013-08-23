@@ -120,6 +120,35 @@ def example5():
     stdout.close()                        # Not required but implemented to support RawIO protocol
     cleanup()                             # Shutdown ECLiPSe engine
 
+def external_predicate(arguments):
+    return unify(arguments[0],arguments[1])
+    
+def example_external_predicates():
+    init()
+    eclipse_name='my_name'
+    addPythonFunction(eclipse_name,external_predicate)
+    my_var=Var()
+    Compound('call_python_function',Atom(eclipse_name),[1,my_var]).post_goal()
+    resume()
+    if my_var.value() != 1:
+        print("Failed resume ")
+    cleanup()
+        
+def func_exception (arguments):
+    #This raise an exception
+    a=a+1
+    return SUCCEED
+        
+def example_external_predicate_with_exception():
+    init()
+    addPythonFunction('p_func',func_exception)
+    Compound('call_python_function','p_func',[]).post_goal()
+    try:
+        resume()
+    except UnboundLocalError as a:
+        print(a)
+    cleanup()
+    
 
 if __name__ == '__main__':
     example1()
@@ -127,3 +156,5 @@ if __name__ == '__main__':
     example3()
     example4()
     example5()
+    example_external_predicates()
+    example_external_predicate_with_exception()

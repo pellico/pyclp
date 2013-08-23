@@ -14,7 +14,7 @@ Following packages shall be preinstalled before proceeding the installation of P
 
 * `Python 2.x or 3.x (32 bit) <http://www.python.org/>`_
 * `Cython <http://www.cython.org/>`_
-* `ECLiPSe Constraint Programming System 6.0 (32-bit) <http://www.eclipseclp.org/>`_
+* `ECLiPSe Constraint Programming System 6.1 (32-bit) <http://www.eclipseclp.org/>`_
 
 Download
 ========
@@ -58,7 +58,7 @@ Following packages shall be preinstalled before proceeding the installation of P
 python3 setup.py register
 
 * `Python 2.x or 3.x (32bit) <http://www.python.org/>`_
-* `ECLiPSe Constraint Programming System 6.0 (32-bit) <http://www.eclipseclp.org/>`_
+* `ECLiPSe Constraint Programming System 6.1 (32-bit) <http://www.eclipseclp.org/>`_
 
 
 Enviroment variables
