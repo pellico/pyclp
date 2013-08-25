@@ -16,6 +16,7 @@ Following packages shall be preinstalled before proceeding the installation of P
 * `Cython <http://www.cython.org/>`_
 * `ECLiPSe Constraint Programming System 6.1 <http://www.eclipseclp.org/>`_
 
+
 Download
 ========
 Download source files from `PyCLP sources <http://developer.berlios.de/project/showfiles.php?group_id=12904>`_
@@ -49,8 +50,8 @@ Tested enviroment
 
 The present version of pyclp is tested on
 
-* Ubuntu 12.04 LTS (32bit)
-* Ubuntu 13.04 (64bit) 
+* Ubuntu 12.04 LTS (32bit), Python 2.7 and 3.3
+* Ubuntu 13.04 (64bit) , Python 2.7 and 3.3
 
 However it is expected working on other platform that fullfill the requirements.
 
@@ -133,8 +134,8 @@ Tested enviroment
 
 The present version of pyclp is tested on
 
-* Windows 7 (64bit)
-* Windows 7 (32bit)
+* Windows 7 (64bit), Python 2.7, 3.3
+* Windows 7 (32bit), Python 2.7, 3.3
 
 However it is expected working on other platform that fullfill the requirements.
 
