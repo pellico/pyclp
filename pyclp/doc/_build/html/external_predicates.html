@@ -1,0 +1,227 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Calling Python from ECLiPSe &mdash; PyCLP beta documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     'beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyCLP beta documentation" href="index.html" />
+    <link rel="next" title="License" href="license.html" />
+    <link rel="prev" title="Examples" href="examples.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="license.html" title="License"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="examples.html" title="Examples"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">PyCLP beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="calling-python-from-eclipse">
+<h1>Calling Python from ECLiPSe<a class="headerlink" href="#calling-python-from-eclipse" title="Permalink to this headline">¶</a></h1>
+<p>It is possible to call python function from ECLiPSe.</p>
+<div class="section" id="how-to-define-a-python-function-call-it-from-eclipse">
+<h2>How to define a python function call it from ECLiPSe<a class="headerlink" href="#how-to-define-a-python-function-call-it-from-eclipse" title="Permalink to this headline">¶</a></h2>
+<p>The steps to achieve this are quite simple.</p>
+<ul class="simple">
+<li>Define a python function.</li>
+<li>Register it using function <a class="reference internal" href="pyclp.html#pyclp.addPythonFunction" title="pyclp.addPythonFunction"><tt class="xref py py-meth docutils literal"><span class="pre">pyclp.addPythonFunction()</span></tt></a></li>
+<li>Call from ECLiPSe with <tt class="docutils literal"><span class="pre">call_python_function</span></tt> predicate.</li>
+</ul>
+<div class="section" id="python-function-definition">
+<h3>Python function definition<a class="headerlink" href="#python-function-definition" title="Permalink to this headline">¶</a></h3>
+<p>Python function tha implement the predicate shall have one argument. This argument will be used to pass
+a list of the term used in the invocation.
+Python function shall return the following values <tt class="xref py py-const docutils literal"><span class="pre">pyclp.SUCCEED</span></tt> or <tt class="xref py py-const docutils literal"><span class="pre">pyclp.FAIL</span></tt> any other values are equivalent to <tt class="xref py py-const docutils literal"><span class="pre">pyclp.FAIL</span></tt>
+It can be called in this function a <a class="reference internal" href="pyclp.html#pyclp.unify" title="pyclp.unify"><tt class="xref py py-meth docutils literal"><span class="pre">pyclp.unify()</span></tt></a> to unify to term and interact with ECLiPSe term.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">py_unify</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+   <span class="k">return</span> <span class="n">pyclp</span><span class="o">.</span><span class="n">unify</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="register-python-function-for-calling">
+<h3>Register python function for calling<a class="headerlink" href="#register-python-function-for-calling" title="Permalink to this headline">¶</a></h3>
+<p>In order to be able to excute a python function from ECLiPSe it is required to register the function by calling
+<a class="reference internal" href="pyclp.html#pyclp.addPythonFunction" title="pyclp.addPythonFunction"><tt class="xref py py-meth docutils literal"><span class="pre">pyclp.addPythonFunction()</span></tt></a> after having executed <a class="reference internal" href="pyclp.html#pyclp.init" title="pyclp.init"><tt class="xref py py-meth docutils literal"><span class="pre">pyclp.init()</span></tt></a></p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">init</span><span class="p">()</span>
+<span class="n">pyclp</span><span class="o">.</span><span class="n">addPythonFunction</span><span class="p">(</span><span class="s">&quot;my_unify&quot;</span><span class="p">,</span><span class="n">py_unify</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="call-python-function-from-eclipse">
+<h3>Call python function from ECLiPSe<a class="headerlink" href="#call-python-function-from-eclipse" title="Permalink to this headline">¶</a></h3>
+<p>To excecute the python function from ECLiPSe use <tt class="docutils literal"><span class="pre">call_python_function</span></tt> predicate.</p>
+<p>Example:</p>
+<blockquote>
+<div><tt class="docutils literal"><span class="pre">call_python_function(&quot;my_unify&quot;,[A,B])</span></tt></div></blockquote>
+</div>
+</div>
+<div class="section" id="modify-eclipse-variables">
+<h2>Modify ECLiPSe variables<a class="headerlink" href="#modify-eclipse-variables" title="Permalink to this headline">¶</a></h2>
+<p>In the python function it is possible to use all class to represent ECLiPSe object like: <a class="reference internal" href="pyclp.html#pyclp.Atom" title="pyclp.Atom"><tt class="xref py py-meth docutils literal"><span class="pre">pyclp.Atom()</span></tt></a>,
+<tt class="xref py py-meth docutils literal"><span class="pre">Compound()</span></tt> etc.. but not <a class="reference internal" href="pyclp.html#pyclp.resume" title="pyclp.resume"><tt class="xref py py-meth docutils literal"><span class="pre">pyclp.resume()</span></tt></a>,:py:meth:<cite>pyclp.init</cite>,
+<a class="reference internal" href="pyclp.html#pyclp.cut" title="pyclp.cut"><tt class="xref py py-meth docutils literal"><span class="pre">pyclp.cut()</span></tt></a> and <a class="reference internal" href="pyclp.html#pyclp.cleanup" title="pyclp.cleanup"><tt class="xref py py-meth docutils literal"><span class="pre">pyclp.cleanup()</span></tt></a></p>
+</div>
+<div class="section" id="handling-python-exceptions">
+<h2>Handling python exceptions<a class="headerlink" href="#handling-python-exceptions" title="Permalink to this headline">¶</a></h2>
+<p>Exception raised in the python function it is stored and reraised inside the
+<a class="reference internal" href="pyclp.html#pyclp.resume" title="pyclp.resume"><tt class="xref py py-meth docutils literal"><span class="pre">pyclp.resume()</span></tt></a> function if a ECLiPSe signal <tt class="docutils literal"><span class="pre">python_error</span></tt> is not masked by ECLiPSe.</p>
+<p>Internal sequence of operations:</p>
+<div class="highlight-python"><pre>python script          ECLiPSe                  user python function
+
+resume()       ----&gt;
+                       call_python_function ---&gt;
+                                                 raise exception
+                                                 (exception stored)
+                                                 signal event &quot;python_error&quot;
+                                            &lt;--
+                       if not masked
+                       send THROW to resume
+               &lt;----
+ if the event
+ is &quot;python_error&quot;
+ restore exception
+ and raise it.</pre>
+</div>
+</div>
+<div class="section" id="complete-example">
+<h2>Complete Example<a class="headerlink" href="#complete-example" title="Permalink to this headline">¶</a></h2>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyclp</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">external_predicate</span><span class="p">(</span><span class="n">arguments</span><span class="p">):</span>
+   <span class="c">#arguments store all arguments passed with call_python_function</span>
+   <span class="c">#Note unify usage</span>
+   <span class="k">return</span> <span class="n">unify</span><span class="p">(</span><span class="n">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">arguments</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">init</span><span class="p">()</span>   <span class="c">#Init ECLiPSe engine</span>
+<span class="c">#Register function with &#39;my_name&#39; atom</span>
+<span class="n">add_python_function</span><span class="p">(</span><span class="s">&#39;my_name&#39;</span><span class="p">,</span><span class="n">external_predicate</span><span class="p">)</span>
+<span class="n">my_var</span><span class="o">=</span><span class="n">Var</span><span class="p">()</span>
+<span class="c"># call_python_function,&#39;my_name&#39;,[1,My_var])</span>
+<span class="n">Compound</span><span class="p">(</span><span class="s">&#39;call_python_function&#39;</span><span class="p">,</span><span class="n">Atom</span><span class="p">(</span><span class="s">&#39;my_name&#39;</span><span class="p">),[</span><span class="mi">1</span><span class="p">,</span><span class="n">my_var</span><span class="p">])</span><span class="o">.</span><span class="n">post_goal</span><span class="p">()</span>
+<span class="n">resume</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">my_var</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+   <span class="k">print</span><span class="p">(</span><span class="s">&quot;Failed resume &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If an exception is raised during the python function execution <tt class="docutils literal"><span class="pre">abort</span></tt> event will be raised by
+ECLiPSe with the following message.
+If this event will be handled by the user in ECLiPSe program, ECLiPSe engine will send a message to python (FLUSHIO) and then THROW value.
+See the below example.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Calling Python from ECLiPSe</a><ul>
+<li><a class="reference internal" href="#how-to-define-a-python-function-call-it-from-eclipse">How to define a python function call it from ECLiPSe</a><ul>
+<li><a class="reference internal" href="#python-function-definition">Python function definition</a></li>
+<li><a class="reference internal" href="#register-python-function-for-calling">Register python function for calling</a></li>
+<li><a class="reference internal" href="#call-python-function-from-eclipse">Call python function from ECLiPSe</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#modify-eclipse-variables">Modify ECLiPSe variables</a></li>
+<li><a class="reference internal" href="#handling-python-exceptions">Handling python exceptions</a></li>
+<li><a class="reference internal" href="#complete-example">Complete Example</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="examples.html"
+                        title="previous chapter">Examples</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="license.html"
+                        title="next chapter">License</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/external_predicates.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="license.html" title="License"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="examples.html" title="Examples"
+             >previous</a> |</li>
+        <li><a href="index.html">PyCLP beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012,2013, Oreste Bernardi.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

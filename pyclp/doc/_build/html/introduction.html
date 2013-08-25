@@ -1,0 +1,151 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction &mdash; PyCLP beta documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     'beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyCLP beta documentation" href="index.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="Welcome to PyCLP ‘s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to PyCLP ‘s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">PyCLP beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://developer.berlios.de/projects/pyclp/">PyCLP</a>
+is a Python library to interface ECLiPSe Constraint Programmig System.</p>
+<p>This module try to implement a pythonic interface to <a class="reference external" href="http://www.eclipseclp.org/">ECLiPSe</a>
+(alias easy to use) by compromising on a little bit on performance.</p>
+<div class="section" id="major-differences-from-eclipse-standard-interface-libraries">
+<h2>Major differences from ECLiPSe standard interface libraries<a class="headerlink" href="#major-differences-from-eclipse-standard-interface-libraries" title="Permalink to this headline">¶</a></h2>
+<p>The main difference compared to embedded interface provided  by ECLiPSe system is
+the persistence of constructed terms after calling the <a class="reference internal" href="pyclp.html#pyclp.resume" title="pyclp.resume"><tt class="xref py py-func docutils literal"><span class="pre">pyclp.resume()</span></tt></a> (check
+<a class="reference external" href="http://www.eclipseclp.org/doc/embedding/embroot008.html#toc11">3.1.2  Building ECLiPSe terms</a> ) function.
+In ECLiPSe standard interfaces compound terms are destroyed after resume while in PyCLP are
+stored in a reference that survives after resuming. PyCLP will destroy the reference only when python
+destroys the linked python object (garbage collection). This consumes more memory but now
+the python object and the related ECLiPSe object have the same <em>lifetime</em>.</p>
+<p>Moreover, in the definition of the API I tried to take advantage of a common propety of python and
+ECLiPSe: both are weak typed languages.</p>
+</div>
+<div class="section" id="next-steps">
+<h2>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Extend functionality of set_option function</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Introduction</a><ul>
+<li><a class="reference internal" href="#major-differences-from-eclipse-standard-interface-libraries">Major differences from ECLiPSe standard interface libraries</a></li>
+<li><a class="reference internal" href="#next-steps">Next steps</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to PyCLP &#8216;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="installation.html"
+                        title="next chapter">Installation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/introduction.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to PyCLP ‘s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">PyCLP beta documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012,2013, Oreste Bernardi.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
