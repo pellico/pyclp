@@ -12,9 +12,9 @@ Requirments
 ===========
 Following packages shall be preinstalled before proceeding the installation of PyCLP
 
-* `Python 2.x or 3.x (32 bit) <http://www.python.org/>`_
+* `Python 2.x or 3.x  <http://www.python.org/>`_
 * `Cython <http://www.cython.org/>`_
-* `ECLiPSe Constraint Programming System 6.1 (32-bit) <http://www.eclipseclp.org/>`_
+* `ECLiPSe Constraint Programming System 6.1 <http://www.eclipseclp.org/>`_
 
 Download
 ========
@@ -28,7 +28,7 @@ Setup Enviromental variables for ECLiPSe:
 This is required for compiling and using PyCLP.
 
 **LD_LIBRARY_PATH** enviromental variable shall contains the path of folder that contains 
-the ECLiPSe sharable library. E.g. <eclipsedir>/lib/i386_linux.
+the ECLiPSe sharable library. E.g. <eclipsedir>/lib/<platform>.
 
 
 
@@ -57,8 +57,8 @@ Requirments
 Following packages shall be preinstalled before proceeding the installation of PyCLP
 python3 setup.py register
 
-* `Python 2.x or 3.x (32bit) <http://www.python.org/>`_
-* `ECLiPSe Constraint Programming System 6.1 (32-bit) <http://www.eclipseclp.org/>`_
+* `Python 2.x or 3.x  <http://www.python.org/>`_
+* `ECLiPSe Constraint Programming System 6.1 <http://www.eclipseclp.org/>`_
 
 
 Enviroment variables
@@ -85,9 +85,10 @@ Requirments
 -----------
 Following packages shall be preinstalled before proceeding the installation of PyCLP
 
-* `Python 3.x (32-bit) <http://www.python.org/>`_
+* `Python 2.x 3.x <http://www.python.org/>`_
 * `Cython <http://www.cython.org/>`_
-* `ECLiPSe Constraint Programming System 6.0 (32-bit) <http://www.eclipseclp.org/>`_
+* `ECLiPSe Constraint Programming System 6.1 <http://www.eclipseclp.org/>`_
+*  Some compiler used to compile Python interpreter. (Note: Different version of python requires different microsoft compilers)
 
 Download
 --------
