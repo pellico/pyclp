@@ -64,10 +64,18 @@ please provide path to ECLiPSe installation: ')
 else:
     eclipsedir=environ["ECLIPSEDIR"]
 
-if platform.system()=='Linux':
+platform_system=platform.system()
+platform_architecture=platform.architecture()[0]
+if platform_system=='Linux':
     arch='i386_linux'
-elif platform.system()=='Windows':
-    arch='i386_nt'
+elif platform_system=='Windows':
+    if platform_architecture=='64bit':
+        arch='x86_64_nt'
+    elif platform_architecture=='32bit':
+        arch='i386_nt'
+    else:
+        print("Architecture not supported")
+        raise
 else:
     print ("Platform not supported")
     raise
