@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.isandlatech.plugins.rest.launch.makefile">
+<booleanAttribute key="org.eclipse.debug.core.custom.rules" value="false"/>
+<mapAttribute key="org.eclipse.debug.core.environmentVariables">
+<mapEntry key="LD_LIBRARY_PATH" value="/home/radice/Documents/eclipse61/lib/i386_linux"/>
+</mapAttribute>
+<stringAttribute key="org.eclipse.debug.core.make.cmd" value="/usr/bin/make"/>
+<setAttribute key="org.eclipse.debug.core.make.rules">
+<setEntry value="html"/>
+</setAttribute>
+<stringAttribute key="org.eclipse.debug.core.project.name" value="${workspace_loc:/pyclp/doc}"/>
+</launchConfiguration>
