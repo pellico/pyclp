@@ -610,8 +610,9 @@ cdef object pword2object(pyclp.pword in_pword):
     cdef double c_double
     cdef pyclp.pword tail
     cdef pyclp.pword head
-    #Check if it is a Compound term
-    if pyclp.ec_get_list(in_pword,&head,&tail)== pyclp.PSUCCEED:
+    #Check if it is a list. 
+    # List is before because a list is also a Compound term.
+    if pyclp.ec_get_list(in_pword,&head,&tail)== pyclp.PSUCCEED or pyclp.ec_get_nil(in_pword) == pyclp.PSUCCEED:
         result=PList(None)
         (<PList>result).set_pword(in_pword)
     elif pyclp.ec_get_functor(in_pword,&dummy_dident)== pyclp.PSUCCEED:
@@ -619,8 +620,6 @@ cdef object pword2object(pyclp.pword in_pword):
         (<Compound>result).set_pword(in_pword)
     elif pyclp.ec_get_long(in_pword,&c_int)== pyclp.PSUCCEED:
         result=c_int
-    elif pyclp.ec_get_nil(in_pword) == pyclp.PSUCCEED:
-        result=() #Is the empty list
     # Check for Atom
     elif pyclp.ec_get_atom(in_pword,&dummy_dident)== pyclp.PSUCCEED:
         result=Atom(None)
@@ -705,48 +704,88 @@ cdef class PList(Term):
     .. warning::
         As for all other terms it is not possible to change their values.
         
+    Special cases:
+    
+    Empty prolog list can be created with PList([])
+    To check that a returned PList is the empty list it avaiable the method :py:func:`pyclp.PList.isNil`
+    
+    Head Tail
+    
+    In prolog it is possible to define a list using the operator |
+    
+    Example of prolog list and head tail decomposition::
+        
+        %Prolog list example
+        [1,2,3|myAtom]
+        [1|A]
+        %Also regular list have a tail: []
+        [1,2,3]=[1,2,3|[]]
+        %All list can be decomposed recursively as head tail couple
+        [1,2,3]
+        [1|[2,3]]
+        [1|[2|[3]]]
+        [1|[2|[3|[]]]]
+        
+    
+
+        
     """
-    def __init__(self,in_list):
+    def __init__(self,in_list,tail=[]):
         cdef int list_lenght
         cdef int index
-        cdef pyclp.pword tail
+        cdef pyclp.pword tail_pword
+        cdef Term term_item
         Term.__init__(self,None)
         if in_list is not None:
             if not( isinstance(in_list,list) or isinstance(in_list,tuple)):
                 raise TypeError("PList constructor accept only list or tuple")
+            if not(isinstance(tail,list) or isinstance(tail,Term)):
+                raise TypeError("PList tail shall be a list or a Term")
             list_lenght=len(in_list)
-            tail=pyclp.ec_nil()
-            #Convert not Term arguments
-            for index in range(list_lenght-1,-1,-1):
-                item=in_list[index]
-                if isinstance(in_list[index],Term):
-                    term_item= in_list[index]
+            # If lenght is 0 means an empty list --> []
+            if (list_lenght == 0):
+                tail_pword=pyclp.ec_nil()
+            else:
+                #Generate the starting tail for building the list
+                if isinstance(tail,list) or isinstance(tail,tuple):
+                    if len(tail) == 0:
+                        tail_pword=pyclp.ec_nil()
+                    else:
+                        tail_pword=PList(tail)
+                elif isinstance(tail,Term):
+                        tail_pword=(<Term>tail).get_pword()
                 else:
-                    term_item=Term(in_list[index])
-                tail=pyclp.ec_list((<Term>term_item).get_pword(),tail)
-            self.ref.set(tail)
+                    raise TypeError("PList tail shall be a list, tuple or  Term")
+                #Convert not Term arguments
+                for index in range(list_lenght-1,-1,-1):
+                    item=in_list[index]
+                    if isinstance(in_list[index],Term):
+                        term_item= in_list[index]
+                    #This to allow the coversion of nested lists.
+                    elif isinstance(in_list[index],list) or isinstance(in_list[index],tuple):
+                        term_item=PList(in_list[index])
+                    else:
+                        term_item=Term(in_list[index])
+                    tail_pword=pyclp.ec_list(term_item.get_pword(),tail_pword)
+            self.ref.set(tail_pword)
 
     def head_generator(self):
         cdef pyclp.pword tail
         cdef pyclp.pword head
-        cdef pyclp.pword new_tail
         tail=self.get_pword()
         while(1):
-            if pyclp.ec_get_nil(tail)== pyclp.PSUCCEED: #End of the list
-                return 
-            if pyclp.ec_get_list(tail,&head,&tail) != pyclp.PSUCCEED:
-                raise pyclpEx("Unexpected error during prolog list recovering")
-            yield pword2object(head)
+            res=pyclp.ec_get_list(tail,&head,&tail)
+            if res == pyclp.PSUCCEED:
+                yield pword2object(head)
+            else:
+                return
     def head_tail_generator(self):
         cdef pyclp.pword tail
         cdef pyclp.pword head
-        cdef pyclp.pword new_tail
         tail=self.get_pword()
         while(1):
-            if pyclp.ec_get_nil(tail)== pyclp.PSUCCEED: #End of the list
-                return 
             if pyclp.ec_get_list(tail,&head,&tail) != pyclp.PSUCCEED:
-                raise pyclpEx("Unexpected error during prolog list recovering")
+                return
             yield (pword2object(head),pword2object(tail))
     def __iter__(self):
         return self.head_generator()
@@ -771,10 +810,8 @@ cdef class PList(Term):
         return self.head_tail_generator()
     
     cdef int get_head_tail(self,pyclp.pword *head_ptr,pyclp.pword *tail_ptr) except -1:
-        if pyclp.ec_get_nil(tail_ptr[0])== pyclp.PSUCCEED: #End of the list
-            raise IndexError("Argument index out of range")
         if pyclp.ec_get_list(tail_ptr[0],head_ptr,tail_ptr) != pyclp.PSUCCEED:
-            raise pyclpEx("Unexpected error during prolog list recovering")
+            raise IndexError("Argument index out of range")
         return 1
             
     def __getitem__(self,index):
@@ -811,13 +848,40 @@ cdef class PList(Term):
             for c_k in range(c_index+1):
                 self.get_head_tail(&head,&tail)
             return pword2object(head)
+        
+    def getListTail(self):
+        """
+        
+        """
+        returned_list=[]
+        for head,tail in self.iterHeadTail():
+            returned_list.append(head)
+        return (returned_list,tail)
+    cpdef bint isNil(self):
+        """
+        Check if the PList is the nil list --> []
+        
+        :returns: True if it is the empty list
+        
+        """
+        if pyclp.ec_get_nil(self.get_pword()) == pyclp.PSUCCEED:
+            return True
+        else:
+            return False
+        
     def __str__(self):
         """
         Pretty printing of the list 
         """
-        list_element=list(self)
+        list_element,tail=self.getListTail()
         list_string=list(map(formatTermStr,list_element))
-        return "[{0}]".format(",".join(list_string))  
+        #Convert all pyclp object to a string
+        list_string=list(map(str,list_string))
+        if isinstance(tail,PList):
+            return "[{0}]".format(",".join(list_string))
+        else: # Just in case the tail is not a nil list
+            return "[{0}|{1}]".format(",".join(list_string),str(tail))    
+
 
 
     
@@ -981,7 +1045,7 @@ cdef class Var(Term):
         if var_value is None:
             return "_"
         else:
-            return str(self.value())
+            return str(var_value)
            
 
 

@@ -60,6 +60,8 @@ cdef extern from "eclipse.h":
         EC_OPTION_IO
         MEMORY_IO
         RANGE_ERROR
+        INSTANTIATION_FAULT
+        TYPE_ERROR
         EC_OPTION_MAPFILE
         EC_OPTION_PARALLEL_WORKER
         EC_OPTION_ARGC
