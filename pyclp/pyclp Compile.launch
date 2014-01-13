@@ -17,7 +17,7 @@
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_OTHER_WORKING_DIRECTORY" value="${workspace_loc:pyclp}"/>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS" value="build_ext --inplace --force"/>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY" value="${workspace_loc:pyclp}"/>
-<stringAttribute key="org.python.pydev.debug.ATTR_INTERPRETER" value="__default"/>
+<stringAttribute key="org.python.pydev.debug.ATTR_INTERPRETER" value="python"/>
 <stringAttribute key="org.python.pydev.debug.ATTR_PROJECT" value="pyclp"/>
 <intAttribute key="org.python.pydev.debug.ATTR_RESOURCE_TYPE" value="1"/>
 </launchConfiguration>

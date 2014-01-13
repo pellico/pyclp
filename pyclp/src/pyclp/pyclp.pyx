@@ -156,17 +156,16 @@ cdef int register_call_python_pred():
     """
     cdef dident module_name_dict
     cdef int result
-    
-    module_name_dict=ec_did('eclipse',0)
+    module_name_dict=ec_did('pyclp',0)
     # Register predicate to call external function implemented in python.
     #event_handler_compile_string="compile_term([python_error_event_handler(_):- exit_block(python_error)),:-  set_event_handler(python_error,python_error_event_handler) ]"
-    event_handler_compile_string=tobytes("compile_term([python_error_event_handler(_):- exit_block(python_error),:-  set_event_handler(python_error_event,python_error_event_handler/1) ])")
+    event_handler_compile_string=tobytes("create_module(pyclp,[call_python_function/2],[eclipse_language]),compile_term([python_error_event_handler(_):- exit_block(python_error),:-  set_event_handler(python_error_event,python_error_event_handler/1) ])@pyclp,use_module(pyclp)")
     ec_post_string(event_handler_compile_string)
     result=pyclp.ec_resume()
     if pyclp.PSUCCEED != result:
         return result
-    else:    
-        return pyclp.ec_external(pyclp.ec_did("call_python_function",2), call_python, module_name_dict)  
+    else:
+        return pyclp.ec_external(pyclp.ec_did("call_python_function",2), call_python, module_name_dict)
  
 
 
@@ -686,7 +685,7 @@ cdef class PList(Term):
     Compound class.
     This class support iterator protocol this means that you can loop on the list as for python list
     
-    Example::
+    **Example**::
         
         init()
         my_list=PList([1,2,3])
@@ -695,7 +694,7 @@ cdef class PList(Term):
             
     This class support retrieving values by indexing.
     
-    Example::
+    **Example**::
         
         init()
         my_list=PList([1,2,3])
@@ -704,16 +703,16 @@ cdef class PList(Term):
     .. warning::
         As for all other terms it is not possible to change their values.
         
-    Special cases:
+    **Special cases**
     
     Empty prolog list can be created with PList([])
     To check that a returned PList is the empty list it avaiable the method :py:func:`pyclp.PList.isNil`
     
-    Head Tail
+    **Head Tail**
     
     In prolog it is possible to define a list using the operator |
     
-    Example of prolog list and head tail decomposition::
+    **Example of prolog list and head tail decomposition**::
         
         %Prolog list example
         [1,2,3|myAtom]
@@ -851,6 +850,17 @@ cdef class PList(Term):
         
     def getListTail(self):
         """
+        Convert a PList in a python list and the tail.
+        
+        **Examples**::
+        
+            prolog              python
+            [1,2,3,f(1,2)]  --> ([1,2,3,Compound('f',1,2)],PList([]))
+            [1,2,3|A]       --> ([1,2,3],Var())
+            [1,2,3|dummy]   --> ([1,2,3],Atom('dummy'))
+        
+        :returns: a tuple (list,tail). First element is a python list containing each element of prolog list converted to a pyclp object \
+            second element is a pyclp object representing the tail of prolog list.
         
         """
         returned_list=[]

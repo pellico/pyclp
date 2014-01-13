@@ -43,9 +43,12 @@ Call python function from ECLiPSe
 =================================
 
 To excecute the python function from ECLiPSe use ``call_python_function`` predicate.
+This predicate is declared in ``pyclp`` module. This shall be imported in the user module.
+``pyclp`` is created when :py:meth:`pyclp.init` is executed and it is automatically imported in the ``eclipse`` module (the default one)
 
 Example:
    
+   ``use_module pyclp``
    ``call_python_function("my_unify",[A,B])``
 
 

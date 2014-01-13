@@ -106,6 +106,7 @@ cdef extern from "eclipse.h":
     int ec_post_event(pword)
     int ec_handle_events(long *ToC)
     void ec_post_string(char *)
+    ec_ref ec_ref_create(pword)
 
 cdef extern from "error.h":
     cdef enum dummy:
