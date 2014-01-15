@@ -11,10 +11,10 @@ Version 0.8
 
 **Enhancements**
 
-* Added capability to create Prolog List (PList) with any kind of tail. (before was supported only emty list tail)
-* Prolog list that have a tail different from empty list (a.k.a. nil list) are converted to PList. 
-* Added getListTail function to PList to get the tail of a prolog list.
-* call_python_function/2 predicate can be used in any module by importing pyclp module (``:- import pyclp``.)
+* Added capability to create Prolog List (PList) with any kind of tail. (before was supported only empty list tail)
+* Prolog lists that have a tail different from empty list (a.k.a. nil list) are converted to PList. 
+* Added ``getListTail`` function to PList to get the tail of a prolog list.
+* ``call_python_function/2`` predicate can be used in any module by importing pyclp module (``:- import pyclp``.)
 
 **Incompatibilities**
 
