@@ -19,7 +19,7 @@ Following packages shall be preinstalled before proceeding the installation of P
 
 Download
 ========
-Download source files from `PyCLP sources <http://developer.berlios.de/project/showfiles.php?group_id=12904>`_
+Download source files from `PyCLP sources <https://sourceforge.net/projects/pyclp/files>`_
 
 Compilation & Installation
 ==========================
@@ -85,7 +85,7 @@ This is required for compiling and using PyCLP.
 
 Download & Install
 ------------------
-Download msi installer from `PyCLP sources <http://developer.berlios.de/project/showfiles.php?group_id=12904>`_
+Download msi installer from `PyCLP sources <https://sourceforge.net/projects/pyclp/files>`_
 
 
 
@@ -104,7 +104,7 @@ Following packages shall be preinstalled before proceeding the installation of P
 
 Download
 --------
-Download source files from `PyCLP sources <http://developer.berlios.de/project/showfiles.php?group_id=12904>`_
+Download source files from `PyCLP sources <https://sourceforge.net/projects/pyclp/files>`_
 
 Compilation & Installation
 --------------------------
