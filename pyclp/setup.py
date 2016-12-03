@@ -106,7 +106,7 @@ with open('README.txt') as file:
     long_description_read = file.read()
 
 setup (name = 'PyCLP',
-       version = '0.8',
+       version = '1.0',
        author      = "Oreste Bernardi",
        maintainer = "Oreste Bernardi",
        author_email= "<name>@<name>.eu  name=oreste",
@@ -118,8 +118,10 @@ setup (name = 'PyCLP',
        package_dir={'': 'src'},
        packages=['pyclp'],
        long_description=long_description_read,
-       classifiers=["Development Status :: 4 - Beta",
-                    "Programming Language :: Prolog" 
+       classifiers=["Development Status :: 5 - Production/Stable",
+                    "Programming Language :: Prolog",
+                    "License :: OSI Approved :: BSD License",
+                    "Programming Language :: Cython" 
                     ]
        #py_modules = ["pyclp"],
        )

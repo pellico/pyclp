@@ -19,7 +19,7 @@ stored in a reference that survives after resuming. PyCLP will destroy the refer
 destroys the linked python object (garbage collection). This consumes more memory but now
 the python object and the related ECLiPSe object have the same *lifetime*.
 
-Moreover, in the definition of the API I tried to take advantage of a common propety of python and 
+Moreover, in the definition of the API I tried to take advantage of a common property of python and 
 ECLiPSe: both are weak typed languages.
 
 
