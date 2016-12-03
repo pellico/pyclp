@@ -1,6 +1,12 @@
 Changelog
 #########
 
+Version 1.0
+***********
+
+**Bugs**
+
+* Fixed an incompatibility bug with Cython 0.25
 
 Version 0.8
 ***********
