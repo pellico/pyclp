@@ -87,7 +87,7 @@ class Test_Compound(unittest.TestCase):
         func=Compound('ciao',Compound('set',"test",Atom('doppio')),2)
         my_var=Var()
         Compound('=',my_var,func).post_goal()
-        self.assertEqual(resume(),True, "Failed resume")
+        self.assertEqual(resume(),(SUCCEED,None), "Failed resume")
         var_value=my_var.value
         self.assertEqual(var_value[0][0],"test","Failed test string")
         self.assertEqual(var_value[0][1],Atom("doppio"),"Failed test atom")
@@ -160,14 +160,14 @@ class Test_Term(unittest.TestCase):
         my_goal.post_goal()
         self.assertEqual(resume()[0],FLUSHIO,'Failed resume not output') 
         self.assertEqual(self.stdout.read(),'Ciao\n'.encode('ascii'),'Wrong output')
-        self.assertEqual(resume(),False,'Not failed')  
+        self.assertEqual(resume(),(False,None),'Not failed')  
        
     def test_atom(self):
         my_goal=Compound('writeln',Atom('Ciao'))
         my_goal.post_goal()
         resume()
         self.assertEqual(self.stdout.read(),'Ciao\n'.encode('ascii'),'Wrong atom')
-        self.assertEqual(resume(),SUCCEED,'Failed resume')
+        self.assertEqual(resume(),(SUCCEED,None),'Failed resume')
 
 class Test_PList(unittest.TestCase):
     @classmethod
@@ -241,14 +241,14 @@ class Test_Stream(unittest.TestCase):
         s=Stream(1)
         self.assertEqual(s.read(),b"ciao\n")
         s.close()
-        self.assertEqual(resume(),SUCCEED)
+        self.assertEqual(resume(),(SUCCEED,None))
     def test_write(self):
         read_term=Var()
         Compound('read',read_term).post_goal()
         self.assertEqual(resume(),(WAITIO,0))
         s=Stream(0)
         s.write(b'"Ciao pylclp2"')
-        self.assertEqual(resume(),SUCCEED)
+        self.assertEqual(resume(),(SUCCEED,None))
         self.assertEqual(read_term.value,'Ciao pylclp2')
         
         
