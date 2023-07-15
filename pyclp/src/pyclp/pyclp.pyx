@@ -49,6 +49,7 @@ FLUSHIO=pyclp.PFLUSHIO
 WAITIO=pyclp.PWAITIO
 FAIL=False
 YIELD=pyclp.PYIELD
+THROW=pyclp.PTHROW
 OPTION_IO=pyclp.EC_OPTION_IO
 OPTION_MAPFILE=pyclp.EC_OPTION_MAPFILE
 OPTION_PARALLEL_WORKER=pyclp.EC_OPTION_PARALLEL_WORKER
@@ -330,8 +331,12 @@ def resume(in_term=None):
         (pyclp.WAITIO,\ *stream_number*\ )  if eclipse engine try to read data \
         from stream identified by *stream_number*
         
-        (pyclp.PYIELD, *yield_returned_value*) in case of predicate call \
+        (pyclp.YIELD, *yield_returned_value*) in case of predicate call \
         `yield/2 <http://www.eclipseclp.org/doc/bips/kernel/externals/yield-2.html>`_.
+
+        (pyclp.THROW, *Term TagExit*) an event have been thrown and no one have catched it \
+        `exit_block/1 <http://www.eclipseclp.org/doc/bips/kernel/control/exit_block-1.html`_.
+        
             
       
     .. warning::
@@ -373,6 +378,8 @@ def resume(in_term=None):
         return (WAITIO,toPython.value())
     elif pyclp.PYIELD ==result:
         return (YIELD,toPython.value())
+    elif pyclp.PTHROW == result:
+        return (THROW,toPython.value())
     else:
         assert False,"Unrecognized result from ec_resume"
         
