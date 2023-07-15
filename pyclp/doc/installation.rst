@@ -48,7 +48,76 @@ Regression test
 Windows
 *******
 
-TODO
+
+Binary installation
+===================
+
+Requirments
+-----------
+Following packages shall be preinstalled before proceeding the installation of PyCLP
+
+* `Python 3.x <http://www.python.org/>`_
+* `ECLiPSe Constraint Programming System <http://www.eclipseclp.org/>`_
+
+
+Enviroment variables
+--------------------
+Setup Enviromental variables for ECLiPSe:
+
+**ECLIPSEDIR** enviromental variable shall be set to the folder where is located ECLiPSe system. 
+This is required for compiling and using PyCLP.
+
+**PATH** add in the path the folder where is stored the *eclipse.dll* file
+
+
+Download & Install
+------------------
+Download msi installer from `PyCLP sources <http://developer.berlios.de/project/showfiles.php?group_id=12904>`_
+
+
+
+
+Installation from sources
+=========================
+
+Requirments
+-----------
+Following packages shall be preinstalled before proceeding the installation of PyCLP
+
+* `Python 3.x <http://www.python.org/>`_
+* `Cython <http://www.cython.org/>`_
+* `ECLiPSe Constraint Programming System <http://www.eclipseclp.org/>`_
+
+Download
+--------
+Download source files from `PyCLP sources <http://developer.berlios.de/project/showfiles.php?group_id=12904>`_
+
+Compilation & Installation
+--------------------------
+Setup Enviromental variables for ECLiPSe:
+
+**ECLIPSEDIR** enviromental variable shall be set to the folder where is located ECLiPSe system. 
+This is required for compiling and using PyCLP.
+
+**PATH** add in the path the folder where is stored the *eclipse.dll* file
+
+ 
+
+Install using usual method
+
+.. code-block:: bash
+
+   python setup.py install
+
+Regression test
+
+.. code-block:: bash
+
+   python test.py
+
+
+
+
 
 
 
