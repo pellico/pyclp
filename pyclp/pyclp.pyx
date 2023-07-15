@@ -21,6 +21,13 @@
 """
 PyCLP Module
 
+Pyclp is a Python library to interface ECLiPSe Constraint Programmig System.
+
+.. note:: 
+    Classes :py:class:`PList`, :py:class:`Atom`, :py:class:`Compound` can be compared each other as
+    in `ec_compare <http://www.eclipseclp.org/doc/embedding/embroot078.html>`_
+ 
+
 """
 
 cimport pyclp
@@ -103,7 +110,24 @@ cdef class Ref:
         pyclp.ec_ref_set(self.ref,pr_word)             
         
 class Stream(io.RawIOBase):
-    """
+    """Class to support streams to and from ECLiPSe.
+    This is class is derived from io.RawIOBase.
+    
+    :param name: string containing stream name of a previously opened stream by ECLiPSe program. \
+    See: `Embedded C stream api <http://www.eclipseclp.org/doc/embedding/embroot082.html>`_ \
+    and `get_stream/2 <http://www.eclipseclp.org/doc/bips/kernel/iostream/get_stream-2.html>`_
+    
+    .. note:: 
+        The following stream are already opened: \
+        'input', 'output', 'error', 'warning_output', 'log_output', 'stdin', 'stdout', 'stderr', 'null'.
+    
+    :raise IOError: if name is not matching a previously open stream by \
+    `open/3 <http://www.eclipseclp.org/doc/bips/kernel/iostream/open-3.html>`_ and \
+    `open/4 <http://www.eclipseclp.org/doc/bips/kernel/iostream/open-4.html>`_
+    
+
+    
+      
     """
     def __init__(self,name):
         if isinstance(name,str):
@@ -134,6 +158,13 @@ class Stream(io.RawIOBase):
         """
         pass
     def read(self,int n=-1):
+        """
+        
+        Read all bytes from stream
+        
+        :param n: Number of bytes to be read if omitted or equal to -1 it will return all avaiable bytes.
+        :returns: bytes object
+        """
         #cdef char* buffer
         cdef int lenght
         cdef int num_bytes_read
@@ -153,6 +184,11 @@ class Stream(io.RawIOBase):
         #libc.stdlib.free(buffer)
         return buffer
     def write(self,buffer):
+        """
+        Write a bytes object to stream.
+        :type buffer: bytes object.
+        :return: number of bytes written 
+        """
         #cdef char* buffer
         cdef int lenght
         cdef int returned_value
@@ -164,6 +200,10 @@ class Stream(io.RawIOBase):
         else:
             return returned_value
     def readall(self):
+        """
+        Read all available bytes equivalent to :py:func:`pyclp.read`
+        
+        """
         return self.read(-1)
     def readinto(self,b):
         raise NotImplemented()
@@ -740,17 +780,16 @@ cdef object pword2object(pyclp.pword in_pword):
                 
         
 cdef class Var(Term):
-    """Class to create Prolog variable.
-    It has only one property value to retrieve the value unified with the variable
-    None is returned in case the variable is uninstantiated.
-    E.g.
-    p=Var()
-    p.value
-    None
+    """
+    Class to create Prolog variable.
     """
     def __init__(self):
         Term.__init__(self,None)
     cpdef value(self):
+        """
+        :rtype: integer, float, string, :py:class:`PList`, :py:class:`Atom`, :py:class:`Compound`, None (if var is uninstantiated)
+        
+        """
         cdef pyclp.pword pword_value
         pword_value=self.ref.get()
         if pyclp.ec_is_var(pword_value)== pyclp.PSUCCEED:
@@ -759,6 +798,10 @@ cdef class Var(Term):
             result=pword2object(pword_value)
         return result    
     def __str__(self):
+        """
+        :return: Return pretty print string of object unified to this varible.\
+        If variable is uninstantiated it returns '_'
+        """
         var_value=self.value()
         if var_value is None:
             return "_"
