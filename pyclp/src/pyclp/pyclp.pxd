@@ -49,33 +49,33 @@ cdef extern from "eclipse.h":
     void ec_cut_to_chp(ec_ref)
     int ec_set_option_long(int, long)
     int ec_set_option_ptr(int, char *)
-    cdef enum dummy:
-        PSUCCEED
-        PFAIL
-        PTHROW		
-        PFLUSHIO
-        PWAITIO
-        PYIELD
-        PTHROW
-        EC_OPTION_IO
-        MEMORY_IO
-        RANGE_ERROR
-        INSTANTIATION_FAULT
-        TYPE_ERROR
-        EC_OPTION_MAPFILE
-        EC_OPTION_PARALLEL_WORKER
-        EC_OPTION_ARGC
-        EC_OPTION_ARGV
-        EC_OPTION_LOCALSIZE
-        EC_OPTION_GLOBALSIZE
-        EC_OPTION_PRIVATESIZE
-        EC_OPTION_SHAREDSIZE
-        EC_OPTION_PANIC
-        EC_OPTION_ALLOCATION
-        EC_OPTION_DEFAULT_MODULE
-        EC_OPTION_ECLIPSEDIR
-        EC_OPTION_INIT
-        EC_OPTION_DEBUG_LEVEL
+    
+    int    PSUCCEED
+    int    PFAIL
+    int    PTHROW		
+    int    PFLUSHIO
+    int    PWAITIO
+    int    PYIELD
+    int    PTHROW
+    int    EC_OPTION_IO
+    int    MEMORY_IO
+    int    RANGE_ERROR
+    int    INSTANTIATION_FAULT
+    int    TYPE_ERROR
+    int    EC_OPTION_MAPFILE
+    int    EC_OPTION_PARALLEL_WORKER
+    int    EC_OPTION_ARGC
+    int    EC_OPTION_ARGV
+    int    EC_OPTION_LOCALSIZE
+    int    EC_OPTION_GLOBALSIZE
+    int    EC_OPTION_PRIVATESIZE
+    int    EC_OPTION_SHAREDSIZE
+    int    EC_OPTION_PANIC
+    int    EC_OPTION_ALLOCATION
+    int    EC_OPTION_DEFAULT_MODULE
+    int    EC_OPTION_ECLIPSEDIR
+    int    EC_OPTION_INIT
+    int    EC_OPTION_DEBUG_LEVEL
 
         
     int ec_get_string ( pword,char**)

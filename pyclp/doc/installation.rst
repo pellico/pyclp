@@ -2,7 +2,7 @@ Installation
 ############
 
 
-At this moment only Linux platform is supported.(tested on Ubuntu 12.04).
+At this moment only Linux platform is supported.(tested on KUbuntu 16.04).
 
 Linux
 *****
@@ -50,8 +50,7 @@ Tested enviroment
 
 The present version of pyclp is tested on
 
-* Ubuntu 12.04 LTS (32bit), Python 2.7 and 3.3
-* Ubuntu 13.04 (64bit) , Python 2.7 and 3.3
+* KUbuntu 13.04 (64bit) , Python 2.7 and 3.5
 
 However it is expected working on other platform that fullfill the requirements.
 
@@ -134,8 +133,7 @@ Tested enviroment
 
 The present version of pyclp is tested on
 
-* Windows 7 (64bit), Python 2.7, 3.3
-* Windows 7 (32bit), Python 2.7, 3.3
+* Windows 10 (64bit), Python 2.7, 3.3
 
 However it is expected working on other platform that fullfill the requirements.
 
