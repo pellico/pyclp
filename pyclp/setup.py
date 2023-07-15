@@ -44,7 +44,8 @@ else:
 
 if platform.system()=='Linux':
     arch='i386_linux'
-
+elif platform.system()=='Windows':
+    arch='i386_nt'
 else:
     print ("Platform not supported")
     raise
