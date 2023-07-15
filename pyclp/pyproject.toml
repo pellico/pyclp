@@ -7,7 +7,7 @@ description = "Python library to interface ECLiPSe Constraint Programmig System.
 authors = ["Oreste Bernardi"]
 license = "BSD-2-Clause"
 readme = "README.txt"
-url = "https://github.com/pellico/pyclp"
+repository = "https://github.com/pellico/pyclp"
 
 [tool.poetry.dependencies]
 python = "^3.10"
