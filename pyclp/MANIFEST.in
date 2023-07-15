@@ -2,5 +2,7 @@ global-include *.rst
 global-include *.py
 global-include *.pxd
 global-include *.pyx
-global-include changeLog.txt
+global-include *.ecl
 graft doc/_build/html
+exclude testdoc.py
+exclude simple_test.py
