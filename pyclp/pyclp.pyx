@@ -17,10 +17,12 @@
 #THE POSSIBILITY OF SUCH DAMAGE.
 
 #@PydevCodeAnalysisIgnore
-#cython: embedsignature=True
+
 """
 PyCLP Module
+
 """
+
 cimport pyclp
 cimport cpython
 cimport libc.stdlib
@@ -34,6 +36,7 @@ last_resume_result=None
 # Store a weak reference in order to support cleanup function
 # All reference need to be destroyed before cleanup of eclipse engine
 all_active_refs=weakref.WeakSet() 
+
 
 SUCCEED=True
 FLUSHIO=pyclp.PFLUSHIO
@@ -100,6 +103,8 @@ cdef class Ref:
         pyclp.ec_ref_set(self.ref,pr_word)             
         
 class Stream(io.RawIOBase):
+    """
+    """
     def __init__(self,name):
         if isinstance(name,str):
             self.name=name
@@ -177,6 +182,10 @@ cdef recreate_all_refs():
 def init():
     """This shall be called before calling any other function.
     This initialize Eclipse engine.
+    
+    :returns:
+        False if init succeed.
+        True if init fails
     """
     global toPython
     last_resume_result=None #It shall be None at init.Defensive programming
@@ -193,6 +202,10 @@ def cleanup():
     """This shutdown the Eclipse engine.
     After calling this function any operation on pyclp object or class could crash the program.
     
+    :returns:
+        False if cleanup succeed.
+        True if cleanup fails
+        
     .. warning::
     
         If after a cleanup it is called again :py:func:`pyclp.init` all terms created before the cleanup are not valid and they need 
@@ -230,22 +243,25 @@ def resume(in_term=None):
     It accepts optional argument *in_term*. Used to return a value to the prolog predicate 
     `yield/2 <http://www.eclipseclp.org/doc/bips/kernel/externals/yield-2.html>`_
     
-    Return:
+    :param in_term: Optional argument *in_term*. Used to return a value to the prolog predicate \
+    `yield/2 <http://www.eclipseclp.org/doc/bips/kernel/externals/yield-2.html>`_
+    :type in_term: :py:class:`PList`, :py:class:`Atom`, :py:class:`Compound`
     
-        (pyclp.SUCCEED,None)
-            if execution succeed (equivalent to True). In this case it is possible to call pyclp.cut()
-        (pyclp.FAIL,None)
-            if the goal fails.
-        (pyclp.FLUSHIO,\ *stream_number*\ )
-            if some data is present in stream identified by *stream_number*
-        (pyclp.WAITIO,\ *stream_number*\ )
-            if eclipse engine try to read data from stream identified by *stream_number*
-        (pyclp.PYIELD, *yield_returned_value*)
-            in case of predicate call `yield/2 <http://www.eclipseclp.org/doc/bips/kernel/externals/yield-2.html>`_.
+    :rtype: tuple
+    :returns: 
+        (pyclp.SUCCEED,None) if execution succeed (equivalent to True). \
+        In this case it is possible to call pyclp.cut()
+        
+        (pyclp.FAIL,None) if the goal fails.
+        
+        (pyclp.FLUSHIO,\ *stream_number*\ ) if some data is present in stream identified by *stream_number*
+        
+        (pyclp.WAITIO,\ *stream_number*\ )  if eclipse engine try to read data \
+        from stream identified by *stream_number*
+        
+        (pyclp.PYIELD, *yield_returned_value*) in case of predicate call \
+        `yield/2 <http://www.eclipseclp.org/doc/bips/kernel/externals/yield-2.html>`_.
             
-
-    
-    
       
     .. warning::
     
@@ -394,8 +410,9 @@ cdef class Atom(Term):
     """
     Class to create Atom.
     
-    *string* is a string that defines the atom.
-    This class is required to distinguish strings from atoms.
+    :param atom_id: atom name
+    :type atom_id: string
+    
     """
     cdef pyclp.dident ec_dict_ptr
     def __init__(self,string):
@@ -414,7 +431,8 @@ cdef class Atom(Term):
             raise pyclpEx("Failed retrieving of Atom dictionary item")
             
     def __str__(self):
-        """Convert to string for pretty printing
+        """
+        Convert to string for pretty printing
         """
         cdef char* Name
         Name=DidName(self.ec_dict_ptr)
@@ -424,14 +442,28 @@ cdef class Atom(Term):
 cdef class PList(Term):
     """
     Class to create and read Prolog lists.
+    
     When creating a new instance a list or tuple shall be provided.
     string,float and integer are automatically transformed in term as in
     Compound class.
-    Supported operation:
-        all comparison as for compare/3 (see Eclipse documentation)
-        iterator over items in the list e.g. for x in PList([1,2,3,4]).
-        iterheadtail() return a iterator over tuple (head,tail)
-        p[index] indexed access of items in the list 
+    This class support iterator protocol this means that you can loop on the list as for python list
+    
+    Example::
+    
+        my_list=PList([1,2,3])
+        for x in my_list:
+            print(x)
+            
+    This class support retrieving values by indexing.
+    
+    Example::
+    
+        my_list=PList([1,2,3])
+        print(my_list[3])
+    
+    .. warning::
+        As for all other terms it is not possible to change their values.
+        
     """
     def __init__(self,in_list):
         cdef int list_lenght
@@ -483,6 +515,11 @@ cdef class PList(Term):
             index +=1
         return index
     def iterheadtail(self):
+        """
+        :returns: Iterator that returns a tuple (head,tail) where head is a element of the list and \
+            tail is the remaining list
+            
+        """
         return self.head_tail_generator()
     
     cdef int get_head_tail(self,pyclp.pword *head_ptr,pyclp.pword *tail_ptr) except -1:
@@ -525,14 +562,19 @@ cdef class PList(Term):
                 self.get_head_tail(&head,&tail)
             return pword2object(head)
     def __str__(self):
+        """
+        Pretty printing of the list 
+        """
         list_element=list(self)
         list_string=list(map(formatTermStr,list_element))
-        return "[{0}]".format(",".join(list_string))
-        
+        return "[{0}]".format(",".join(list_string))  
 
 
     
 cdef class Compound(Term):
+    """
+    Class to create compound terms.
+    """
     cdef pyclp.dident ec_dict_ptr
     def __init__(self,functor_string,*args):
         cdef int arity
