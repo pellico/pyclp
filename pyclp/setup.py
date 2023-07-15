@@ -32,8 +32,13 @@ import platform
 
 
 if "ECLIPSEDIR" not in environ:
-    print ("ECLIPSEDIR environmental is not defined")
-    raise
+    while(1):
+        eclipsedir=input('ECLIPSEDIR environmental variable is not defined \n\
+please provide path to ECLiPSe installation: ')
+        if os.path.exists(eclipsedir):
+            break
+        else:
+            print('Invalid Path')
 else:
     eclipsedir=environ["ECLIPSEDIR"]
 
