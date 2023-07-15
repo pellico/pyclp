@@ -43,7 +43,18 @@ Regression test
 .. code-block:: bash
 
    python test.py
-   
+
+Tested enviroment
+=================
+
+The present version of pyclp is tested on
+
+* Ubuntu 12.04 LTS (32bit)
+* Ubuntu 13.04 (64bit) 
+
+However it is expected working on other platform that fullfill the requirements.
+
+
    
 Windows
 *******
@@ -117,7 +128,15 @@ Regression test
 
    python test.py
 
+Tested enviroment
+=================
 
+The present version of pyclp is tested on
+
+* Windows 7 (64bit)
+* Windows 7 (32bit)
+
+However it is expected working on other platform that fullfill the requirements.
 
 
 
