@@ -56,13 +56,14 @@
 <h2>Version 0.8<a class="headerlink" href="#version-0-8" title="Permalink to this headline">¶</a></h2>
 <p><strong>Bugs</strong></p>
 <ul class="simple">
-<li>PList not handling correctly initializazion with nested list (Fixed).</li>
+<li>PList not handling correctly initialization with nested list (Fixed).</li>
 </ul>
 <p><strong>Enhancements</strong></p>
 <ul class="simple">
-<li>Added capability to create Prolog List (PList) with any kind of tail. (before was supported only emty list tail)</li>
-<li>Prolog list that have a tail different from empty list (a.k.a. nil list) are converted to PList.</li>
-<li>Added getListTail function to PList to get the tail of a prolog list.</li>
+<li>Added capability to create Prolog List (PList) with any kind of tail. (before was supported only empty list tail)</li>
+<li>Prolog lists that have a tail different from empty list (a.k.a. nil list) are converted to PList.</li>
+<li>Added <tt class="docutils literal"><span class="pre">getListTail</span></tt> function to PList to get the tail of a prolog list.</li>
+<li><tt class="docutils literal"><span class="pre">call_python_function/2</span></tt> predicate can be used in any module by importing pyclp module (<tt class="docutils literal"><span class="pre">:-</span> <span class="pre">import</span> <span class="pre">pyclp</span></tt>.)</li>
 </ul>
 <p><strong>Incompatibilities</strong></p>
 <ul class="simple">
