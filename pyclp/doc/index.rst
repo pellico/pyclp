@@ -12,9 +12,13 @@ Contents:
    :maxdepth: 4
    
    introduction
+   
    installation
-   examples
+   
    pyclp
+   
+   examples
+
    
 
 
