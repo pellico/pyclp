@@ -26,7 +26,8 @@ ECLiPSe: both are weak typed languages.
 Next steps
 **********
 
-Release installers for Windows platform
+   * Release installers for Windows platform
+   * Add functions for event handling
   
 
 

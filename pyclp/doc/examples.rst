@@ -28,6 +28,7 @@ Search Solution
 ***************
 A more complex example using ic library and search procedure::
     
+    from pyclp import *
     init()                                         # Init ECLiPSe engine
     Compound("lib",Atom("ic")).post_goal()         # Load ic library
     A_var=Var()                                    # Create variable A
@@ -52,6 +53,7 @@ Cut Example
 
 How to cut solutions::
 
+    from pyclp import *
     init() # Init ECLiPSe engine
     Compound("lib","lists").post_goal()                 # lib(lists)
     A_var=Var()                                         # Create variable A
@@ -75,6 +77,7 @@ Input Example
 
 Receive data from stdout stream::
 
+    from pyclp import *
     init()                                          # Init ECLiPSe engine
     Compound("writeln","Hello world").post_goal()
     result,stream_num=resume()
@@ -92,6 +95,7 @@ Input/Output Example
 
 Input to stdin stream and output from stdout stream::
 
+    from pyclp import *
     print ("I/O Example")
     init()                                # Init ECLiPSe engine
     stdin=Stream('stdin')                 # Open stdin stream
