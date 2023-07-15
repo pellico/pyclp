@@ -242,6 +242,13 @@ class Test_Stream(unittest.TestCase):
         self.assertEqual(s.read(),b"ciao\n")
         s.close()
         self.assertEqual(resume(),(SUCCEED,None))
+    def test_readall(self):
+        Compound("writeln","Hallo").post_goal()
+        self.assertEqual(resume(),(FLUSHIO,1))
+        s=Stream(1)
+        self.assertEqual(s.readall(),b"Hallo\n")
+        s.close()
+        self.assertEqual(resume(),(SUCCEED,None))
     def test_write(self):
         read_term=Var()
         Compound('read',read_term).post_goal()
