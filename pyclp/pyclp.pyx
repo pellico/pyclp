@@ -50,12 +50,14 @@ cdef unicode tounicode_with_length(
         char* s, size_t length):
     return s[:length].decode('ascii', 'strict')
 
-cdef unicode tounicode_with_length_and_free(
-        char* s, size_t length):
-    try:
-        return s[:length].decode('ascii', 'strict')
-    finally:
-        libc.stdlib.free(s)
+#===============================================================================
+# cdef unicode tounicode_with_length_and_free(
+#        char* s, size_t length):
+#    try:
+#        return s[:length].decode('ascii', 'strict')
+#    finally:
+#        libc.stdlib.free(s)
+#===============================================================================
         
 cdef bytes tobytes(unicode string):
     py_byte_string = string.encode('ascii')
@@ -250,10 +252,10 @@ def resume(in_term=None):
         assert False,"Unrecognized result from ec_resume"
         
 cdef class Term:
-"""Class for prolog Term.
-Compound, Atom,PList and Var are derived from this class.
-User doesn't need to use directly it.
-"""
+    """Class for prolog Term.
+    Compound, Atom,PList and Var are derived from this class.
+    User doesn't need to use directly it.
+    """
     cdef Ref ref
     cdef pyclp.pword cached_pword
     def __init__(self,init_arg=None):
@@ -348,10 +350,10 @@ User doesn't need to use directly it.
 cdef extern object pword2object(pyclp.pword in_pword)    
             
 cdef class Atom(Term):
-"""Class to create Atom.
-This is required to distinguish strings from atoms.
-In normal use case the user shall provide a string when creating the object 
-"""
+    """Class to create Atom.
+    This is required to distinguish strings from atoms.
+    In normal use case the user shall provide a string when creating the object 
+    """
     cdef pyclp.dident ec_dict_ptr
     def __init__(self,string=None):
         cdef char* c_string
@@ -375,17 +377,17 @@ In normal use case the user shall provide a string when creating the object
         return string
 
 cdef class PList(Term):
-"""Class to create and read Prolog lists.
-When creating a new instance a list or tuple shall be provided.
-string,float and integer are automatically transformed in term as in
-Compound class.
-As for Compound objects, at
-Supported operation:
-    all comparison as for compare/3 (see Eclipse documentation)
-    iterator over items in the list e.g. for x in PList([1,2,3,4]).
-    iterheadtail() return a iterator over tuple (head,tail)
-    p[index] indexed access of items in the list 
-"""
+    """Class to create and read Prolog lists.
+    When creating a new instance a list or tuple shall be provided.
+    string,float and integer are automatically transformed in term as in
+    Compound class.
+    As for Compound objects, at
+    Supported operation:
+        all comparison as for compare/3 (see Eclipse documentation)
+        iterator over items in the list e.g. for x in PList([1,2,3,4]).
+        iterheadtail() return a iterator over tuple (head,tail)
+        p[index] indexed access of items in the list 
+    """
     def __init__(self,in_list=None):
         cdef int list_lenght
         cdef int index
@@ -626,14 +628,14 @@ cdef object pword2object(pyclp.pword in_pword):
                 
         
 cdef class Var(Term):
-"""Class to create Prolog variable.
-It has only one property value to retrieve the value unified with the variable
-None is returned in case the variable is uninstantiated.
-E.g.
-p=Var()
-p.value
-None
-"""
+    """Class to create Prolog variable.
+    It has only one property value to retrieve the value unified with the variable
+    None is returned in case the variable is uninstantiated.
+    E.g.
+    p=Var()
+    p.value
+    None
+    """
     def __init__(self):
         Term.__init__(self)
     cdef value(self):
