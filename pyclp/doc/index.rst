@@ -6,8 +6,14 @@
 Welcome to `PyCLP <http://developer.berlios.de/projects/pyclp/>`_ 's documentation!
 ###################################################################################
 
-Contents:
+Project development website
+***************************
 
+`PyCLP website <http://developer.berlios.de/projects/pyclp/>`_
+
+
+Contents
+********
 .. toctree::
    :maxdepth: 4
    
@@ -22,10 +28,7 @@ Contents:
    license
 
    
-Project website
-###############
 
-`PyCLP website <http://developer.berlios.de/projects/pyclp/>`_
 
 
 Indices and tables
