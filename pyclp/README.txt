@@ -11,8 +11,8 @@ This module try to implement a pythonic interface to `ECLiPSe <http://www.eclips
 Major differences from ECLiPSe standard interface libraries
 ***********************************************************
 
-The main difference compared to embedded interface provided  by ECLiPSe system is 
-the persistence of constructed terms after calling the :py:func:`pyclp.resume` (check 
+The main difference compared to embedded interface provided by ECLiPSe system is
+the persistence of constructed terms after calling the pyclp.resume() (check 
 `3.1.2  Building ECLiPSe terms <http://www.eclipseclp.org/doc/embedding/embroot008.html#toc11>`_ ) function.
 In ECLiPSe standard interfaces compound terms are destroyed after resume while in PyCLP are
 stored in a reference that survive after resuming. PyCLP will destroy the refence only when python
@@ -37,9 +37,9 @@ Requirments
 ===========
 Following packages shall be preinstalled before proceeding the installation of PyCLP
 
-* `Python 3.x <http://www.python.org/>`_
+* `Python 3.x (32 bit) <http://www.python.org/>`_
 * `Cython <http://www.cython.org/>`_
-* `ECLiPSe Constraint Programming System <http://www.eclipseclp.org/>`_
+* `ECLiPSe Constraint Programming System 6.0 (32-bit) <http://www.eclipseclp.org/>`_
 
 Download
 ========
@@ -80,9 +80,10 @@ Binary installation
 Requirments
 -----------
 Following packages shall be preinstalled before proceeding the installation of PyCLP
+python3 setup.py register
 
-* `Python 3.x <http://www.python.org/>`_
-* `ECLiPSe Constraint Programming System <http://www.eclipseclp.org/>`_
+* `Python 3.x (32bit) <http://www.python.org/>`_
+* `ECLiPSe Constraint Programming System 6.0 (32-bit) <http://www.eclipseclp.org/>`_
 
 
 Enviroment variables
@@ -109,9 +110,9 @@ Requirments
 -----------
 Following packages shall be preinstalled before proceeding the installation of PyCLP
 
-* `Python 3.x <http://www.python.org/>`_
+* `Python 3.x (32-bit) <http://www.python.org/>`_
 * `Cython <http://www.cython.org/>`_
-* `ECLiPSe Constraint Programming System <http://www.eclipseclp.org/>`_
+* `ECLiPSe Constraint Programming System 6.0 (32-bit) <http://www.eclipseclp.org/>`_
 
 Download
 --------
@@ -139,13 +140,3 @@ Regression test
 .. code-block:: bash
 
    python test.py
-
-
-
-
-
-
-
-
-
-
