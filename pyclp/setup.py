@@ -27,6 +27,13 @@ from distutils.extension import Extension
 from distutils.msvccompiler import MSVCCompiler as oldMSVCCompiler
 import platform
 
+class exceptionPyClpSetup(Exception):
+    def __init__(self,msg):
+        self.msg=msg
+    def __str__(self):
+        return self.msg
+
+
 class mymsvcompiler(oldMSVCCompiler):
     def link (self,*arg,**kargs):
 		#Generate .lib file if not yet done
@@ -66,19 +73,25 @@ else:
 
 platform_system=platform.system()
 platform_architecture=platform.architecture()[0]
+
 if platform_system=='Linux':
-    arch='i386_linux'
+    if platform_architecture=='32bit':
+        arch='i386_linux'
+    elif platform_architecture=='64bit':
+        arch='x86_64_linux'
+    else:
+        raise exceptionPyClpSetup("Architecture not supported")
 elif platform_system=='Windows':
     if platform_architecture=='64bit':
         arch='x86_64_nt'
     elif platform_architecture=='32bit':
         arch='i386_nt'
     else:
-        print("Architecture not supported")
-        raise
+        raise exceptionPyClpSetup("Architecture not supported")
+        
 else:
-    print ("Platform not supported")
-    raise
+    raise exceptionPyClpSetup("Platform not supported")
+    
 
 eclise_include_path=os.path.join(eclipsedir,'include',arch)
 eclipse_lib_path=os.path.join(eclipsedir,'lib',arch)
