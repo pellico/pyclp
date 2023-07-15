@@ -28,6 +28,8 @@ Contents
    external_predicates
    
    license
+   
+   changelog
 
 
 Indices and tables
@@ -37,6 +39,12 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
+Bugs Reporting
+##############
+
+`Bugs reporting <http://developer.berlios.de/bugs/?group_id=12904>`_
+
+
 .. image:: http://developer.berlios.de/bslogo.php?group_id=12904
    :height: 32 px
    :width: 124 px
@@ -45,10 +53,7 @@ Indices and tables
    :target: http://developer.berlios.de
    
    
-Bugs Reporting
-##############
 
-`Bugs reporting <http://developer.berlios.de/bugs/?group_id=12904>`_
 
 
    

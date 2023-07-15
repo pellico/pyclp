@@ -93,7 +93,7 @@ with open('README.txt') as file:
     long_description_read = file.read()
 
 setup (name = 'PyCLP',
-       version = '0.5',
+       version = '0.6',
        author      = "Oreste Bernardi",
        maintainer = "Oreste Bernardi",
        author_email= "<name>@<name>.eu  name=oreste",
