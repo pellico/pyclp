@@ -517,7 +517,7 @@ cdef class Term:
         cdef pyclp.pword* array_pword 
         cdef pyclp.pword temp
         self.ref=Ref()
-        if init_arg:
+        if init_arg!=None:
             #String
             if isinstance(init_arg,str):
                 py_byte_string = tobytes(init_arg)

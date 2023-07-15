@@ -147,6 +147,16 @@ class Test_Term(unittest.TestCase):
         resume()
         self.assertEqual(self.stdout.read(),'Ciao\n'.encode('ascii'),'Wrong atom')
         self.assertEqual(resume(),(SUCCEED,None),'Failed resume')
+    
+    # Test to check bugs found by Federico Ferri  
+    def test_0value(self):
+        X=pyclp.Var()
+        goal=pyclp.Compound('is', X, pyclp.Compound('+', 0, 3))
+        self.assertEqual(goal.__str__(),"is(_,+(0,3))")
+        goal.post_goal()
+        ret,arg=pyclp.resume()
+        self.assertEqual(X.value(),3,"Wrong result")
+        
 
 class Test_PList(unittest.TestCase):
     def setUp(self):

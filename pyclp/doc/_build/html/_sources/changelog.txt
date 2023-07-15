@@ -1,6 +1,12 @@
 Changelog
 #########
 
+Version 0.7
+***********
+
+* Fixed bug ``019229 inconsistency in treating 0 (zero)`` (thanks to Federico Ferri).
+
+
 Version 0.6
 ***********
 
