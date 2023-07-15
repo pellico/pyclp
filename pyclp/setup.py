@@ -32,7 +32,7 @@ import platform
 
 
 if "ECLIPSEDIR" not in environ:
-    print ("ECLIPSEDIR envirmental is not defined")
+    print ("ECLIPSEDIR environmental is not defined")
     raise
 else:
     eclipsedir=environ["ECLIPSEDIR"]
