@@ -449,7 +449,8 @@ cdef class PList(Term):
     This class support iterator protocol this means that you can loop on the list as for python list
     
     Example::
-    
+        
+        init()
         my_list=PList([1,2,3])
         for x in my_list:
             print(x)
@@ -457,7 +458,8 @@ cdef class PList(Term):
     This class support retrieving values by indexing.
     
     Example::
-    
+        
+        init()
         my_list=PList([1,2,3])
         print(my_list[3])
     
@@ -574,6 +576,26 @@ cdef class PList(Term):
 cdef class Compound(Term):
     """
     Class to create compound terms.
+    
+    :param functor_string: A string with functor name.
+    :param args: Any number of arguments of type integer, float,string and :py:class:`PList`, :py:class:`Atom`, :py:class:`Compound`
+    
+    len(arg) function called with a Compound object return the arity of compound term.
+    
+    This class support iterator protocol this means that you can iterate over term arguments 
+    or get the arguments by index protocol:
+    
+    Example::
+        
+        init()
+        my_compound=Compound("test",1,"dummy")
+        for x in my_compound:
+            print(x)
+        print(my_compound[0])  # Print first argument.
+    
+    .. warning::
+        As for all other terms it is not possible to change their values.
+    
     """
     cdef pyclp.dident ec_dict_ptr
     def __init__(self,functor_string,*args):
@@ -604,11 +626,11 @@ cdef class Compound(Term):
             #Generte pword of compound term
             self.ref.set(pyclp.ec_term_array(self.ec_dict_ptr,array_pword))
             libc.stdlib.free(array_pword)
-    cdef int arity(self):
+    cpdef int arity(self):
+        """
+        :return: arity of Compound object.
+        """
         return pyclp.DidArity(self.ec_dict_ptr)
-    property arity:
-        def __get__(self):
-            return self.arity()
     cdef int set_pword(self,pyclp.pword in_pword) except -1:
         Term.set_pword(self,in_pword)
         if ec_get_functor(self.get_pword(),&(self.ec_dict_ptr)) != pyclp.PSUCCEED:
@@ -618,11 +640,14 @@ cdef class Compound(Term):
         Name=DidName(self.ec_dict_ptr)
         string=tounicode(Name)
         return string
-    property functor:
-        def __get__(self):
-            return self.get_functor_string()
+    def functor(self):
+        """        
+        :return: string storing name of functor
+        """
+        return self.get_functor_string()
     def arguments(self):
-        """Return an iterator over compound term arguments
+        """
+        Return an iterator over compound term arguments
         """
         cdef int index
         cdef pyclp.pword arg_pword
@@ -725,7 +750,7 @@ cdef class Var(Term):
     """
     def __init__(self):
         Term.__init__(self,None)
-    cdef value(self):
+    cpdef value(self):
         cdef pyclp.pword pword_value
         pword_value=self.ref.get()
         if pyclp.ec_is_var(pword_value)== pyclp.PSUCCEED:
@@ -733,10 +758,6 @@ cdef class Var(Term):
         else:
             result=pword2object(pword_value)
         return result    
-        
-    property value:
-        def __get__(self):
-            return self.value()
     def __str__(self):
         var_value=self.value()
         if var_value is None:

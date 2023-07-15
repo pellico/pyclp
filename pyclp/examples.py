@@ -28,7 +28,7 @@ def example1():
     result,dummy =pyclp.resume()        #Resume execution of ECLiPSe engine
     if result != pyclp.SUCCEED:
         raise
-    print(myVar.value +1)               #myVar.value get the var value back.
+    print(myVar.value() +1)               #myVar.value get the var value back.
     print(myVar)                        #print value
     pyclp.cleanup()                     #Shutdown ECLiPSe engine
     

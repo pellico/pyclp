@@ -64,14 +64,14 @@ class Test_Compound(unittest.TestCase):
         self.assertEqual(func.__str__(),'ciao(test("stringa",1),2)','Wrong functor arity')
     def test_arity(self):
         func=Compound('ciao',1,2)
-        self.assertEqual(func.arity,2,'Wrong functor arity')
+        self.assertEqual(func.arity(),2,'Wrong functor arity')
         var=Var()
         Compound('=',func,var).post_goal()
         self.assertTrue(resume(),"Failed resume")
-        self.assertEqual(var.value.arity,2,"Wrong arity from unified var")
+        self.assertEqual(var.value().arity(),2,"Wrong arity from unified var")
     def test_functor(self):
         func=Compound('ciao',1,2)
-        self.assertEqual(func.functor,'ciao','Wrong functor string')
+        self.assertEqual(func.functor(),'ciao','Wrong functor string')
     def test_argumentsIterator(self):
         func=Compound('ciao',1,2)
         list_out=list(func.arguments())
@@ -88,7 +88,7 @@ class Test_Compound(unittest.TestCase):
         my_var=Var()
         Compound('=',my_var,func).post_goal()
         self.assertEqual(resume(),(SUCCEED,None), "Failed resume")
-        var_value=my_var.value
+        var_value=my_var.value()
         self.assertEqual(var_value[0][0],"test","Failed test string")
         self.assertEqual(var_value[0][1],Atom("doppio"),"Failed test atom")
         self.assertEqual(var_value[0][-2],"test","Failed test with negative index")
@@ -206,8 +206,8 @@ class Test_PList(unittest.TestCase):
         my_var=Var()
         Compound("=",my_var,my_list).post_goal()
         self.assertTrue(resume())
-        self.assertIsInstance(my_var.value, PList)
-        self.assertEqual(list(my_var.value),input_list)
+        self.assertIsInstance(my_var.value(), PList)
+        self.assertEqual(list(my_var.value()),input_list)
     def testHeadTailIter(self):
         input_list=(1,2,4,"Ciao",Atom("ciccio"))
         prolog_list=PList(input_list)
@@ -221,7 +221,7 @@ class Test_PList(unittest.TestCase):
         my_var=Var()
         Compound("=",my_var,input_tuple).post_goal()
         self.assertTrue(resume())
-        returned_value=my_var.value
+        returned_value=my_var.value()
         for i in range(len(input_tuple)):
             self.assertEqual(input_tuple[i],returned_value[i])
             self.assertEqual(input_tuple[-i],returned_value[-i])
@@ -256,7 +256,7 @@ class Test_Stream(unittest.TestCase):
         s=Stream(0)
         s.write(b'"Ciao pylclp2"')
         self.assertEqual(resume(),(SUCCEED,None))
-        self.assertEqual(read_term.value,'Ciao pylclp2')
+        self.assertEqual(read_term.value(),'Ciao pylclp2')
         
         
 class Test_Var(unittest.TestCase):
@@ -277,9 +277,9 @@ class Test_Var(unittest.TestCase):
         my_list=PList([my_var,2,3])
         Compound("=",list_var,my_list).post_goal()
         self.assertNotEqual(resume(),False)
-        Compound("=",list_var.value[0],3).post_goal()
+        Compound("=",list_var.value()[0],3).post_goal()
         self.assertNotEqual(resume(),False)
-        self.assertEqual(my_var.value,3)
+        self.assertEqual(my_var.value(),3)
         
         
 class Test_Persistence(unittest.TestCase):
@@ -309,7 +309,7 @@ class Test_Persistence(unittest.TestCase):
             Compound("=..",my_compound,list_var).post_goal()
             Compound("nth0",index+1,list_var,element_var).post_goal()
             self.assertEqual(resume(),(SUCCEED,None),"Failed resume at element {0}".format((index,)))
-            self.assertEqual(element_var.value,args_list[index],"Failed recovering of element {0}".format((index,)))
+            self.assertEqual(element_var.value(),args_list[index],"Failed recovering of element {0}".format((index,)))
     
 
 if __name__ == '__main__':
