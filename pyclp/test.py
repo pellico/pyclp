@@ -304,6 +304,26 @@ class Test_Others(unittest.TestCase):
         resume()
         self.assertEqual(A_var.value(),2,"Failed A_var result")
         self.assertEqual(B_var.value(),3,"Failed B_var result")
+    
+class Test_set_option(unittest.TestCase):
+    """Test set_option.
+    """
+    def test_local_size(self):
+        set_option(OPTION_LOCALSIZE,50*1024*1024)
+        self.assertTrue(init(), "Failed init")
+        my_var=Var()
+        Compound('get_flag',Atom("max_local_control"),my_var).post_goal()
+        resume()
+        self.assertEqual(my_var.value(), 50*1024*1024, "Failed test OPTION_LOCALSIZE")
+        cleanup()
+    def test_global_size(self):
+        set_option(OPTION_GLOBALSIZE,122*1024*1024)
+        self.assertTrue(init(), "Failed init")
+        my_var=Var()
+        Compound('get_flag',Atom("max_global_trail"),my_var).post_goal()
+        resume()
+        self.assertEqual(my_var.value(), 122*1024*1024, "Failed test OPTION_LOCALSIZE")
+        cleanup()
 
 if __name__ == '__main__':
    unittest.main()
