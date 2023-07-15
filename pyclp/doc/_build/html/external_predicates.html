@@ -89,10 +89,13 @@ It can be called in this function a <a class="reference internal" href="pyclp.ht
 </div>
 <div class="section" id="call-python-function-from-eclipse">
 <h3>Call python function from ECLiPSe<a class="headerlink" href="#call-python-function-from-eclipse" title="Permalink to this headline">¶</a></h3>
-<p>To excecute the python function from ECLiPSe use <tt class="docutils literal"><span class="pre">call_python_function</span></tt> predicate.</p>
+<p>To excecute the python function from ECLiPSe use <tt class="docutils literal"><span class="pre">call_python_function</span></tt> predicate.
+This predicate is declared in <tt class="docutils literal"><span class="pre">pyclp</span></tt> module. This shall be imported in the user module.
+<tt class="docutils literal"><span class="pre">pyclp</span></tt> is created when <a class="reference internal" href="pyclp.html#pyclp.init" title="pyclp.init"><tt class="xref py py-meth docutils literal"><span class="pre">pyclp.init()</span></tt></a> is executed and it is automatically imported in the <tt class="docutils literal"><span class="pre">eclipse</span></tt> module (the default one)</p>
 <p>Example:</p>
 <blockquote>
-<div><tt class="docutils literal"><span class="pre">call_python_function(&quot;my_unify&quot;,[A,B])</span></tt></div></blockquote>
+<div><tt class="docutils literal"><span class="pre">use_module</span> <span class="pre">pyclp</span></tt>
+<tt class="docutils literal"><span class="pre">call_python_function(&quot;my_unify&quot;,[A,B])</span></tt></div></blockquote>
 </div>
 </div>
 <div class="section" id="modify-eclipse-variables">

@@ -339,7 +339,7 @@ or get the arguments by index protocol:</p>
 string,float and integer are automatically transformed in term as in
 Compound class.
 This class support iterator protocol this means that you can loop on the list as for python list</p>
-<p>Example:</p>
+<p><strong>Example</strong>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">init</span><span class="p">()</span>
 <span class="n">my_list</span><span class="o">=</span><span class="n">PList</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
@@ -347,7 +347,7 @@ This class support iterator protocol this means that you can loop on the list as
 </pre></div>
 </div>
 <p>This class support retrieving values by indexing.</p>
-<p>Example:</p>
+<p><strong>Example</strong>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">init</span><span class="p">()</span>
 <span class="n">my_list</span><span class="o">=</span><span class="n">PList</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
@@ -357,10 +357,61 @@ This class support iterator protocol this means that you can loop on the list as
 <p class="first admonition-title">Warning</p>
 <p class="last">As for all other terms it is not possible to change their values.</p>
 </div>
+<p><strong>Special cases</strong></p>
+<p>Empty prolog list can be created with PList([])
+To check that a returned PList is the empty list it avaiable the method <a class="reference internal" href="#pyclp.PList.isNil" title="pyclp.PList.isNil"><tt class="xref py py-func docutils literal"><span class="pre">pyclp.PList.isNil()</span></tt></a></p>
+<p><strong>Head Tail</strong></p>
+<p>In prolog it is possible to define a list using the operator |</p>
+<p><strong>Example of prolog list and head tail decomposition</strong>:</p>
+<div class="highlight-python"><pre>%Prolog list example
+[1,2,3|myAtom]
+[1|A]
+%Also regular list have a tail: []
+[1,2,3]=[1,2,3|[]]
+%All list can be decomposed recursively as head tail couple
+[1,2,3]
+[1|[2,3]]
+[1|[2|[3]]]
+[1|[2|[3|[]]]]</pre>
+</div>
 <dl class="method">
 <dt id="pyclp.PList.__str__">
 <tt class="descname">__str__</tt><big>(</big><big>)</big><a class="headerlink" href="#pyclp.PList.__str__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pretty printing of the list</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyclp.PList.getListTail">
+<tt class="descname">getListTail</tt><big>(</big><big>)</big><a class="headerlink" href="#pyclp.PList.getListTail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a PList in a python list and the tail.</p>
+<p>Examples:</p>
+<div class="highlight-python"><pre>prolog              python
+[1,2,3,f(1,2)]  --&gt; ([1,2,3,Compound(&#x27;f&#x27;,1,2)],PList([]))
+[1,2,3|A]       --&gt; ([1,2,3],Var())
+[1,2,3|dummy]   --&gt; ([1,2,3],Atom(&#x27;dummy&#x27;))</pre>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a tuple (list,tail). First element is a python list containing each element of prolog list converted to a pyclp object             second element is a pyclp object representing the tail of prolog list.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyclp.PList.isNil">
+<tt class="descname">isNil</tt><big>(</big><big>)</big><a class="headerlink" href="#pyclp.PList.isNil" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the PList is the nil list &#8211;&gt; []</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if it is the empty list</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
