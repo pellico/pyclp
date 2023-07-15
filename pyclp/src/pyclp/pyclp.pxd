@@ -1,5 +1,5 @@
 #Simplified BSD License
-#Copyright (c) 2012, Oreste Bernardi
+#Copyright (c) 2023, Oreste Bernardi
 #All rights reserved.
 #
 #Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -28,6 +28,7 @@ cdef extern from "eclipse.h":
     ctypedef ec_ref ec_refs
     ctypedef s_pword pword
     ctypedef dict_item *dident
+    ctypedef int word
     int ec_exec_string(char*,ec_ref Vars)
     int ec_var_lookup(ec_ref Vars,char*,pword* pw)
     int ec_init()
@@ -56,7 +57,6 @@ cdef extern from "eclipse.h":
     int    PFLUSHIO
     int    PWAITIO
     int    PYIELD
-    int    PTHROW
     int    EC_OPTION_IO
     int    MEMORY_IO
     int    RANGE_ERROR

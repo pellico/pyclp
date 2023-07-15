@@ -24,7 +24,6 @@ setup.py file for pyclp
 import distutils
 from distutils.core import setup
 from distutils.extension import Extension
-from distutils.msvccompiler import MSVCCompiler as oldMSVCCompiler
 import platform
 
 class exceptionPyClpSetup(Exception):
@@ -33,32 +32,32 @@ class exceptionPyClpSetup(Exception):
     def __str__(self):
         return self.msg
 
-
-class mymsvcompiler(oldMSVCCompiler):
-    def link (self,*arg,**kargs):
-		#Generate .lib file if not yet done
-        self.announce("Microsoft Visual C requires eclipse.lib\n Building it") 
-        bits, linkage= platform.architecture()
-        if bits=="32bit":
-            machine_option="/MACHINE:X86"
-        elif bits=="64bit":
-            machine_option="/MACHINE:X64"
-        else:
-            raise "Architecture not supported"
-        lib_cmd=self.find_exe('lib.exe')
-        option="/def:" + os.path.join(eclipse_lib_path,"eclipse.def")
-        self.spawn([lib_cmd,machine_option,option])
-        oldMSVCCompiler.link(self,*arg,**kargs)
-
-#Substitute msvcompiler with one subclass.       
-distutils.msvccompiler.MSVCCompiler=mymsvcompiler
-
-
 from Cython.Distutils import build_ext
 from os import environ
 import os.path
+from types import MethodType
 
-    
+class build_ext_subclass( build_ext ):
+    def build_extensions(self):
+        # Dirty trick to generate the required eclipse.lib file before linking
+        # At this stage the path to toolchain is configured
+        link_func = self.compiler.link
+        def link_f (self_loc,*arg,**kargs):
+            #Generate .lib file if not yet done
+            self_loc.announce("Microsoft Visual C requires eclipse.lib\n Building it") 
+            bits, _linkage= platform.architecture()
+            if bits=="32bit":
+                machine_option="/MACHINE:X86"
+            elif bits=="64bit":
+                machine_option="/MACHINE:X64"
+            else:
+                raise "Architecture not supported"
+            option="/def:" + os.path.join(eclipse_lib_path,"eclipse.def")
+            self_loc.spawn([self_loc.lib,machine_option,option])
+            link_func(*arg,**kargs)
+        self.compiler.link=MethodType(link_f,self.compiler)
+        
+        build_ext.build_extensions(self)    
 
 if "ECLIPSEDIR" not in environ:
     while(1):
@@ -88,13 +87,13 @@ elif platform_system=='Windows':
         arch='i386_nt'
     else:
         raise exceptionPyClpSetup("Architecture not supported")
-        
 else:
     raise exceptionPyClpSetup("Platform not supported")
     
 
 eclise_include_path=os.path.join(eclipsedir,'include',arch)
 eclipse_lib_path=os.path.join(eclipsedir,'lib',arch)
+
 pyclp_module = Extension('pyclp.pyclp',
                            ['src/pyclp/pyclp.pyx'],
                            library_dirs=[eclipse_lib_path],
@@ -106,14 +105,14 @@ with open('README.txt') as file:
     long_description_read = file.read()
 
 setup (name = 'PyCLP',
-       version = '1.0',
+       version = '1.1',
        author      = "Oreste Bernardi",
        maintainer = "Oreste Bernardi",
        author_email= "<name>@<name>.eu  name=oreste",
        url = "https://sourceforge.net/projects/pyclp/",
        description = """Interface to ECLiPSe CLP""",
        license= "Simplified BSD",
-       cmdclass = {'build_ext': build_ext},
+       cmdclass = {'build_ext': build_ext_subclass},
        ext_modules = [pyclp_module],
        package_dir={'': 'src'},
        packages=['pyclp'],

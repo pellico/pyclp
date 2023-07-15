@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "pyclp"
+version = "1.1"
+description = "Python library to interface ECLiPSe Constraint Programmig System."
+authors = ["Your Name <you@example.com>"]
+license = "BSD"
+readme = "README.txt"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[tool.poetry.group.dev.dependencies]
+cython = "^0.29.34"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

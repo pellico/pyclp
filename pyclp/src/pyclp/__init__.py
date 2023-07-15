@@ -1,5 +1,5 @@
 #Simplified BSD License
-#Copyright (c) 2012, Oreste Bernardi
+#Copyright (c) 2023, Oreste Bernardi
 #All rights reserved.
 #
 #Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -16,5 +16,38 @@
 #OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF 
 #THE POSSIBILITY OF SUCH DAMAGE.
 
-from __future__ import absolute_import
+import os,platform
+from pathlib import Path
+if "ECLIPSEDIR" not in os.environ:
+    raise ImportError("ECLIPSEDIR enviroment varibale is not defined.")
+
+platform_system=platform.system()
+platform_architecture=platform.architecture()[0]
+
+if platform_system=='Linux':
+    dll_ext=".so"
+    if platform_architecture=='32bit':
+        arch='i386_linux'
+    elif platform_architecture=='64bit':
+        arch='x86_64_linux'
+    else:
+        raise ImportError("Architecture not supported")
+elif platform_system=='Windows':
+    dll_ext=".dll"
+    if platform_architecture=='64bit':
+        arch='x86_64_nt'
+    elif platform_architecture=='32bit':
+        arch='i386_nt'
+    else:
+        raise ImportError("Architecture not supported")
+else:
+    raise ImportError("Platform not supported")
+
+dll_folder_path=Path(os.environ["ECLIPSEDIR"],"lib",arch)
+lib_path=dll_folder_path / f"eclipse{dll_ext}"
+if not lib_path.exists():
+    raise ImportError(f"Share library not existing at {lib_path}")
+
+os.add_dll_directory(dll_folder_path)
+
 from pyclp.pyclp import *

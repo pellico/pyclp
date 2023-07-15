@@ -1,5 +1,5 @@
 #Simplified BSD License
-#Copyright (c) 2012, Oreste Bernardi
+#Copyright (c) 2023, Oreste Bernardi
 #All rights reserved.
 #
 #Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -750,7 +750,7 @@ cdef class PList(Term):
                     if len(tail) == 0:
                         tail_pword=pyclp.ec_nil()
                     else:
-                        tail_pword=PList(tail)
+                        tail_pword=PList(tail).get_pword()
                 elif isinstance(tail,Term):
                         tail_pword=(<Term>tail).get_pword()
                 else:
