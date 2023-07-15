@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,28 +6,30 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Changelog &mdash; PyCLP beta documentation</title>
+    <title>Changelog &#8212; PyCLP productive documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     'beta',
+        URL_ROOT:    './',
+        VERSION:     'productive',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="PyCLP beta documentation" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="License" href="license.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -41,17 +41,24 @@
         <li class="right" >
           <a href="license.html" title="License"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">PyCLP beta documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">PyCLP productive documentation</a> &#187;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="changelog">
 <h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="version-1-0">
+<h2>Version 1.0<a class="headerlink" href="#version-1-0" title="Permalink to this headline">¶</a></h2>
+<p><strong>Bugs</strong></p>
+<ul class="simple">
+<li>Fixed an incompatibility bug with Cython 0.25</li>
+</ul>
+</div>
 <div class="section" id="version-0-8">
 <h2>Version 0.8<a class="headerlink" href="#version-0-8" title="Permalink to this headline">¶</a></h2>
 <p><strong>Bugs</strong></p>
@@ -62,8 +69,8 @@
 <ul class="simple">
 <li>Added capability to create Prolog List (PList) with any kind of tail. (before was supported only empty list tail)</li>
 <li>Prolog lists that have a tail different from empty list (a.k.a. nil list) are converted to PList.</li>
-<li>Added <tt class="docutils literal"><span class="pre">getListTail</span></tt> function to PList to get the tail of a prolog list.</li>
-<li><tt class="docutils literal"><span class="pre">call_python_function/2</span></tt> predicate can be used in any module by importing pyclp module (<tt class="docutils literal"><span class="pre">:-</span> <span class="pre">import</span> <span class="pre">pyclp</span></tt>.)</li>
+<li>Added <code class="docutils literal"><span class="pre">getListTail</span></code> function to PList to get the tail of a prolog list.</li>
+<li><code class="docutils literal"><span class="pre">call_python_function/2</span></code> predicate can be used in any module by importing pyclp module (<code class="docutils literal"><span class="pre">:-</span> <span class="pre">import</span> <span class="pre">pyclp</span></code>.)</li>
 </ul>
 <p><strong>Incompatibilities</strong></p>
 <ul class="simple">
@@ -73,7 +80,7 @@
 <div class="section" id="version-0-7">
 <h2>Version 0.7<a class="headerlink" href="#version-0-7" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Fixed bug <tt class="docutils literal"><span class="pre">019229</span> <span class="pre">inconsistency</span> <span class="pre">in</span> <span class="pre">treating</span> <span class="pre">0</span> <span class="pre">(zero)</span></tt> (thanks to Federico Ferri).</li>
+<li>Fixed bug <code class="docutils literal"><span class="pre">019229</span> <span class="pre">inconsistency</span> <span class="pre">in</span> <span class="pre">treating</span> <span class="pre">0</span> <span class="pre">(zero)</span></code> (thanks to Federico Ferri).</li>
 </ul>
 </div>
 <div class="section" id="version-0-6">
@@ -91,11 +98,12 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Changelog</a><ul>
+<li><a class="reference internal" href="#version-1-0">Version 1.0</a></li>
 <li><a class="reference internal" href="#version-0-8">Version 0.8</a></li>
 <li><a class="reference internal" href="#version-0-7">Version 0.7</a></li>
 <li><a class="reference internal" href="#version-0-6">Version 0.6</a></li>
@@ -106,29 +114,28 @@
   <h4>Previous topic</h4>
   <p class="topless"><a href="license.html"
                         title="previous chapter">License</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/changelog.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/changelog.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -140,12 +147,12 @@
         <li class="right" >
           <a href="license.html" title="License"
              >previous</a> |</li>
-        <li><a href="index.html">PyCLP beta documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">PyCLP productive documentation</a> &#187;</li> 
       </ul>
     </div>
-    <div class="footer">
-        &copy; Copyright 2012,2013, Oreste Bernardi.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012,2013,2016 Oreste Bernardi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5b1.
     </div>
   </body>
 </html>
