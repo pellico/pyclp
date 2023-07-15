@@ -60,9 +60,10 @@ pyclp_module = Extension('pyclp.pyclp',
                            )
 
 setup (name = 'PyCLP',
-       version = '0.1',
+       version = '0.2',
        author      = "Oreste Bernardi",
        maintainer = "Oreste Bernardi",
+       author_email= "<name>@<name>.eu  name=oreste",
        url = "pyclp.berlios.de",
        description = """Interface to ECLiPSe CLP""",
        license= "Simplified BSD",
