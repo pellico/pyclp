@@ -15,7 +15,7 @@ Project development website
 Contents
 ********
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
    
    introduction
    
@@ -27,9 +27,6 @@ Contents
    
    license
 
-   
-
-
 
 Indices and tables
 ##################
@@ -38,3 +35,11 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
+.. image:: http://developer.berlios.de/bslogo.php?group_id=12904
+   :height: 32 px
+   :width: 124 px
+   :alt: BerliOS Logo
+   :align: left
+   :target: http://developer.berlios.de
+   
+   
