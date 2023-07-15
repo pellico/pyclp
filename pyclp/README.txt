@@ -37,7 +37,7 @@ Requirments
 ===========
 Following packages shall be preinstalled before proceeding the installation of PyCLP
 
-* `Python 3.x (32 bit) <http://www.python.org/>`_
+* `Python 2.x or 3.x (32 bit) <http://www.python.org/>`_
 * `Cython <http://www.cython.org/>`_
 * `ECLiPSe Constraint Programming System 6.0 (32-bit) <http://www.eclipseclp.org/>`_
 
@@ -82,7 +82,7 @@ Requirments
 Following packages shall be preinstalled before proceeding the installation of PyCLP
 python3 setup.py register
 
-* `Python 3.x (32bit) <http://www.python.org/>`_
+* `Python 2.x or 3.x (32bit) <http://www.python.org/>`_
 * `ECLiPSe Constraint Programming System 6.0 (32-bit) <http://www.eclipseclp.org/>`_
 
 
@@ -140,3 +140,4 @@ Regression test
 .. code-block:: bash
 
    python test.py
+
