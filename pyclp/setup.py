@@ -59,6 +59,9 @@ pyclp_module = Extension('pyclp.pyclp',
                            include_dirs=[eclise_include_path,'src/pyclp/']
                            )
 
+with open('README.txt') as file:
+    long_description_read = file.read()
+
 setup (name = 'PyCLP',
        version = '0.2',
        author      = "Oreste Bernardi",
@@ -71,5 +74,9 @@ setup (name = 'PyCLP',
        ext_modules = [pyclp_module],
        package_dir={'': 'src'},
        packages=['pyclp'],
+       long_description=long_description_read,
+       classifiers=["Development Status :: 4 - Beta",
+                    "Programming Language :: Prolog" 
+                    ]
        #py_modules = ["pyclp"],
        )
