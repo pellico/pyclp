@@ -282,7 +282,7 @@ class Test_Var(unittest.TestCase):
         self.assertEqual(my_var.value(),3)
         
         
-class Test_Persistence(unittest.TestCase):
+class Test_Others(unittest.TestCase):
     """Check persistence of constructed terms after
     resume.
     """
@@ -310,7 +310,25 @@ class Test_Persistence(unittest.TestCase):
             Compound("nth0",index+1,list_var,element_var).post_goal()
             self.assertEqual(resume(),(SUCCEED,None),"Failed resume at element {0}".format((index,)))
             self.assertEqual(element_var.value(),args_list[index],"Failed recovering of element {0}".format((index,)))
-    
+    def testCut(self):
+        """
+        Test cut
+        """
+        Compound("lib","lists").post_goal()                 # lib(lists)
+        A_var=Var()                                         # Create variable A
+        Compound("member",A_var,PList([1,2,3])).post_goal() # member(A_var,[1,2,3])
+        # Loop on all solution and print them.
+        while (resume()[0]==SUCCEED):                       
+            if A_var.value()==2:                            # When value == 2 cut all other solutions.
+                cut()
+                break
+            Atom("fail").post_goal()                        # Post fail for backtracking over solutions
+        B_var=Var()                                         # Create variable B
+        Compound("is",B_var,\
+                 Compound("+",A_var,1)).post_goal()         # B_Var is A_var + 1
+        resume()
+        self.assertEqual(A_var.value(),2,"Failed A_var result")
+        self.assertEqual(B_var.value(),3,"Failed B_var result")
 
 if __name__ == '__main__':
    unittest.main()
