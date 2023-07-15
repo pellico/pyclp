@@ -51,7 +51,30 @@ def example2():
     if result != pyclp.SUCCEED:
         raise
     pyclp.cleanup()
+    
+    
+def example3():
+    """
+    Search example using ic library
+    """
+    print("Search example")
+    pyclp.init()                                         # Init ECLiPSe engine
+    pyclp.Compound("lib",pyclp.Atom("ic")).post_goal()   # Load ic library
+    A_var=pyclp.Var()                                    # Create variable A
+    B_var=pyclp.Var()                                    # Create variable B
+    pyclp.Compound("#::",pyclp.PList([A_var,B_var]),pyclp.Compound("..",1,10)).post_goal() # [A,B]#::1..10
+    pyclp.Compound("#<",A_var,B_var).post_goal()         # A#<B
+    pyclp.Compound("#=",A_var,5).post_goal()             # A#=5
+    pyclp.Compound("labeling",pyclp.PList([A_var,B_var])).post_goal()  # labeling([A,B])
+    # Loop on all solution and print them.
+    while (pyclp.resume()[0]==pyclp.SUCCEED):
+        print(B_var)
+        pyclp.Atom("fail").post_goal()                   # Post fail for backtracking over solutions
+         
+    pyclp.cleanup()                                      #Shutdown ECLiPSe engine
+    
 
 if __name__ == '__main__':
     example1()
     example2()
+    example3()
