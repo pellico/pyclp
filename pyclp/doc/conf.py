@@ -17,7 +17,7 @@ import sys, os
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(0, os.path.abspath('../src'))
 
 # -- General configuration -----------------------------------------------------
 
@@ -42,14 +42,14 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'PyCLP'
-copyright = '2012, Oreste Bernardi'
+copyright = '2012,2013, Oreste Bernardi'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The short X.Y version.
-version = '0.2'
+version = '0.4'
 # The full version, including alpha/beta/rc tags.
 release = 'beta'
 
