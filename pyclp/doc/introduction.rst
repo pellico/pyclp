@@ -26,7 +26,7 @@ ECLiPSe: both are weak typed languages.
 Next steps
 **********
 
-   * Release installers for Windows platform
+   * Extend functionality of set_option function
    * Add functions for event handling
   
 
