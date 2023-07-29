@@ -16,28 +16,6 @@ from os import environ
 import os.path
 from types import MethodType
 
-class BuildExt( build_ext ):
-    def build_extensions(self):
-        # Dirty trick to generate the required eclipse.lib file before linking
-        # At this stage the path to toolchain is configured
-        link_func = self.compiler.link
-        def link_f (self_loc,*arg,**kargs):
-            #Generate .lib file if not yet done
-            self_loc.announce("Microsoft Visual C requires eclipse.lib\n Building it") 
-            bits, _linkage= platform.architecture()
-            if bits=="32bit":
-                machine_option="/MACHINE:X86"
-            elif bits=="64bit":
-                machine_option="/MACHINE:X64"
-            else:
-                raise "Architecture not supported"
-            option="/def:" + os.path.join(eclipse_lib_path,"eclipse.def")
-            self_loc.spawn([self_loc.lib,machine_option,option])
-            link_func(*arg,**kargs)
-        self.compiler.link=MethodType(link_f,self.compiler)
-        
-        build_ext.build_extensions(self)    
-
 if "ECLIPSEDIR" not in environ:
     while(1):
         eclipsedir=input('ECLIPSEDIR environmental variable is not defined \n\
