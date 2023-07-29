@@ -17,9 +17,9 @@ script = "build.py"
 generate-setup-file = true
 
 [tool.poetry.group.dev.dependencies]
-cython = "^0.29.34"
+cython = "^3.0.0"
 
 [build-system]
-requires = ["poetry-core>=1.0.0", "cython>=0.29.34", "setuptools"]
+requires = ["poetry-core>=1.0.0", "cython>=3.0.0", "setuptools"]
 build-backend = "poetry.core.masonry.api"
 

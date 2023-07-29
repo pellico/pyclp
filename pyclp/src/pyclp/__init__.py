@@ -44,10 +44,12 @@ else:
     raise ImportError("Platform not supported")
 
 dll_folder_path=Path(os.environ["ECLIPSEDIR"],"lib",arch)
-lib_path=dll_folder_path / f"eclipse{dll_ext}"
+lib_path=dll_folder_path / f"{'lib' if platform_system=='Linux'  else ''}eclipse{dll_ext}"
 if not lib_path.exists():
     raise ImportError(f"Share library not existing at {lib_path}")
-
-os.add_dll_directory(dll_folder_path)
-
+if platform_system=='Windows':
+    os.add_dll_directory(dll_folder_path)
+else:
+    if "LD_LIBRARY_PATH" not in os.environ or str(dll_folder_path.absolute()) not in os.environ["LD_LIBRARY_PATH"]:
+        raise ImportError(f"Not found {dll_folder_path.absolute()} in LD_LIBRARY_PATH env variable")
 from pyclp.pyclp import *

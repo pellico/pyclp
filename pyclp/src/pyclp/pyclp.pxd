@@ -1,3 +1,4 @@
+#cython: language_level=2
 #Simplified BSD License
 #Copyright (c) 2023, Oreste Bernardi
 #All rights reserved.

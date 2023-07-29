@@ -1,3 +1,4 @@
+#cython: language_level=2
 #Simplified BSD License
 #Copyright (c) 2023, Oreste Bernardi
 #All rights reserved.
@@ -113,7 +114,7 @@ cdef bytes tobytes(object string):
 
     
 #Execute a predicate defined in python 
-cdef public int call_python() with gil :
+cdef public int call_python() noexcept with gil:
     """
     This is called from ECLiPSe
     """
