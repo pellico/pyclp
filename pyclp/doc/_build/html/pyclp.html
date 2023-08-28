@@ -1,35 +1,23 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" data-content_root="./">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>PyCLP Module Reference &#8212; PyCLP productive documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=514cf933" />
     
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script src="_static/documentation_options.js?v=794e455b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'productive',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Examples" href="examples.html" />
     <link rel="prev" title="Installation" href="installation.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -45,7 +33,8 @@
         <li class="right" >
           <a href="installation.html" title="Installation"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">PyCLP productive documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">PyCLP productive documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">PyCLP Module Reference</a></li> 
       </ul>
     </div>  
 
@@ -54,190 +43,169 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-pyclp">
-<span id="pyclp-module-reference"></span><h1>PyCLP Module Reference<a class="headerlink" href="#module-pyclp" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
-<dt id="pyclp.init">
-<code class="descclassname">pyclp.</code><code class="descname">init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.init" title="Permalink to this definition">¶</a></dt>
-<dd><p>This shall be called before calling any other function.
-This initialize Eclipse engine.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raise:</th><td class="field-body">pyclpEx in case of failure or if eclipse engine is already initialized</td>
-</tr>
-</tbody>
-</table>
+  <section id="module-pyclp">
+<span id="pyclp-module-reference"></span><h1>PyCLP Module Reference<a class="headerlink" href="#module-pyclp" title="Link to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyclp.addPythonFunction">
+<span class="sig-prename descclassname"><span class="pre">pyclp.</span></span><span class="sig-name descname"><span class="pre">addPythonFunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eclipse_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.addPythonFunction" title="Link to this definition">¶</a></dt>
+<dd><p>Register a python function to be called from Eclipse using the predicate call_python.
+It shall be called after <a class="reference internal" href="#pyclp.init" title="pyclp.init"><code class="xref py py-func docutils literal notranslate"><span class="pre">init()</span></code></a></p>
+<p>E.g. call_python(&lt;eclipse_name&gt;,&lt;list of terms.&gt;).</p>
+<p>The registered python function will be called as:</p>
+<p>&lt;func&gt;(&lt;list of terms&gt;)</p>
+<p>The registered function shall return pyclp.SUCCEED or any other value for reporting FAIL.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eclipse_name</strong> – str or byte string. Name to be used to with predicate call_python_function</p></li>
+<li><p><strong>func</strong> – It shall be the function to be called.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pyclp.cleanup">
-<code class="descclassname">pyclp.</code><code class="descname">cleanup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.cleanup" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyclp.cleanup">
+<span class="sig-prename descclassname"><span class="pre">pyclp.</span></span><span class="sig-name descname"><span class="pre">cleanup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.cleanup" title="Link to this definition">¶</a></dt>
 <dd><p>This shutdown the Eclipse engine.
 After calling this function any operation on pyclp object or class could crash the program.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raise:</th><td class="field-body">pyclpEx in case of failure or if eclipse engine is already shutdown</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Raise<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pyclpEx in case of failure or if eclipse engine is already shutdown</p>
+</dd>
+</dl>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">If after a cleanup it is called again <a class="reference internal" href="#pyclp.init" title="pyclp.init"><code class="xref py py-func docutils literal"><span class="pre">pyclp.init()</span></code></a> all terms created before the cleanup are not valid and they need 
+<p class="admonition-title">Warning</p>
+<p>If after a cleanup it is called again <a class="reference internal" href="#pyclp.init" title="pyclp.init"><code class="xref py py-func docutils literal notranslate"><span class="pre">pyclp.init()</span></code></a> all terms created before the cleanup are not valid and they need 
 to be rebuilt.</p>
 </div>
 </dd></dl>
 
-<dl class="function">
-<dt id="pyclp.cut">
-<code class="descclassname">pyclp.</code><code class="descname">cut</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.cut" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyclp.cut">
+<span class="sig-prename descclassname"><span class="pre">pyclp.</span></span><span class="sig-name descname"><span class="pre">cut</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.cut" title="Link to this definition">¶</a></dt>
 <dd><p>Cut all choice point of succeeded goal.
 Equivalent to void <a class="reference external" href="http://www.eclipseclp.org/doc/embedding/embroot081.html">ec_cut_to_chp(ec_ref)</a>
 It can be called only if previous resume call SUCCEED.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<dl class="last docutils">
-<dt><a class="reference external" href="http://www.eclipseclp.org/doc/embedding/embroot081.html">ec_cut_to_chp</a></dt>
-<dd>cut function in ECLiPSe in C interface library</dd>
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference external" href="http://www.eclipseclp.org/doc/embedding/embroot081.html">ec_cut_to_chp</a></dt><dd><p>cut function in ECLiPSe in C interface library</p>
+</dd>
 </dl>
 </div>
 <p>For an example see <a class="reference internal" href="examples.html#cut-example"><span class="std std-ref">Cut Example</span></a></p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pyclp.unify">
-<code class="descclassname">pyclp.</code><code class="descname">unify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.unify" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyclp.init">
+<span class="sig-prename descclassname"><span class="pre">pyclp.</span></span><span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.init" title="Link to this definition">¶</a></dt>
+<dd><p>This shall be called before calling any other function.
+This initialize Eclipse engine.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raise<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pyclpEx in case of failure or if eclipse engine is already initialized</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyclp.unify">
+<span class="sig-prename descclassname"><span class="pre">pyclp.</span></span><span class="sig-name descname"><span class="pre">unify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">term1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">term2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.unify" title="Link to this definition">¶</a></dt>
 <dd><p>Implements unify as described in 
 <a class="reference external" href="http://www.eclipseclp.org/doc/embedding/embroot013.html">ec_unify</a>
 This function shall be used only inside python function tha are called
 from ECLiPSe</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">pyclp.SUCCEED or pyclp.FAIL</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pyclp.SUCCEED or pyclp.FAIL</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pyclp.addPythonFunction">
-<code class="descclassname">pyclp.</code><code class="descname">addPythonFunction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.addPythonFunction" title="Permalink to this definition">¶</a></dt>
-<dd><p>Register a python function to be called from Eclipse using the predicate call_python.
-It shall be called after <a class="reference internal" href="#pyclp.init" title="pyclp.init"><code class="xref py py-func docutils literal"><span class="pre">init()</span></code></a></p>
-<p>E.g. call_python(&lt;eclipse_name&gt;,&lt;list of terms.&gt;).</p>
-<p>The registered python function will be called as:</p>
-<p>&lt;func&gt;(&lt;list of terms&gt;)</p>
-<p>The registered function shall return pyclp.SUCCEED or any other value for reporting FAIL.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>eclipse_name</strong> &#8211; str or byte string. Name to be used to with predicate call_python_function</li>
-<li><strong>func</strong> &#8211; It shall be the function to be called.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="pyclp.resume">
-<code class="descclassname">pyclp.</code><code class="descname">resume</code><span class="sig-paren">(</span><em>in_term=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.resume" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyclp.resume">
+<span class="sig-prename descclassname"><span class="pre">pyclp.</span></span><span class="sig-name descname"><span class="pre">resume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_term</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.resume" title="Link to this definition">¶</a></dt>
 <dd><p>Resume Eclipse engine.
 Implements the functionality of 
 <a class="reference external" href="http://www.eclipseclp.org/doc/embedding/embroot081.html">ec_resume,ec_resume1,ec_resume2</a>.  
 It accepts optional argument <em>in_term</em>. Used to return a value to the prolog predicate 
 <a class="reference external" href="http://www.eclipseclp.org/doc/bips/kernel/externals/yield-2.html">yield/2</a></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>in_term</strong> (<a class="reference internal" href="#pyclp.PList" title="pyclp.PList"><code class="xref py py-class docutils literal"><span class="pre">PList</span></code></a>, <a class="reference internal" href="#pyclp.Atom" title="pyclp.Atom"><code class="xref py py-class docutils literal"><span class="pre">Atom</span></code></a>, <a class="reference internal" href="#pyclp.Compound" title="pyclp.Compound"><code class="xref py py-class docutils literal"><span class="pre">Compound</span></code></a>) &#8211; <p>Optional argument <em>in_term</em>. Used to return a value to the prolog predicate     <a class="reference external" href="http://www.eclipseclp.org/doc/bips/kernel/externals/yield-2.html">yield/2</a></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">(pyclp.SUCCEED,None) if execution succeed (equivalent to True).         In this case it is possible to call pyclp.cut()<p>(pyclp.FAIL,None) if the goal fails.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>in_term</strong> (<a class="reference internal" href="#pyclp.PList" title="pyclp.PList"><code class="xref py py-class docutils literal notranslate"><span class="pre">PList</span></code></a>, <a class="reference internal" href="#pyclp.Atom" title="pyclp.Atom"><code class="xref py py-class docutils literal notranslate"><span class="pre">Atom</span></code></a>, <a class="reference internal" href="#pyclp.Compound" title="pyclp.Compound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Compound</span></code></a>) – <p>Optional argument <em>in_term</em>. Used to return a value to the prolog predicate     <a class="reference external" href="http://www.eclipseclp.org/doc/bips/kernel/externals/yield-2.html">yield/2</a></p>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><p>(pyclp.SUCCEED,None) if execution succeed (equivalent to True).         In this case it is possible to call pyclp.cut()</p>
+<p>(pyclp.FAIL,None) if the goal fails.</p>
 <p>(pyclp.FLUSHIO,<em>stream_number</em>) if some data is present in stream identified by <em>stream_number</em></p>
 <p>(pyclp.WAITIO,<em>stream_number</em>)  if eclipse engine try to read data         from stream identified by <em>stream_number</em></p>
 <p>(pyclp.YIELD, <em>yield_returned_value</em>) in case of predicate call         <a class="reference external" href="http://www.eclipseclp.org/doc/bips/kernel/externals/yield-2.html">yield/2</a>.</p>
 <p>(pyclp.THROW, <em>Term TagExit</em>) an event have been thrown and no one have catched it         <a class="reference external" href="http://www.eclipseclp.org/doc/bips/kernel/control/exit_block-1.html">exit_block/1</a>.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</p>
+</dd>
+</dl>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">After receiving FLUSHIO or WAITIO a new resume shall be issued 
+<p class="admonition-title">Warning</p>
+<p>After receiving FLUSHIO or WAITIO a new resume shall be issued 
 before creating variable or calling post_goal to complete the 
 goal execution and avoid unpredictable behavior.</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">PyCLP have a different behavior compared to C/C++/Java default libraries provided by ECLiPsE.
+<p class="admonition-title">Note</p>
+<p>PyCLP have a different behavior compared to C/C++/Java default libraries provided by ECLiPsE.
 Standard resume execution destroys all the terms built before the execution of resume function while PyCLP is 
 preserving them creating a reference and storing the created term in this.</p>
 </div>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<dl class="last docutils">
-<dt><a class="reference external" href="http://www.eclipseclp.org/doc/embedding/embroot081.html">ec_resume,ec_resume1,ec_resume2</a></dt>
-<dd>Resume functions in ECLiPSe in C interface library.</dd>
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference external" href="http://www.eclipseclp.org/doc/embedding/embroot081.html">ec_resume,ec_resume1,ec_resume2</a></dt><dd><p>Resume functions in ECLiPSe in C interface library.</p>
+</dd>
 </dl>
 </div>
 </dd></dl>
 
-<dl class="class">
-<dt id="pyclp.Atom">
-<em class="property">class </em><code class="descclassname">pyclp.</code><code class="descname">Atom</code><span class="sig-paren">(</span><em>atom_id</em><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Atom" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyclp.Atom">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyclp.</span></span><span class="sig-name descname"><span class="pre">Atom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atom_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Atom" title="Link to this definition">¶</a></dt>
 <dd><p>Class to create Atom.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>atom_id</strong> (<em>string</em>) &#8211; atom name</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Inherited-members:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="pyclp.Atom.__str__">
-<code class="descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Atom.__str__" title="Permalink to this definition">¶</a></dt>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>atom_id</strong> (<em>string</em>) – atom name</p>
+</dd>
+<dt class="field-even">Inherited-members<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyclp.Atom.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Atom.__str__" title="Link to this definition">¶</a></dt>
 <dd><p>Convert to string for pretty printing</p>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="pyclp.Compound">
-<em class="property">class </em><code class="descclassname">pyclp.</code><code class="descname">Compound</code><span class="sig-paren">(</span><em>functor_string</em>, <em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Compound" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyclp.Compound">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyclp.</span></span><span class="sig-name descname"><span class="pre">Compound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">functor_string</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Compound" title="Link to this definition">¶</a></dt>
 <dd><p>Class to create compound terms.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>functor_string</strong> &#8211; A string with functor name.</li>
-<li><strong>args</strong> &#8211; Any number of arguments of type integer, float,string and <a class="reference internal" href="#pyclp.PList" title="pyclp.PList"><code class="xref py py-class docutils literal"><span class="pre">PList</span></code></a>, <a class="reference internal" href="#pyclp.Atom" title="pyclp.Atom"><code class="xref py py-class docutils literal"><span class="pre">Atom</span></code></a>, <a class="reference internal" href="#pyclp.Compound" title="pyclp.Compound"><code class="xref py py-class docutils literal"><span class="pre">Compound</span></code></a></li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>functor_string</strong> – A string with functor name.</p></li>
+<li><p><strong>args</strong> – Any number of arguments of type integer, float,string and <a class="reference internal" href="#pyclp.PList" title="pyclp.PList"><code class="xref py py-class docutils literal notranslate"><span class="pre">PList</span></code></a>, <a class="reference internal" href="#pyclp.Atom" title="pyclp.Atom"><code class="xref py py-class docutils literal notranslate"><span class="pre">Atom</span></code></a>, <a class="reference internal" href="#pyclp.Compound" title="pyclp.Compound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Compound</span></code></a></p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p>len(arg) function called with a Compound object return the arity of compound term.</p>
 <p>This class support iterator protocol this means that you can iterate over term arguments 
 or get the arguments by index protocol:</p>
 <p>Example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">init</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">init</span><span class="p">()</span>
 <span class="n">my_compound</span><span class="o">=</span><span class="n">Compound</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;dummy&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">my_compound</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -245,102 +213,81 @@ or get the arguments by index protocol:</p>
 </pre></div>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">As for all other terms it is not possible to change their values.</p>
+<p class="admonition-title">Warning</p>
+<p>As for all other terms it is not possible to change their values.</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">Inherited-members:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><dl class="first last method">
-<dt id="pyclp.Compound.__str__">
-<code class="descname">__str__</code><span class="sig-paren">(</span><em>) &lt;==&gt; str(x</em><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Compound.__str__" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="pyclp.Compound.arity">
-<code class="descname">arity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Compound.arity" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">arity of Compound object.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list">
+<dt class="field-odd">Inherited-members<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="py method">
+<dt class="sig sig-object py" id="pyclp.Compound.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Compound.__str__" title="Link to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="pyclp.Compound.functor">
-<code class="descname">functor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Compound.functor" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">string storing name of functor</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyclp.Compound.arity">
+<span class="sig-name descname"><span class="pre">arity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Compound.arity" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>arity of Compound object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyclp.Compound.functor">
+<span class="sig-name descname"><span class="pre">functor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Compound.functor" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string storing name of functor</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="pyclp.Var">
-<em class="property">class </em><code class="descclassname">pyclp.</code><code class="descname">Var</code><a class="headerlink" href="#pyclp.Var" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyclp.Var">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyclp.</span></span><span class="sig-name descname"><span class="pre">Var</span></span><a class="headerlink" href="#pyclp.Var" title="Link to this definition">¶</a></dt>
 <dd><p>Class to create Prolog variable.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">Inherited-members:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><dl class="first last method">
-<dt id="pyclp.Var.__str__">
-<code class="descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Var.__str__" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Return pretty print string of object unified to this variable.        If variable is uninstantiated it returns &#8216;_&#8217;</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list">
+<dt class="field-odd">Inherited-members<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="py method">
+<dt class="sig sig-object py" id="pyclp.Var.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Var.__str__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Return pretty print string of object unified to this variable.        If variable is uninstantiated it returns ‘_’</p>
+</dd>
+</dl>
 </dd></dl>
 
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="pyclp.Var.value">
-<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Var.value" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">integer, float, string, <a class="reference internal" href="#pyclp.PList" title="pyclp.PList"><code class="xref py py-class docutils literal"><span class="pre">PList</span></code></a>, <a class="reference internal" href="#pyclp.Atom" title="pyclp.Atom"><code class="xref py py-class docutils literal"><span class="pre">Atom</span></code></a>, <a class="reference internal" href="#pyclp.Compound" title="pyclp.Compound"><code class="xref py py-class docutils literal"><span class="pre">Compound</span></code></a>, None (if var is uninstantiated)</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyclp.Var.value">
+<span class="sig-name descname"><span class="pre">value</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Var.value" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>integer, float, string, <a class="reference internal" href="#pyclp.PList" title="pyclp.PList"><code class="xref py py-class docutils literal notranslate"><span class="pre">PList</span></code></a>, <a class="reference internal" href="#pyclp.Atom" title="pyclp.Atom"><code class="xref py py-class docutils literal notranslate"><span class="pre">Atom</span></code></a>, <a class="reference internal" href="#pyclp.Compound" title="pyclp.Compound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Compound</span></code></a>, None (if var is uninstantiated)</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="pyclp.PList">
-<em class="property">class </em><code class="descclassname">pyclp.</code><code class="descname">PList</code><a class="headerlink" href="#pyclp.PList" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyclp.PList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyclp.</span></span><span class="sig-name descname"><span class="pre">PList</span></span><a class="headerlink" href="#pyclp.PList" title="Link to this definition">¶</a></dt>
 <dd><p>Class to create and read Prolog lists.</p>
 <p>When creating a new instance a list or tuple shall be provided.
 string,float and integer are automatically transformed in term as in
 Compound class.
 This class support iterator protocol this means that you can loop on the list as for python list</p>
 <p><strong>Example</strong>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">init</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">init</span><span class="p">()</span>
 <span class="n">my_list</span><span class="o">=</span><span class="n">PList</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -348,22 +295,22 @@ This class support iterator protocol this means that you can loop on the list as
 </div>
 <p>This class support retrieving values by indexing.</p>
 <p><strong>Example</strong>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">init</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">init</span><span class="p">()</span>
 <span class="n">my_list</span><span class="o">=</span><span class="n">PList</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">As for all other terms it is not possible to change their values.</p>
+<p class="admonition-title">Warning</p>
+<p>As for all other terms it is not possible to change their values.</p>
 </div>
 <p><strong>Special cases</strong></p>
 <p>Empty prolog list can be created with PList([])
-To check that a returned PList is the empty list it avaiable the method <a class="reference internal" href="#pyclp.PList.isNil" title="pyclp.PList.isNil"><code class="xref py py-func docutils literal"><span class="pre">pyclp.PList.isNil()</span></code></a></p>
+To check that a returned PList is the empty list it avaiable the method <a class="reference internal" href="#pyclp.PList.isNil" title="pyclp.PList.isNil"><code class="xref py py-func docutils literal notranslate"><span class="pre">pyclp.PList.isNil()</span></code></a></p>
 <p><strong>Head Tail</strong></p>
 <p>In prolog it is possible to define a list using the operator |</p>
 <p><strong>Example of prolog list and head tail decomposition</strong>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">Prolog</span> <span class="nb">list</span> <span class="n">example</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">Prolog</span> <span class="nb">list</span> <span class="n">example</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">|</span><span class="n">myAtom</span><span class="p">]</span>
 <span class="p">[</span><span class="mi">1</span><span class="o">|</span><span class="n">A</span><span class="p">]</span>
 <span class="o">%</span><span class="n">Also</span> <span class="n">regular</span> <span class="nb">list</span> <span class="n">have</span> <span class="n">a</span> <span class="n">tail</span><span class="p">:</span> <span class="p">[]</span>
@@ -375,153 +322,187 @@ To check that a returned PList is the empty list it avaiable the method <a class
 <span class="p">[</span><span class="mi">1</span><span class="o">|</span><span class="p">[</span><span class="mi">2</span><span class="o">|</span><span class="p">[</span><span class="mi">3</span><span class="o">|</span><span class="p">[]]]]</span>
 </pre></div>
 </div>
-<dl class="method">
-<dt id="pyclp.PList.__str__">
-<code class="descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.PList.__str__" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyclp.PList.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.PList.__str__" title="Link to this definition">¶</a></dt>
 <dd><p>Pretty printing of the list</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="pyclp.PList.getListTail">
-<code class="descname">getListTail</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.PList.getListTail" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyclp.PList.getListTail">
+<span class="sig-name descname"><span class="pre">getListTail</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.PList.getListTail" title="Link to this definition">¶</a></dt>
 <dd><p>Convert a PList in a python list and the tail.</p>
 <p><strong>Examples</strong>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">prolog</span>              <span class="n">python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prolog</span>              <span class="n">python</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span>  <span class="o">--&gt;</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">Compound</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)],</span><span class="n">PList</span><span class="p">([]))</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">|</span><span class="n">A</span><span class="p">]</span>       <span class="o">--&gt;</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span><span class="n">Var</span><span class="p">())</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">|</span><span class="n">dummy</span><span class="p">]</span>   <span class="o">--&gt;</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;dummy&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a tuple (list,tail). First element is a python list containing each element of prolog list converted to a pyclp object             second element is a pyclp object representing the tail of prolog list.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a tuple (list,tail). First element is a python list containing each element of prolog list converted to a pyclp object             second element is a pyclp object representing the tail of prolog list.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pyclp.PList.isNil">
-<code class="descname">isNil</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.PList.isNil" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check if the PList is the nil list &#8211;&gt; []</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if it is the empty list</td>
-</tr>
-</tbody>
-</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyclp.PList.isNil">
+<span class="sig-name descname"><span class="pre">isNil</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.PList.isNil" title="Link to this definition">¶</a></dt>
+<dd><p>Check if the PList is the nil list –&gt; []</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if it is the empty list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pyclp.PList.iterHeadTail">
-<code class="descname">iterHeadTail</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.PList.iterHeadTail" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Iterator that returns a tuple (head,tail) where head is a element of the list and             tail is the remaining list</td>
-</tr>
-</tbody>
-</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyclp.PList.iterHeadTail">
+<span class="sig-name descname"><span class="pre">iterHeadTail</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.PList.iterHeadTail" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Iterator that returns a tuple (head,tail) where head is a element of the list and             tail is the remaining list</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pyclp.PList.iterheadtail">
-<code class="descname">iterheadtail</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.PList.iterheadtail" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyclp.PList.iterheadtail">
+<span class="sig-name descname"><span class="pre">iterheadtail</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.PList.iterheadtail" title="Link to this definition">¶</a></dt>
 <dd><div class="deprecated">
-<p><span class="versionmodified">Deprecated since version 1.5.</span></p>
+<p><span class="versionmodified deprecated">Deprecated since version 1.5.</span></p>
 </div>
-<p>Replaced by <a class="reference internal" href="#pyclp.PList.iterHeadTail" title="pyclp.PList.iterHeadTail"><code class="xref py py-func docutils literal"><span class="pre">PList.iterHeadTail()</span></code></a></p>
+<p>Replaced by <a class="reference internal" href="#pyclp.PList.iterHeadTail" title="pyclp.PList.iterHeadTail"><code class="xref py py-func docutils literal notranslate"><span class="pre">PList.iterHeadTail()</span></code></a></p>
 </dd></dl>
 
-<dl class="method">
-<dt id="pyclp.PList.post_goal">
-<code class="descname">post_goal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.PList.post_goal" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyclp.PList.post_goal">
+<span class="sig-name descname"><span class="pre">post_goal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.PList.post_goal" title="Link to this definition">¶</a></dt>
 <dd><p>Post goal</p>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="pyclp.Stream">
-<em class="property">class </em><code class="descclassname">pyclp.</code><code class="descname">Stream</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Stream" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyclp.Stream">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyclp.</span></span><span class="sig-name descname"><span class="pre">Stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Stream" title="Link to this definition">¶</a></dt>
 <dd><p>Class to support streams to and from ECLiPSe.
 This is class is derived from io.RawIOBase.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> &#8211; string containing stream name of a previously opened stream by ECLiPSe program.     See: <a class="reference external" href="http://www.eclipseclp.org/doc/embedding/embroot082.html">Embedded C stream api</a>     and <a class="reference external" href="http://www.eclipseclp.org/doc/bips/kernel/iostream/get_stream-2.html">get_stream/2</a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> – string containing stream name of a previously opened stream by ECLiPSe program.     See: <a class="reference external" href="http://www.eclipseclp.org/doc/embedding/embroot082.html">Embedded C stream api</a>     and <a class="reference external" href="http://www.eclipseclp.org/doc/bips/kernel/iostream/get_stream-2.html">get_stream/2</a></p>
+</dd>
+</dl>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The following stream are already opened:         &#8216;input&#8217;, &#8216;output&#8217;, &#8216;error&#8217;, &#8216;warning_output&#8217;, &#8216;log_output&#8217;, &#8216;stdin&#8217;, &#8216;stdout&#8217;, &#8216;stderr&#8217;, &#8216;null&#8217;.</p>
+<p class="admonition-title">Note</p>
+<p>The following stream are already opened:         ‘input’, ‘output’, ‘error’, ‘warning_output’, ‘log_output’, ‘stdin’, ‘stdout’, ‘stderr’, ‘null’.</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><strong>IOError</strong> &#8211; if name is not matching a previously open stream by     <a class="reference external" href="http://www.eclipseclp.org/doc/bips/kernel/iostream/open-3.html">open/3</a> and     <a class="reference external" href="http://www.eclipseclp.org/doc/bips/kernel/iostream/open-4.html">open/4</a></td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="pyclp.Stream.read">
-<code class="descname">read</code><span class="sig-paren">(</span><em>n=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Stream.read" title="Permalink to this definition">¶</a></dt>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>IOError</strong> – if name is not matching a previously open stream by     <a class="reference external" href="http://www.eclipseclp.org/doc/bips/kernel/iostream/open-3.html">open/3</a> and     <a class="reference external" href="http://www.eclipseclp.org/doc/bips/kernel/iostream/open-4.html">open/4</a></p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyclp.Stream.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Stream.read" title="Link to this definition">¶</a></dt>
 <dd><p>Read all bytes from stream</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>n</strong> &#8211; Number of bytes to be read if omitted or equal to -1 it will return all avaiable bytes.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bytes object</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>n</strong> – Number of bytes to be read if omitted or equal to -1 it will return all avaiable bytes.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>bytes object</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pyclp.Stream.write">
-<code class="descname">write</code><span class="sig-paren">(</span><em>buffer</em><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Stream.write" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyclp.Stream.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Stream.write" title="Link to this definition">¶</a></dt>
 <dd><p>Write a bytes object to stream.
 :type buffer: bytes object.
 :return: number of bytes written</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="pyclp.Stream.readall">
-<code class="descname">readall</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Stream.readall" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read all available bytes equivalent to <code class="xref py py-func docutils literal"><span class="pre">pyclp.read()</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyclp.Stream.readall">
+<span class="sig-name descname"><span class="pre">readall</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Stream.readall" title="Link to this definition">¶</a></dt>
+<dd><p>Read all available bytes equivalent to <code class="xref py py-func docutils literal notranslate"><span class="pre">pyclp.read()</span></code></p>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="exception">
-<dt id="pyclp.pyclpEx">
-<em class="property">exception </em><code class="descclassname">pyclp.</code><code class="descname">pyclpEx</code><a class="headerlink" href="#pyclp.pyclpEx" title="Permalink to this definition">¶</a></dt>
+<dl class="py exception">
+<dt class="sig sig-object py" id="pyclp.pyclpEx">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyclp.</span></span><span class="sig-name descname"><span class="pre">pyclpEx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.pyclpEx" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
-</div>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="installation.html"
-                        title="previous chapter">Installation</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="examples.html"
-                        title="next chapter">Examples</a></p>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">PyCLP Module Reference</a><ul>
+<li><a class="reference internal" href="#pyclp.addPythonFunction"><code class="docutils literal notranslate"><span class="pre">addPythonFunction()</span></code></a></li>
+<li><a class="reference internal" href="#pyclp.cleanup"><code class="docutils literal notranslate"><span class="pre">cleanup()</span></code></a></li>
+<li><a class="reference internal" href="#pyclp.cut"><code class="docutils literal notranslate"><span class="pre">cut()</span></code></a></li>
+<li><a class="reference internal" href="#pyclp.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+<li><a class="reference internal" href="#pyclp.unify"><code class="docutils literal notranslate"><span class="pre">unify()</span></code></a></li>
+<li><a class="reference internal" href="#pyclp.resume"><code class="docutils literal notranslate"><span class="pre">resume()</span></code></a></li>
+<li><a class="reference internal" href="#pyclp.Atom"><code class="docutils literal notranslate"><span class="pre">Atom</span></code></a><ul>
+<li><a class="reference internal" href="#pyclp.Atom.__str__"><code class="docutils literal notranslate"><span class="pre">Atom.__str__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyclp.Compound"><code class="docutils literal notranslate"><span class="pre">Compound</span></code></a><ul>
+<li><a class="reference internal" href="#pyclp.Compound.__str__"><code class="docutils literal notranslate"><span class="pre">Compound.__str__()</span></code></a></li>
+<li><a class="reference internal" href="#pyclp.Compound.arity"><code class="docutils literal notranslate"><span class="pre">Compound.arity()</span></code></a></li>
+<li><a class="reference internal" href="#pyclp.Compound.functor"><code class="docutils literal notranslate"><span class="pre">Compound.functor()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyclp.Var"><code class="docutils literal notranslate"><span class="pre">Var</span></code></a><ul>
+<li><a class="reference internal" href="#pyclp.Var.__str__"><code class="docutils literal notranslate"><span class="pre">Var.__str__()</span></code></a></li>
+<li><a class="reference internal" href="#pyclp.Var.value"><code class="docutils literal notranslate"><span class="pre">Var.value()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyclp.PList"><code class="docutils literal notranslate"><span class="pre">PList</span></code></a><ul>
+<li><a class="reference internal" href="#pyclp.PList.__str__"><code class="docutils literal notranslate"><span class="pre">PList.__str__()</span></code></a></li>
+<li><a class="reference internal" href="#pyclp.PList.getListTail"><code class="docutils literal notranslate"><span class="pre">PList.getListTail()</span></code></a></li>
+<li><a class="reference internal" href="#pyclp.PList.isNil"><code class="docutils literal notranslate"><span class="pre">PList.isNil()</span></code></a></li>
+<li><a class="reference internal" href="#pyclp.PList.iterHeadTail"><code class="docutils literal notranslate"><span class="pre">PList.iterHeadTail()</span></code></a></li>
+<li><a class="reference internal" href="#pyclp.PList.iterheadtail"><code class="docutils literal notranslate"><span class="pre">PList.iterheadtail()</span></code></a></li>
+<li><a class="reference internal" href="#pyclp.PList.post_goal"><code class="docutils literal notranslate"><span class="pre">PList.post_goal()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyclp.Stream"><code class="docutils literal notranslate"><span class="pre">Stream</span></code></a><ul>
+<li><a class="reference internal" href="#pyclp.Stream.read"><code class="docutils literal notranslate"><span class="pre">Stream.read()</span></code></a></li>
+<li><a class="reference internal" href="#pyclp.Stream.write"><code class="docutils literal notranslate"><span class="pre">Stream.write()</span></code></a></li>
+<li><a class="reference internal" href="#pyclp.Stream.readall"><code class="docutils literal notranslate"><span class="pre">Stream.readall()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyclp.pyclpEx"><code class="docutils literal notranslate"><span class="pre">pyclpEx</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="installation.html"
+                          title="previous chapter">Installation</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="examples.html"
+                          title="next chapter">Examples</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -530,15 +511,15 @@ This is class is derived from io.RawIOBase.</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -558,12 +539,13 @@ This is class is derived from io.RawIOBase.</p>
         <li class="right" >
           <a href="installation.html" title="Installation"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">PyCLP productive documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">PyCLP productive documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">PyCLP Module Reference</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2016 Oreste Bernardi.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5b1.
+    &#169; Copyright 2012,2013,2016 Oreste Bernardi.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.4.
     </div>
   </body>
 </html>

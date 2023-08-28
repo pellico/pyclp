@@ -3,3 +3,4 @@
 __pycache__
 /pyclp/dist/
 /pyclp/src/pyclp.egg-info/
+/pyclp/src/pyclp/*.pyd

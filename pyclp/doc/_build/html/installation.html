@@ -1,35 +1,23 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" data-content_root="./">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Installation &#8212; PyCLP productive documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=514cf933" />
     
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script src="_static/documentation_options.js?v=794e455b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'productive',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="PyCLP Module Reference" href="pyclp.html" />
     <link rel="prev" title="Introduction" href="introduction.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -45,7 +33,8 @@
         <li class="right" >
           <a href="introduction.html" title="Introduction"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">PyCLP productive documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">PyCLP productive documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Installation</a></li> 
       </ul>
     </div>  
 
@@ -54,129 +43,145 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+  <section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h1>
 <p>At this moment only Linux platform is supported.(tested on KUbuntu 16.04).</p>
-<div class="section" id="linux">
-<h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
+<section id="linux">
+<h2>Linux<a class="headerlink" href="#linux" title="Link to this heading">¶</a></h2>
 <p>In this page it is explained how to compile and install from source in a Linux Platform</p>
-<div class="section" id="requirments">
-<h3>Requirments<a class="headerlink" href="#requirments" title="Permalink to this headline">¶</a></h3>
+<section id="requirements">
+<h3>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">¶</a></h3>
 <p>Following packages shall be preinstalled before proceeding the installation of PyCLP</p>
 <ul class="simple">
-<li><a class="reference external" href="http://www.python.org/">Python 2.x or 3.x</a></li>
-<li><a class="reference external" href="http://www.cython.org/">Cython</a></li>
-<li><a class="reference external" href="http://www.eclipseclp.org/">ECLiPSe Constraint Programming System 6.1</a></li>
+<li><p><a class="reference external" href="http://www.python.org/">Python 3.11 or greater</a></p></li>
+<li><p><a class="reference external" href="https://python-poetry.org/">Poetry 1.5.1 or greater</a></p></li>
+<li><p><a class="reference external" href="http://www.eclipseclp.org/">ECLiPSe Constraint Programming System 7.0</a></p></li>
 </ul>
-</div>
-<div class="section" id="download">
-<h3>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="download">
+<h3>Download<a class="headerlink" href="#download" title="Link to this heading">¶</a></h3>
 <p>Download source files from <a class="reference external" href="https://sourceforge.net/projects/pyclp/files">PyCLP sources</a></p>
-</div>
-<div class="section" id="compilation-installation">
-<h3>Compilation &amp; Installation<a class="headerlink" href="#compilation-installation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="compilation-installation">
+<h3>Compilation &amp; Installation<a class="headerlink" href="#compilation-installation" title="Link to this heading">¶</a></h3>
 <p>Setup Enviromental variables for ECLiPSe:</p>
 <p><strong>ECLIPSEDIR</strong> enviromental variable shall be set to the folder where is located ECLiPSe system.
 This is required for compiling and using PyCLP.</p>
 <p><strong>LD_LIBRARY_PATH</strong> enviromental variable shall contains the path of folder that contains
 the ECLiPSe sharable library. E.g. &lt;eclipsedir&gt;/lib/&lt;platform&gt;.</p>
 <p>Install using usual method</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo python setup.py install
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>python<span class="w"> </span>setup.py<span class="w"> </span>install
 </pre></div>
 </div>
 <p>Regression test</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>python test.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>test.py
 </pre></div>
 </div>
-</div>
-<div class="section" id="tested-enviroment">
-<h3>Tested enviroment<a class="headerlink" href="#tested-enviroment" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="tested-enviroment">
+<h3>Tested enviroment<a class="headerlink" href="#tested-enviroment" title="Link to this heading">¶</a></h3>
 <p>The present version of pyclp is tested on</p>
 <ul class="simple">
-<li>KUbuntu 13.04 (64bit) , Python 2.7 and 3.5</li>
+<li><p>Ubuntu 20.04 (64bit) , Python 3.10</p></li>
 </ul>
 <p>However it is expected working on other platform that fullfill the requirements.</p>
-</div>
-</div>
-<div class="section" id="windows">
-<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="binary-installation">
-<h3>Binary installation<a class="headerlink" href="#binary-installation" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id1">
-<h4>Requirments<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+</section>
+</section>
+<section id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Link to this heading">¶</a></h2>
+<section id="binary-installation">
+<h3>Binary installation<a class="headerlink" href="#binary-installation" title="Link to this heading">¶</a></h3>
+<section id="id1">
+<h4>Requirements<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
 <p>Following packages shall be preinstalled before proceeding the installation of PyCLP
 python3 setup.py register</p>
 <ul class="simple">
-<li><a class="reference external" href="http://www.python.org/">Python 2.x or 3.x</a></li>
-<li><a class="reference external" href="http://www.eclipseclp.org/">ECLiPSe Constraint Programming System 6.1</a></li>
+<li><p><a class="reference external" href="http://www.python.org/">Python 3.11 or greater</a></p></li>
+<li><p><a class="reference external" href="http://www.eclipseclp.org/">ECLiPSe Constraint Programming System 7.0</a></p></li>
 </ul>
-</div>
-<div class="section" id="enviroment-variables">
-<h4>Enviroment variables<a class="headerlink" href="#enviroment-variables" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="enviroment-variables">
+<h4>Enviroment variables<a class="headerlink" href="#enviroment-variables" title="Link to this heading">¶</a></h4>
 <p>Setup Enviromental variables for ECLiPSe:</p>
 <p><strong>ECLIPSEDIR</strong> enviromental variable shall be set to the folder where is located ECLiPSe system.
 This is required for compiling and using PyCLP.</p>
 <p><strong>PATH</strong> add in the path the folder where is stored the <em>eclipse.dll</em> file</p>
-</div>
-<div class="section" id="download-install">
-<h4>Download &amp; Install<a class="headerlink" href="#download-install" title="Permalink to this headline">¶</a></h4>
-<p>Download msi installer from <a class="reference external" href="https://sourceforge.net/projects/pyclp/files">PyCLP sources</a></p>
-</div>
-</div>
-<div class="section" id="installation-from-sources">
-<h3>Installation from sources<a class="headerlink" href="#installation-from-sources" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id5">
-<h4>Requirments<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="download-install">
+<h4>Download &amp; Install<a class="headerlink" href="#download-install" title="Link to this heading">¶</a></h4>
+<p>Download msi installer from <a class="reference external" href="https://github.com/pellico/pyclp/releases">PyCLP binaries</a></p>
+</section>
+</section>
+<section id="installation-from-sources">
+<h3>Installation from sources<a class="headerlink" href="#installation-from-sources" title="Link to this heading">¶</a></h3>
+<section id="id4">
+<h4>Requirements<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
 <p>Following packages shall be preinstalled before proceeding the installation of PyCLP</p>
 <ul class="simple">
-<li><a class="reference external" href="http://www.python.org/">Python 2.x 3.x</a></li>
-<li><a class="reference external" href="http://www.cython.org/">Cython</a></li>
-<li><a class="reference external" href="http://www.eclipseclp.org/">ECLiPSe Constraint Programming System 6.1</a></li>
-<li>Some compiler used to compile Python interpreter. (Note: Different version of python requires different microsoft compilers)</li>
+<li><p><a class="reference external" href="http://www.python.org/">Python 3.11 or greater</a></p></li>
+<li><p><a class="reference external" href="https://python-poetry.org/">Poetry 1.5.1 or greater</a></p></li>
+<li><p><a class="reference external" href="http://www.eclipseclp.org/">ECLiPSe Constraint Programming System 7.0</a></p></li>
+<li><p>Some compiler used to compile Python interpreter. (Note: Different version of python requires different microsoft compilers)</p></li>
 </ul>
-</div>
-<div class="section" id="id8">
-<h4>Download<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
-<p>Download source files from <a class="reference external" href="https://sourceforge.net/projects/pyclp/files">PyCLP sources</a></p>
-</div>
-<div class="section" id="id10">
-<h4>Compilation &amp; Installation<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="id8">
+<h4>Download<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<p>Download source files from <a class="reference external" href="https://github.com/pellico/pyclp">PyCLP sources</a></p>
+</section>
+<section id="id9">
+<h4>Compilation &amp; Installation<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
 <p>Setup Enviromental variables for ECLiPSe:</p>
 <p><strong>ECLIPSEDIR</strong> enviromental variable shall be set to the folder where is located ECLiPSe system.
 This is required for compiling and using PyCLP.</p>
 <p><strong>PATH</strong> add in the path the folder where is stored the <em>eclipse.dll</em> file</p>
-<p>Install using usual method</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>python setup.py install
+<section id="create-distribution">
+<h5>Create distribution<a class="headerlink" href="#create-distribution" title="Link to this heading">¶</a></h5>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>build
 </pre></div>
 </div>
-<p>Regression test</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>python test.py
+<p>Wheel distribution will be available in <code class="docutils literal notranslate"><span class="pre">dist</span></code> folder</p>
+</section>
+<section id="regression-test">
+<h5>Regression test<a class="headerlink" href="#regression-test" title="Link to this heading">¶</a></h5>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>install
+poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w">  </span>.<span class="se">\t</span>est<span class="se">\t</span>est.py
 </pre></div>
 </div>
+</section>
+<section id="generate-documentation">
+<h5>Generate documentation<a class="headerlink" href="#generate-documentation" title="Link to this heading">¶</a></h5>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>install
+<span class="nb">cd</span><span class="w"> </span>doc
+poetry<span class="w"> </span>run<span class="w"> </span>make.bat<span class="w"> </span>html
+</pre></div>
 </div>
-</div>
-<div class="section" id="id11">
-<h3>Tested enviroment<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+</section>
+<section id="id10">
+<h3>Tested enviroment<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
 <p>The present version of pyclp is tested on</p>
 <ul class="simple">
-<li>Windows 10 (64bit), Python 2.7, 3.3</li>
+<li><p>Windows 11 (64bit), Python 3.11</p></li>
 </ul>
 <p>However it is expected working on other platform that fullfill the requirements.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Installation</a><ul>
 <li><a class="reference internal" href="#linux">Linux</a><ul>
-<li><a class="reference internal" href="#requirments">Requirments</a></li>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
 <li><a class="reference internal" href="#download">Download</a></li>
 <li><a class="reference internal" href="#compilation-installation">Compilation &amp; Installation</a></li>
 <li><a class="reference internal" href="#tested-enviroment">Tested enviroment</a></li>
@@ -184,30 +189,40 @@ This is required for compiling and using PyCLP.</p>
 </li>
 <li><a class="reference internal" href="#windows">Windows</a><ul>
 <li><a class="reference internal" href="#binary-installation">Binary installation</a><ul>
-<li><a class="reference internal" href="#id1">Requirments</a></li>
+<li><a class="reference internal" href="#id1">Requirements</a></li>
 <li><a class="reference internal" href="#enviroment-variables">Enviroment variables</a></li>
 <li><a class="reference internal" href="#download-install">Download &amp; Install</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#installation-from-sources">Installation from sources</a><ul>
-<li><a class="reference internal" href="#id5">Requirments</a></li>
+<li><a class="reference internal" href="#id4">Requirements</a></li>
 <li><a class="reference internal" href="#id8">Download</a></li>
-<li><a class="reference internal" href="#id10">Compilation &amp; Installation</a></li>
+<li><a class="reference internal" href="#id9">Compilation &amp; Installation</a><ul>
+<li><a class="reference internal" href="#create-distribution">Create distribution</a></li>
+<li><a class="reference internal" href="#regression-test">Regression test</a></li>
+<li><a class="reference internal" href="#generate-documentation">Generate documentation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id11">Tested enviroment</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">Tested enviroment</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="introduction.html"
-                        title="previous chapter">Introduction</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="pyclp.html"
-                        title="next chapter">PyCLP Module Reference</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="introduction.html"
+                          title="previous chapter">Introduction</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="pyclp.html"
+                          title="next chapter">PyCLP Module Reference</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -216,15 +231,15 @@ This is required for compiling and using PyCLP.</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -244,12 +259,13 @@ This is required for compiling and using PyCLP.</p>
         <li class="right" >
           <a href="introduction.html" title="Introduction"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">PyCLP productive documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">PyCLP productive documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Installation</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2016 Oreste Bernardi.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5b1.
+    &#169; Copyright 2012,2013,2016 Oreste Bernardi.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.4.
     </div>
   </body>
 </html>

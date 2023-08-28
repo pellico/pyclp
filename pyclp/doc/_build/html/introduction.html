@@ -1,35 +1,23 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" data-content_root="./">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Introduction &#8212; PyCLP productive documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=514cf933" />
     
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script src="_static/documentation_options.js?v=794e455b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'productive',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Installation" href="installation.html" />
     <link rel="prev" title="Welcome to PyCLP ‘s documentation!" href="index.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -45,7 +33,8 @@
         <li class="right" >
           <a href="index.html" title="Welcome to PyCLP ‘s documentation!"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">PyCLP productive documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">PyCLP productive documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Introduction</a></li> 
       </ul>
     </div>  
 
@@ -54,16 +43,16 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+  <section id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h1>
 <p><a class="reference external" href="https://sourceforge.net/projects/pyclp">PyCLP</a>
 is a Python library to interface ECLiPSe Constraint Programmig System.</p>
 <p>This module try to implement a pythonic interface to <a class="reference external" href="http://www.eclipseclp.org/">ECLiPSe</a>
 (alias easy to use) by compromising on a little bit on performance.</p>
-<div class="section" id="major-differences-from-eclipse-standard-interface-libraries">
-<h2>Major differences from ECLiPSe standard interface libraries<a class="headerlink" href="#major-differences-from-eclipse-standard-interface-libraries" title="Permalink to this headline">¶</a></h2>
+<section id="major-differences-from-eclipse-standard-interface-libraries">
+<h2>Major differences from ECLiPSe standard interface libraries<a class="headerlink" href="#major-differences-from-eclipse-standard-interface-libraries" title="Link to this heading">¶</a></h2>
 <p>The main difference compared to embedded interface provided  by ECLiPSe system is
-the persistence of constructed terms after calling the <a class="reference internal" href="pyclp.html#pyclp.resume" title="pyclp.resume"><code class="xref py py-func docutils literal"><span class="pre">pyclp.resume()</span></code></a> (check
+the persistence of constructed terms after calling the <a class="reference internal" href="pyclp.html#pyclp.resume" title="pyclp.resume"><code class="xref py py-func docutils literal notranslate"><span class="pre">pyclp.resume()</span></code></a> (check
 <a class="reference external" href="http://www.eclipseclp.org/doc/embedding/embroot008.html#toc11">3.1.2  Building ECLiPSe terms</a> ) function.
 In ECLiPSe standard interfaces compound terms are destroyed after resume while in PyCLP are
 stored in a reference that survives after resuming. PyCLP will destroy the reference only when python
@@ -71,25 +60,27 @@ destroys the linked python object (garbage collection). This consumes more memor
 the python object and the related ECLiPSe object have the same <em>lifetime</em>.</p>
 <p>Moreover, in the definition of the API I tried to take advantage of a common propety of python and
 ECLiPSe: both are weak typed languages.</p>
-</div>
-<div class="section" id="next-steps">
-<h2>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="next-steps">
+<h2>Next steps<a class="headerlink" href="#next-steps" title="Link to this heading">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>Extend functionality of set_option function</li>
+<li><p>Extend functionality of set_option function</p></li>
 </ul>
 </div></blockquote>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Introduction</a><ul>
 <li><a class="reference internal" href="#major-differences-from-eclipse-standard-interface-libraries">Major differences from ECLiPSe standard interface libraries</a></li>
 <li><a class="reference internal" href="#next-steps">Next steps</a></li>
@@ -97,12 +88,17 @@ ECLiPSe: both are weak typed languages.</p>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Welcome to PyCLP &#8216;s documentation!</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="installation.html"
-                        title="next chapter">Installation</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">Welcome to PyCLP ‘s documentation!</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="installation.html"
+                          title="next chapter">Installation</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -111,15 +107,15 @@ ECLiPSe: both are weak typed languages.</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -139,12 +135,13 @@ ECLiPSe: both are weak typed languages.</p>
         <li class="right" >
           <a href="index.html" title="Welcome to PyCLP ‘s documentation!"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">PyCLP productive documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">PyCLP productive documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Introduction</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2016 Oreste Bernardi.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5b1.
+    &#169; Copyright 2012,2013,2016 Oreste Bernardi.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.4.
     </div>
   </body>
 </html>

@@ -1,25 +1,24 @@
 Installation
 ############
 
-
 At this moment only Linux platform is supported.(tested on KUbuntu 16.04).
 
 Linux
 *****
 In this page it is explained how to compile and install from source in a Linux Platform
 
-Requirments
-===========
+Requirements
+============
 Following packages shall be preinstalled before proceeding the installation of PyCLP
 
-* `Python 2.x or 3.x  <http://www.python.org/>`_
-* `Cython <http://www.cython.org/>`_
-* `ECLiPSe Constraint Programming System 6.1 <http://www.eclipseclp.org/>`_
+* `Python 3.11 or greater  <http://www.python.org/>`_
+* `Poetry 1.5.1 or greater <https://python-poetry.org/>`_
+* `ECLiPSe Constraint Programming System 7.0 <http://www.eclipseclp.org/>`_
 
 
 Download
 ========
-Download source files from `PyCLP sources <https://sourceforge.net/projects/pyclp/files>`_
+Download source files from `PyCLP sources <https://sourceforge.net/projects/pyclp/files>`__
 
 Compilation & Installation
 ==========================
@@ -50,7 +49,7 @@ Tested enviroment
 
 The present version of pyclp is tested on
 
-* KUbuntu 13.04 (64bit) , Python 2.7 and 3.5
+* Ubuntu 20.04 (64bit) , Python 3.10
 
 However it is expected working on other platform that fullfill the requirements.
 
@@ -63,13 +62,13 @@ Windows
 Binary installation
 ===================
 
-Requirments
------------
+Requirements
+------------
 Following packages shall be preinstalled before proceeding the installation of PyCLP
 python3 setup.py register
 
-* `Python 2.x or 3.x  <http://www.python.org/>`_
-* `ECLiPSe Constraint Programming System 6.1 <http://www.eclipseclp.org/>`_
+* `Python 3.11 or greater  <http://www.python.org/>`_
+* `ECLiPSe Constraint Programming System 7.0 <http://www.eclipseclp.org/>`_
 
 
 Enviroment variables
@@ -84,7 +83,7 @@ This is required for compiling and using PyCLP.
 
 Download & Install
 ------------------
-Download msi installer from `PyCLP sources <https://sourceforge.net/projects/pyclp/files>`_
+Download msi installer from `PyCLP binaries <https://github.com/pellico/pyclp/releases>`_
 
 
 
@@ -92,18 +91,18 @@ Download msi installer from `PyCLP sources <https://sourceforge.net/projects/pyc
 Installation from sources
 =========================
 
-Requirments
------------
+Requirements
+------------
 Following packages shall be preinstalled before proceeding the installation of PyCLP
 
-* `Python 2.x 3.x <http://www.python.org/>`_
-* `Cython <http://www.cython.org/>`_
-* `ECLiPSe Constraint Programming System 6.1 <http://www.eclipseclp.org/>`_
+* `Python 3.11 or greater <http://www.python.org/>`_
+* `Poetry 1.5.1 or greater <https://python-poetry.org/>`_
+* `ECLiPSe Constraint Programming System 7.0 <http://www.eclipseclp.org/>`_
 *  Some compiler used to compile Python interpreter. (Note: Different version of python requires different microsoft compilers)
 
 Download
 --------
-Download source files from `PyCLP sources <https://sourceforge.net/projects/pyclp/files>`_
+Download source files from `PyCLP sources <https://github.com/pellico/pyclp>`__
 
 Compilation & Installation
 --------------------------
@@ -116,24 +115,38 @@ This is required for compiling and using PyCLP.
 
  
 
-Install using usual method
+Create distribution
+^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
-   python setup.py install
+   poetry build
+   
+Wheel distribution will be available in ``dist`` folder
 
 Regression test
+^^^^^^^^^^^^^^^ 
 
 .. code-block:: bash
+   
+   poetry install 
+   poetry run python  .\test\test.py
+   
+Generate documentation
+^^^^^^^^^^^^^^^^^^^^^^ 
 
-   python test.py
+.. code-block:: bash
+   
+   poetry install
+   cd doc 
+   poetry run make.bat html
 
 Tested enviroment
 =================
 
 The present version of pyclp is tested on
 
-* Windows 10 (64bit), Python 2.7, 3.3
+* Windows 11 (64bit), Python 3.11
 
 However it is expected working on other platform that fullfill the requirements.
 

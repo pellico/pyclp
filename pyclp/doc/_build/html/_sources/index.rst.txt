@@ -3,13 +3,13 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to `PyCLP <https://sourceforge.net/projects/pyclp/>`_ 's documentation!
+Welcome to `PyCLP <https://github.com/pellico/pyclp>`_ 's documentation!
 ###############################################################################
 
 Project development website
 ***************************
 
-`PyCLP website <https://sourceforge.net/projects/pyclp/>`_
+`PyCLP website <https://github.com/pellico/pyclp>`_
 
 
 Contents

@@ -1,6 +1,14 @@
 Changelog
 #########
 
+Version 2.0
+***********
+
+**Enhancements**
+
+* Moved to Python 3.11, Cython 3.0.0, EclipseCLP 7.0
+
+
 Version 1.0
 ***********
 

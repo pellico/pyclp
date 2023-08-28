@@ -1,34 +1,22 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" data-content_root="./">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Changelog &#8212; PyCLP productive documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=514cf933" />
     
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script src="_static/documentation_options.js?v=794e455b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'productive',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="License" href="license.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -41,7 +29,8 @@
         <li class="right" >
           <a href="license.html" title="License"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">PyCLP productive documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">PyCLP productive documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Changelog</a></li> 
       </ul>
     </div>  
 
@@ -50,59 +39,69 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="changelog">
-<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="version-1-0">
-<h2>Version 1.0<a class="headerlink" href="#version-1-0" title="Permalink to this headline">¶</a></h2>
-<p><strong>Bugs</strong></p>
+  <section id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Link to this heading">¶</a></h1>
+<section id="version-2-0">
+<h2>Version 2.0<a class="headerlink" href="#version-2-0" title="Link to this heading">¶</a></h2>
+<p><strong>Enhancements</strong></p>
 <ul class="simple">
-<li>Fixed an incompatibility bug with Cython 0.25</li>
+<li><p>Moved to Python 3.11, Cython 3.0.0, EclipseCLP 7.0</p></li>
 </ul>
-</div>
-<div class="section" id="version-0-8">
-<h2>Version 0.8<a class="headerlink" href="#version-0-8" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="version-1-0">
+<h2>Version 1.0<a class="headerlink" href="#version-1-0" title="Link to this heading">¶</a></h2>
 <p><strong>Bugs</strong></p>
 <ul class="simple">
-<li>PList not handling correctly initialization with nested list (Fixed).</li>
+<li><p>Fixed an incompatibility bug with Cython 0.25</p></li>
+</ul>
+</section>
+<section id="version-0-8">
+<h2>Version 0.8<a class="headerlink" href="#version-0-8" title="Link to this heading">¶</a></h2>
+<p><strong>Bugs</strong></p>
+<ul class="simple">
+<li><p>PList not handling correctly initialization with nested list (Fixed).</p></li>
 </ul>
 <p><strong>Enhancements</strong></p>
 <ul class="simple">
-<li>Added capability to create Prolog List (PList) with any kind of tail. (before was supported only empty list tail)</li>
-<li>Prolog lists that have a tail different from empty list (a.k.a. nil list) are converted to PList.</li>
-<li>Added <code class="docutils literal"><span class="pre">getListTail</span></code> function to PList to get the tail of a prolog list.</li>
-<li><code class="docutils literal"><span class="pre">call_python_function/2</span></code> predicate can be used in any module by importing pyclp module (<code class="docutils literal"><span class="pre">:-</span> <span class="pre">import</span> <span class="pre">pyclp</span></code>.)</li>
+<li><p>Added capability to create Prolog List (PList) with any kind of tail. (before was supported only empty list tail)</p></li>
+<li><p>Prolog lists that have a tail different from empty list (a.k.a. nil list) are converted to PList.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">getListTail</span></code> function to PList to get the tail of a prolog list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">call_python_function/2</span></code> predicate can be used in any module by importing pyclp module (<code class="docutils literal notranslate"><span class="pre">:-</span> <span class="pre">import</span> <span class="pre">pyclp</span></code>.)</p></li>
 </ul>
 <p><strong>Incompatibilities</strong></p>
 <ul class="simple">
-<li>A prolog empty list is converted to a PList. In previous version it was converted to a standard empty tuple.</li>
+<li><p>A prolog empty list is converted to a PList. In previous version it was converted to a standard empty tuple.</p></li>
 </ul>
-</div>
-<div class="section" id="version-0-7">
-<h2>Version 0.7<a class="headerlink" href="#version-0-7" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="version-0-7">
+<h2>Version 0.7<a class="headerlink" href="#version-0-7" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li>Fixed bug <code class="docutils literal"><span class="pre">019229</span> <span class="pre">inconsistency</span> <span class="pre">in</span> <span class="pre">treating</span> <span class="pre">0</span> <span class="pre">(zero)</span></code> (thanks to Federico Ferri).</li>
+<li><p>Fixed bug <code class="docutils literal notranslate"><span class="pre">019229</span> <span class="pre">inconsistency</span> <span class="pre">in</span> <span class="pre">treating</span> <span class="pre">0</span> <span class="pre">(zero)</span></code> (thanks to Federico Ferri).</p></li>
 </ul>
-</div>
-<div class="section" id="version-0-6">
-<h2>Version 0.6<a class="headerlink" href="#version-0-6" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="version-0-6">
+<h2>Version 0.6<a class="headerlink" href="#version-0-6" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li>Added support for 64 bit building.</li>
-<li>Tested on ECLiPSe 6.1</li>
-<li>Added support to call python function from ECLiPSe predicates.</li>
-<li>Added support for ECLiPSe events</li>
+<li><p>Added support for 64 bit building.</p></li>
+<li><p>Tested on ECLiPSe 6.1</p></li>
+<li><p>Added support to call python function from ECLiPSe predicates.</p></li>
+<li><p>Added support for ECLiPSe events</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Changelog</a><ul>
+<li><a class="reference internal" href="#version-2-0">Version 2.0</a></li>
 <li><a class="reference internal" href="#version-1-0">Version 1.0</a></li>
 <li><a class="reference internal" href="#version-0-8">Version 0.8</a></li>
 <li><a class="reference internal" href="#version-0-7">Version 0.7</a></li>
@@ -111,9 +110,12 @@
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="license.html"
-                        title="previous chapter">License</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="license.html"
+                          title="previous chapter">License</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -122,15 +124,15 @@
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -147,12 +149,13 @@
         <li class="right" >
           <a href="license.html" title="License"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">PyCLP productive documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">PyCLP productive documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Changelog</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2016 Oreste Bernardi.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5b1.
+    &#169; Copyright 2012,2013,2016 Oreste Bernardi.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.4.
     </div>
   </body>
 </html>
