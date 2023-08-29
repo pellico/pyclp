@@ -6,3 +6,4 @@ global-include *.ecl
 graft doc/_build/html
 exclude testdoc.py
 exclude simple_test.py
+exclude .gitignore

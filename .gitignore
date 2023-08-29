@@ -1,6 +1,9 @@
-/pyclp/eclipse.exp
-/pyclp/eclipse.lib
+eclipse.exp
+eclipse.lib
 __pycache__
-/pyclp/dist/
-/pyclp/src/pyclp.egg-info/
-/pyclp/src/pyclp/*.pyd
+dist/
+src/pyclp.egg-info/
+src/pyclp/*.pyd
+/build/
+/setup.py
+src/pyclp/*.so
