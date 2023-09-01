@@ -1,11 +1,11 @@
 Installation
 ############
 
-At this moment only Linux platform is supported.(tested on Ubuntu 20.04).
+At this moment only Linux and MINGW64 platforms are supported.
 
 Linux
 *****
-In this page it is explained how to compile and install from source in a Linux Platform
+Tested platform Ubuntu 20.04
 
 Requirements
 ============
@@ -33,8 +33,8 @@ the ECLiPSe sharable library. E.g. <eclipsedir>/lib/<platform>.
 
 
 
-Generate wheel package
-----------------------
+Generate wheel and source package
+---------------------------------
 
 .. code-block:: bash
 
@@ -42,13 +42,22 @@ Generate wheel package
 
 Generated wheel packaged in folder ``dist`` can be installed using regular ``pip install``
 
+
+Installation
+------------
+
+.. code-block:: bash
+
+   pip install <dist folder>/<distribution name>.whl
+
+
 Regression test
 ---------------
 
 .. code-block:: bash
 
    poetry install 
-   poetry run python  .\test\test.py
+   poetry run python  ./test/test.py
 
 Generate documentation
 ^^^^^^^^^^^^^^^^^^^^^^ 
@@ -57,16 +66,16 @@ Generate documentation
    
    poetry install
    cd doc 
-   poetry run make.bat html
+   poetry run make html
 
 Tested environment
 ==================
 
 The present version of pyclp is tested on
 
-* Ubuntu 20.04 (64bit) , Python 3.10
+* Ubuntu 20.04 (64bit) , Python 3.11
 
-However it is expected working on other platform that fullfil the requirements.
+However it is expected working on other platform that fullfil previous requirements.
 
 
    
@@ -97,10 +106,8 @@ Download & Install
 ------------------
 Download wheel package from `PyCLP binaries <https://github.com/pellico/pyclp/releases>`_ and install using ``pip install``
 
-
-
-Installation from sources
-=========================
+Build distribution packages from sources
+========================================
 
 Extra requirements
 ------------------
@@ -121,8 +128,8 @@ Download
 --------
 Download source files from `PyCLP sources <https://github.com/pellico/pyclp>`__
 
-Create wheel package
---------------------
+Create wheel and source package
+-------------------------------
 
 .. code-block:: bash
 
