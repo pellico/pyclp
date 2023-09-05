@@ -2,7 +2,7 @@
 # discussed here https://github.com/python-poetry/poetry/issues/2740
 [tool.poetry]
 name = "pyclp"
-version = "2.0.0-1"
+version = "2.0.0-2"
 description = "Python library to interface ECLiPSe Constraint Programmig System."
 authors = ["pellico <pellico@users.noreply.github.com>"]
 license = "BSD-2-Clause"
