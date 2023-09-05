@@ -31,7 +31,12 @@ This is required for compiling and using PyCLP.
 **LD_LIBRARY_PATH** environmental variable shall contains the path of folder that contains 
 the ECLiPSe sharable library. E.g. <eclipsedir>/lib/<platform>.
 
+Installation
+------------
 
+.. code-block:: bash
+
+   pip install pyclp
 
 Generate wheel and source package
 ---------------------------------
@@ -41,14 +46,6 @@ Generate wheel and source package
    poetry build
 
 Generated wheel packaged in folder ``dist`` can be installed using regular ``pip install``
-
-
-Installation
-------------
-
-.. code-block:: bash
-
-   pip install <dist folder>/<distribution name>.whl
 
 
 Regression test
