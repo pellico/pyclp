@@ -15,9 +15,9 @@ build:
     # rust: "1.64"
     # golang: "1.19"
 
-# Build documentation in the "docs/" directory with Sphinx
-sphinx:
-   configuration: doc/conf.py
+commands:
+    - mkdir --parents $READTHEDOCS_OUTPUT/html/
+    - cp --recursive doc/build/html/* $READTHEDOCS_OUTPUT/html/
 
 # Optionally build your docs in additional formats such as PDF and ePub
 # formats:
