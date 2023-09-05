@@ -26,6 +26,7 @@ ECLiPSe: both are weak typed languages.
 Next steps
 **********
 
+   * Add support for multi-engine/multi-thread
    * Extend functionality of set_option function
   
 

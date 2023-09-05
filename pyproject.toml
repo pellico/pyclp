@@ -6,8 +6,19 @@ version = "2.0"
 description = "Python library to interface ECLiPSe Constraint Programmig System."
 authors = ["Oreste Bernardi"]
 license = "BSD-2-Clause"
-readme = "README.txt"
+readme = "./doc/introduction.rst"
 repository = "https://github.com/pellico/pyclp"
+documentation = "https://pythonhosted.org/PyCLP/"
+classifiers = ["Development Status :: 5 - Production/Stable",
+                    "Programming Language :: Prolog",
+                    "License :: OSI Approved :: BSD License",
+                    "Programming Language :: Cython" 
+                    ]
+include = [
+    { path = "test", format = "sdist" },
+    { path = "examples", format = ["sdist", "wheel"] },
+    { path = "doc", format = ["sdist", "wheel"] }
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
