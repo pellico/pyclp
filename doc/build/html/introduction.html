@@ -58,13 +58,14 @@ In ECLiPSe standard interfaces compound terms are destroyed after resume while i
 stored in a reference that survives after resuming. PyCLP will destroy the reference only when python
 destroys the linked python object (garbage collection). This consumes more memory but now
 the python object and the related ECLiPSe object have the same <em>lifetime</em>.</p>
-<p>Moreover, in the definition of the API I tried to take advantage of a common propety of python and
+<p>Moreover, in the definition of the API I tried to take advantage of a common property of python and
 ECLiPSe: both are weak typed languages.</p>
 </section>
 <section id="next-steps">
 <h2>Next steps<a class="headerlink" href="#next-steps" title="Link to this heading">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
+<li><p>Add support for multi-engine/multi-thread</p></li>
 <li><p>Extend functionality of set_option function</p></li>
 </ul>
 </div></blockquote>

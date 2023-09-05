@@ -7,3 +7,4 @@ src/pyclp/*.pyd
 /build/
 /setup.py
 src/pyclp/*.so
+/doc/build/doctrees/

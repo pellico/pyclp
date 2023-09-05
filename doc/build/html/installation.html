@@ -45,10 +45,10 @@
             
   <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h1>
-<p>At this moment only Linux platform is supported.(tested on Ubuntu 20.04).</p>
+<p>At this moment only Linux and MINGW64 platforms are supported.</p>
 <section id="linux">
 <h2>Linux<a class="headerlink" href="#linux" title="Link to this heading">¶</a></h2>
-<p>In this page it is explained how to compile and install from source in a Linux Platform</p>
+<p>Tested platform Ubuntu 20.04</p>
 <section id="requirements">
 <h3>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">¶</a></h3>
 <p>Following packages shall be preinstalled before proceeding the installation of PyCLP</p>
@@ -70,24 +70,30 @@
 This is required for compiling and using PyCLP.</p>
 <p><strong>LD_LIBRARY_PATH</strong> environmental variable shall contains the path of folder that contains
 the ECLiPSe sharable library. E.g. &lt;eclipsedir&gt;/lib/&lt;platform&gt;.</p>
-<section id="generate-wheel-package">
-<h4>Generate wheel package<a class="headerlink" href="#generate-wheel-package" title="Link to this heading">¶</a></h4>
+<section id="generate-wheel-and-source-package">
+<h4>Generate wheel and source package<a class="headerlink" href="#generate-wheel-and-source-package" title="Link to this heading">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>build
 </pre></div>
 </div>
 <p>Generated wheel packaged in folder <code class="docutils literal notranslate"><span class="pre">dist</span></code> can be installed using regular <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code></p>
 </section>
+<section id="id1">
+<h4>Installation<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>&lt;dist<span class="w"> </span>folder&gt;/&lt;distribution<span class="w"> </span>name&gt;.whl
+</pre></div>
+</div>
+</section>
 <section id="regression-test">
 <h4>Regression test<a class="headerlink" href="#regression-test" title="Link to this heading">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>install
-poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w">  </span>.<span class="se">\t</span>est<span class="se">\t</span>est.py
+poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w">  </span>./test/test.py
 </pre></div>
 </div>
 <section id="generate-documentation">
 <h5>Generate documentation<a class="headerlink" href="#generate-documentation" title="Link to this heading">¶</a></h5>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>install
 <span class="nb">cd</span><span class="w"> </span>doc
-poetry<span class="w"> </span>run<span class="w"> </span>make.bat<span class="w"> </span>html
+poetry<span class="w"> </span>run<span class="w"> </span>make<span class="w"> </span>html
 </pre></div>
 </div>
 </section>
@@ -97,9 +103,9 @@ poetry<span class="w"> </span>run<span class="w"> </span>make.bat<span class="w"
 <h3>Tested environment<a class="headerlink" href="#tested-environment" title="Link to this heading">¶</a></h3>
 <p>The present version of pyclp is tested on</p>
 <ul class="simple">
-<li><p>Ubuntu 20.04 (64bit) , Python 3.10</p></li>
+<li><p>Ubuntu 20.04 (64bit) , Python 3.11</p></li>
 </ul>
-<p>However it is expected working on other platform that fullfil the requirements.</p>
+<p>However it is expected working on other platform that fullfil previous requirements.</p>
 </section>
 </section>
 <section id="windows-msys2-mingw64">
@@ -126,8 +132,8 @@ This is required for compiling and using PyCLP.</p>
 <p>Download wheel package from <a class="reference external" href="https://github.com/pellico/pyclp/releases">PyCLP binaries</a> and install using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code></p>
 </section>
 </section>
-<section id="installation-from-sources">
-<h3>Installation from sources<a class="headerlink" href="#installation-from-sources" title="Link to this heading">¶</a></h3>
+<section id="build-distribution-packages-from-sources">
+<h3>Build distribution packages from sources<a class="headerlink" href="#build-distribution-packages-from-sources" title="Link to this heading">¶</a></h3>
 <section id="extra-requirements">
 <h4>Extra requirements<a class="headerlink" href="#extra-requirements" title="Link to this heading">¶</a></h4>
 <p>Following packages shall be preinstalled using <code class="docutils literal notranslate"><span class="pre">pacman</span></code></p>
@@ -142,26 +148,26 @@ This is required for compiling and using PyCLP.</p>
 </pre></div>
 </div>
 </section>
-<section id="id3">
-<h4>Download<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
+<section id="id4">
+<h4>Download<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
 <p>Download source files from <a class="reference external" href="https://github.com/pellico/pyclp">PyCLP sources</a></p>
 </section>
-<section id="create-wheel-package">
-<h4>Create wheel package<a class="headerlink" href="#create-wheel-package" title="Link to this heading">¶</a></h4>
+<section id="create-wheel-and-source-package">
+<h4>Create wheel and source package<a class="headerlink" href="#create-wheel-and-source-package" title="Link to this heading">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>build
 </pre></div>
 </div>
 <p>Wheel distribution will be available in <code class="docutils literal notranslate"><span class="pre">dist</span></code> folder</p>
 </section>
-<section id="id4">
-<h4>Regression test<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<section id="id5">
+<h4>Regression test<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>install
 poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w">  </span>./test/test.py
 </pre></div>
 </div>
 </section>
-<section id="id5">
-<h4>Generate documentation<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<section id="id6">
+<h4>Generate documentation<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>install
 <span class="nb">cd</span><span class="w"> </span>doc
 poetry<span class="w"> </span>run<span class="w"> </span>make<span class="w"> </span>html
@@ -169,8 +175,8 @@ poetry<span class="w"> </span>run<span class="w"> </span>make<span class="w"> </
 </div>
 </section>
 </section>
-<section id="id6">
-<h3>Tested environment<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<section id="id7">
+<h3>Tested environment<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
 <p>The present version of pyclp is tested on</p>
 <ul class="simple">
 <li><p>Windows 11 (64bit), Python 3.11</p></li>
@@ -195,7 +201,8 @@ poetry<span class="w"> </span>run<span class="w"> </span>make<span class="w"> </
 <li><a class="reference internal" href="#requirements">Requirements</a></li>
 <li><a class="reference internal" href="#download">Download</a></li>
 <li><a class="reference internal" href="#compilation-installation">Compilation &amp; Installation</a><ul>
-<li><a class="reference internal" href="#generate-wheel-package">Generate wheel package</a></li>
+<li><a class="reference internal" href="#generate-wheel-and-source-package">Generate wheel and source package</a></li>
+<li><a class="reference internal" href="#id1">Installation</a></li>
 <li><a class="reference internal" href="#regression-test">Regression test</a><ul>
 <li><a class="reference internal" href="#generate-documentation">Generate documentation</a></li>
 </ul>
@@ -212,15 +219,15 @@ poetry<span class="w"> </span>run<span class="w"> </span>make<span class="w"> </
 <li><a class="reference internal" href="#download-install">Download &amp; Install</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#installation-from-sources">Installation from sources</a><ul>
+<li><a class="reference internal" href="#build-distribution-packages-from-sources">Build distribution packages from sources</a><ul>
 <li><a class="reference internal" href="#extra-requirements">Extra requirements</a></li>
-<li><a class="reference internal" href="#id3">Download</a></li>
-<li><a class="reference internal" href="#create-wheel-package">Create wheel package</a></li>
-<li><a class="reference internal" href="#id4">Regression test</a></li>
-<li><a class="reference internal" href="#id5">Generate documentation</a></li>
+<li><a class="reference internal" href="#id4">Download</a></li>
+<li><a class="reference internal" href="#create-wheel-and-source-package">Create wheel and source package</a></li>
+<li><a class="reference internal" href="#id5">Regression test</a></li>
+<li><a class="reference internal" href="#id6">Generate documentation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id6">Tested environment</a></li>
+<li><a class="reference internal" href="#id7">Tested environment</a></li>
 </ul>
 </li>
 </ul>
