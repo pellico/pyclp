@@ -11,7 +11,7 @@ This module try to implement a pythonic interface to `ECLiPSe <http://www.eclips
 Documentation
 *************
 
-`PyCLP pythonhosted documentation <https://pythonhosted.org/PyCLP/>`__
+`PyCLP pythonhosted documentation <https://pyclp.readthedocs.io/en/latest/>`__
 
 
 Major differences from ECLiPSe standard interface libraries

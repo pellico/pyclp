@@ -1,7 +1,7 @@
 Introduction
 ############
 
-`PyCLP <https://sourceforge.net/projects/pyclp>`_ 
+`PyCLP <https://github.com/pellico/pyclp>`_ 
 is a Python library to interface ECLiPSe Constraint Programmig System.
 
 This module try to implement a pythonic interface to `ECLiPSe <http://www.eclipseclp.org/>`_ 
