@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Examples &#8212; PyCLP productive documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=514cf933" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=def86cc0" />
     
     <script src="_static/documentation_options.js?v=794e455b"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
@@ -18,7 +18,7 @@
     <link rel="next" title="Calling Python from ECLiPSe" href="external_predicates.html" />
     <link rel="prev" title="PyCLP Module Reference" href="pyclp.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -49,7 +49,7 @@
 <section id="simple-example">
 <h2>Simple Example<a class="headerlink" href="#simple-example" title="Link to this heading">¶</a></h2>
 <p>A simple example of unification:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyclp</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyclp</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="n">init</span><span class="p">()</span>                        <span class="c1">#Init ECLiPSe engine</span>
 <span class="n">myVar</span><span class="o">=</span><span class="n">Var</span><span class="p">()</span>                   <span class="c1">#Create a prolog variable</span>
 <span class="n">my_goal</span><span class="o">=</span><span class="n">Compound</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">,</span><span class="n">myVar</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#Create goal</span>
@@ -68,7 +68,7 @@
 <section id="search-solution">
 <h2>Search Solution<a class="headerlink" href="#search-solution" title="Link to this heading">¶</a></h2>
 <p>A more complex example using ic library and search procedure:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyclp</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyclp</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="n">init</span><span class="p">()</span>                                         <span class="c1"># Init ECLiPSe engine</span>
 <span class="n">Compound</span><span class="p">(</span><span class="s2">&quot;lib&quot;</span><span class="p">,</span><span class="n">Atom</span><span class="p">(</span><span class="s2">&quot;ic&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">post_goal</span><span class="p">()</span>         <span class="c1"># Load ic library</span>
 <span class="n">A_var</span><span class="o">=</span><span class="n">Var</span><span class="p">()</span>                                    <span class="c1"># Create variable A</span>
@@ -91,7 +91,7 @@
 <section id="cut-example">
 <span id="id1"></span><h2>Cut Example<a class="headerlink" href="#cut-example" title="Link to this heading">¶</a></h2>
 <p>How to cut solutions:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyclp</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyclp</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="n">init</span><span class="p">()</span> <span class="c1"># Init ECLiPSe engine</span>
 <span class="n">Compound</span><span class="p">(</span><span class="s2">&quot;lib&quot;</span><span class="p">,</span><span class="s2">&quot;lists&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">post_goal</span><span class="p">()</span>                 <span class="c1"># lib(lists)</span>
 <span class="n">A_var</span><span class="o">=</span><span class="n">Var</span><span class="p">()</span>                                         <span class="c1"># Create variable A</span>
@@ -114,7 +114,7 @@
 <section id="input-example">
 <h2>Input Example<a class="headerlink" href="#input-example" title="Link to this heading">¶</a></h2>
 <p>Receive data from stdout stream:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyclp</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyclp</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="n">init</span><span class="p">()</span>                                          <span class="c1"># Init ECLiPSe engine</span>
 <span class="n">Compound</span><span class="p">(</span><span class="s2">&quot;writeln&quot;</span><span class="p">,</span><span class="s2">&quot;Hello world&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">post_goal</span><span class="p">()</span>
 <span class="n">result</span><span class="p">,</span><span class="n">stream_num</span><span class="o">=</span><span class="n">resume</span><span class="p">()</span>
@@ -132,7 +132,7 @@
 <section id="input-output-example">
 <h2>Input/Output Example<a class="headerlink" href="#input-output-example" title="Link to this heading">¶</a></h2>
 <p>Input to stdin stream and output from stdout stream:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyclp</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyclp</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;I/O Example&quot;</span><span class="p">)</span>
 <span class="n">init</span><span class="p">()</span>                                <span class="c1"># Init ECLiPSe engine</span>
 <span class="n">stdin</span><span class="o">=</span><span class="n">Stream</span><span class="p">(</span><span class="s1">&#39;stdin&#39;</span><span class="p">)</span>                 <span class="c1"># Open stdin stream</span>
@@ -162,7 +162,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
@@ -195,7 +195,7 @@
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -203,13 +203,13 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -230,7 +230,7 @@
     </div>
     <div class="footer" role="contentinfo">
     &#169; Copyright 2012,2013,2016,2023 Oreste Bernardi.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
   </body>
 </html>

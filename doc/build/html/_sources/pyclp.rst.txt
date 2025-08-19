@@ -4,7 +4,7 @@ PyCLP Module Reference
 
 
 .. automodule:: pyclp
-    :members: init,cleanup,cut,unify,addPythonFunction
+    :members: init,cleanup,cut,unify,addPythonFunction,post_string
     
 .. autofunction:: resume(in_term=None)
 
@@ -41,6 +41,7 @@ PyCLP Module Reference
    
    .. automethod:: read(n=-1)
    .. automethod:: write(buffer)
+   .. automethod:: __eq__
           
 
     

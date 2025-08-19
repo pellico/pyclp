@@ -17,9 +17,6 @@ Following packages shall be preinstalled before proceeding the installation of P
 * `ECLiPSe Constraint Programming System 7.0 <http://www.eclipseclp.org/>`_
 
 
-Download
-========
-Download source files from `PyCLP sources <https://github.com/pellico/pyclp>`__
 
 Compilation & Installation
 ==========================
@@ -31,12 +28,19 @@ This is required for compiling and using PyCLP.
 **LD_LIBRARY_PATH** environmental variable shall contains the path of folder that contains 
 the ECLiPSe sharable library. E.g. <eclipsedir>/lib/<platform>.
 
-Installation
-------------
+Installation from PyPi
+----------------------
 
 .. code-block:: bash
 
    pip install pyclp
+
+
+
+Compilation and installation from sources
+-----------------------------------------
+
+Download source files from `PyCLP sources <https://github.com/pellico/pyclp>`__
 
 Generate wheel and source package
 ---------------------------------
@@ -57,7 +61,7 @@ Regression test
    poetry run python  ./test/test.py
 
 Generate documentation
-^^^^^^^^^^^^^^^^^^^^^^ 
+----------------------
 
 .. code-block:: bash
    

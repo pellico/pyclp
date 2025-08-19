@@ -270,6 +270,14 @@ class Test_Stream(unittest.TestCase):
         s.write(b'"Ciao pylclp2"')
         self.assertEqual(resume(),(SUCCEED,None))
         self.assertEqual(read_term.value(),'Ciao pylclp2')
+    def test_equality(self):
+        s1=Stream('output')
+        s2=Stream('stdout')
+        self.assertEqual(s1,s2,"Failed test of equality between two streams")
+    def test_inequality(self):
+        s1=Stream('output')
+        s2=Stream('stderr')
+        self.assertNotEqual(s1,s2,"Failed test of inequality between two streams")
         
         
 class Test_Var(unittest.TestCase):
@@ -449,7 +457,18 @@ class Test_external_predicates(unittest.TestCase):
         self.assertEqual(my_var.value(),1,"Failed unification")
         os.chdir(runnig_directory)
         
-       
+class Test_post_string(unittest.TestCase):
+    def setUp(self):
+        init()
+        self.stdout=Stream('stdout')
+    def tearDown(self):
+        self.stdout.close()
+        cleanup()
+    def test_atom(self):
+        post_string("writeln(Ciao).")
+        resume()
+        self.assertEqual(self.stdout.read(),'Ciao\n'.encode('ascii'),'Wrong atom')
+        self.assertEqual(resume(),(SUCCEED,None),'Failed resume')       
         
         
 

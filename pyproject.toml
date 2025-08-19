@@ -2,22 +2,29 @@
 # discussed here https://github.com/python-poetry/poetry/issues/2740
 [tool.poetry]
 name = "pyclp"
-version = "2.0.0-3"
+version = "2.1.0"
 description = "Python library to interface ECLiPSe Constraint Programmig System."
 authors = ["pellico <pellico@users.noreply.github.com>"]
 license = "BSD-2-Clause"
 readme = "README.rst"
 repository = "https://github.com/pellico/pyclp"
 documentation = "https://pyclp.readthedocs.io/en/latest/"
-classifiers = ["Development Status :: 5 - Production/Stable",
-                    "Programming Language :: Prolog",
-                    "License :: OSI Approved :: BSD License",
-                    "Programming Language :: Cython" 
-                    ]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Programming Language :: Prolog",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Cython",
+]
 include = [
     { path = "test", format = "sdist" },
-    { path = "examples", format = ["sdist", "wheel"] },
-    { path = "doc", format = ["sdist", "wheel"] }
+    { path = "examples", format = [
+        "sdist",
+        "wheel",
+    ] },
+    { path = "doc", format = [
+        "sdist",
+        "wheel",
+    ] },
 ]
 
 [tool.poetry.dependencies]
@@ -34,4 +41,3 @@ sphinx = "^7.2.4"
 [build-system]
 requires = ["poetry-core>=1.0.0", "cython>=3.0.0", "setuptools"]
 build-backend = "poetry.core.masonry.api"
-

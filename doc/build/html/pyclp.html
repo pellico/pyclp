@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>PyCLP Module Reference &#8212; PyCLP productive documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=514cf933" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=def86cc0" />
     
     <script src="_static/documentation_options.js?v=794e455b"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
@@ -18,7 +18,7 @@
     <link rel="next" title="Examples" href="examples.html" />
     <link rel="prev" title="Installation" href="installation.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -107,6 +107,12 @@ This initialize Eclipse engine.</p>
 <dd class="field-odd"><p>pyclpEx in case of failure or if eclipse engine is already initialized</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyclp.post_string">
+<span class="sig-prename descclassname"><span class="pre">pyclp.</span></span><span class="sig-name descname"><span class="pre">post_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string_to_post</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.post_string" title="Link to this definition">¶</a></dt>
+<dd><p>This should only be used if speed is not critical and if the goal does not contain variables whose values may be needed later.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -426,6 +432,12 @@ This is class is derived from io.RawIOBase.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="pyclp.Stream.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Stream.__eq__" title="Link to this definition">¶</a></dt>
+<dd><p>Return self==value.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pyclp.Stream.readall">
 <span class="sig-name descname"><span class="pre">readall</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyclp.Stream.readall" title="Link to this definition">¶</a></dt>
 <dd><p>Read all available bytes equivalent to <code class="xref py py-func docutils literal notranslate"><span class="pre">pyclp.read()</span></code></p>
@@ -445,7 +457,7 @@ This is class is derived from io.RawIOBase.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
@@ -455,6 +467,7 @@ This is class is derived from io.RawIOBase.</p>
 <li><a class="reference internal" href="#pyclp.cleanup"><code class="docutils literal notranslate"><span class="pre">cleanup()</span></code></a></li>
 <li><a class="reference internal" href="#pyclp.cut"><code class="docutils literal notranslate"><span class="pre">cut()</span></code></a></li>
 <li><a class="reference internal" href="#pyclp.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+<li><a class="reference internal" href="#pyclp.post_string"><code class="docutils literal notranslate"><span class="pre">post_string()</span></code></a></li>
 <li><a class="reference internal" href="#pyclp.unify"><code class="docutils literal notranslate"><span class="pre">unify()</span></code></a></li>
 <li><a class="reference internal" href="#pyclp.resume"><code class="docutils literal notranslate"><span class="pre">resume()</span></code></a></li>
 <li><a class="reference internal" href="#pyclp.Atom"><code class="docutils literal notranslate"><span class="pre">Atom</span></code></a><ul>
@@ -484,6 +497,7 @@ This is class is derived from io.RawIOBase.</p>
 <li><a class="reference internal" href="#pyclp.Stream"><code class="docutils literal notranslate"><span class="pre">Stream</span></code></a><ul>
 <li><a class="reference internal" href="#pyclp.Stream.read"><code class="docutils literal notranslate"><span class="pre">Stream.read()</span></code></a></li>
 <li><a class="reference internal" href="#pyclp.Stream.write"><code class="docutils literal notranslate"><span class="pre">Stream.write()</span></code></a></li>
+<li><a class="reference internal" href="#pyclp.Stream.__eq__"><code class="docutils literal notranslate"><span class="pre">Stream.__eq__()</span></code></a></li>
 <li><a class="reference internal" href="#pyclp.Stream.readall"><code class="docutils literal notranslate"><span class="pre">Stream.readall()</span></code></a></li>
 </ul>
 </li>
@@ -510,7 +524,7 @@ This is class is derived from io.RawIOBase.</p>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -518,13 +532,13 @@ This is class is derived from io.RawIOBase.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -545,7 +559,7 @@ This is class is derived from io.RawIOBase.</p>
     </div>
     <div class="footer" role="contentinfo">
     &#169; Copyright 2012,2013,2016,2023 Oreste Bernardi.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
   </body>
 </html>

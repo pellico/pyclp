@@ -301,6 +301,8 @@ class Stream(io.RawIOBase):
         return self.read(-1)
     def readinto(self,b):
         raise NotImplemented()
+    def __eq__(self,other):
+        return self.stream_num == other.stream_num
         
 cdef destroy_all_refs():
     for prolog_ref in all_active_refs:
@@ -1115,6 +1117,13 @@ def addPythonFunction(eclipse_name,func):
         python_pred2func[eclipse_name]=func
     else:
         raise ValueError("eclipse_name shall be a text, got %s" % type(string)) 
+def post_string(string_to_post):
+    """
+    This should only be used if speed is not critical and if the goal does not contain variables whose values may be needed later.
+    """
+    if not isinstance(string_to_post,str):
+        raise TypeError("string_to_post argument shall be a string")
+    ec_post_string(tobytes(string_to_post))
     
     
          

@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Calling Python from ECLiPSe &#8212; PyCLP productive documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=514cf933" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=def86cc0" />
     
     <script src="_static/documentation_options.js?v=794e455b"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
@@ -18,7 +18,7 @@
     <link rel="next" title="License" href="license.html" />
     <link rel="prev" title="Examples" href="examples.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -61,7 +61,7 @@ a list of the term used in the invocation.
 Python function shall return the following values <code class="xref py py-const docutils literal notranslate"><span class="pre">pyclp.SUCCEED</span></code> or <code class="xref py py-const docutils literal notranslate"><span class="pre">pyclp.FAIL</span></code> any other values are equivalent to <code class="xref py py-const docutils literal notranslate"><span class="pre">pyclp.FAIL</span></code>
 It can be called in this function a <a class="reference internal" href="pyclp.html#pyclp.unify" title="pyclp.unify"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pyclp.unify()</span></code></a> to unify to term and interact with ECLiPSe term.</p>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">py_unify</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">py_unify</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
    <span class="k">return</span> <span class="n">pyclp</span><span class="o">.</span><span class="n">unify</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -120,9 +120,9 @@ This predicate is declared in <code class="docutils literal notranslate"><span c
 <section id="complete-example">
 <h2>Complete Example<a class="headerlink" href="#complete-example" title="Link to this heading">¶</a></h2>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyclp</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyclp</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
-<span class="k">def</span> <span class="nf">external_predicate</span><span class="p">(</span><span class="n">arguments</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">external_predicate</span><span class="p">(</span><span class="n">arguments</span><span class="p">):</span>
    <span class="c1">#arguments store all arguments passed with call_python_function</span>
    <span class="c1">#Note unify usage</span>
    <span class="k">return</span> <span class="n">unify</span><span class="p">(</span><span class="n">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">arguments</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -150,7 +150,7 @@ See the below example.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
@@ -187,7 +187,7 @@ See the below example.</p>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -195,13 +195,13 @@ See the below example.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -222,7 +222,7 @@ See the below example.</p>
     </div>
     <div class="footer" role="contentinfo">
     &#169; Copyright 2012,2013,2016,2023 Oreste Bernardi.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
   </body>
 </html>

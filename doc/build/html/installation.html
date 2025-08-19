@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Installation &#8212; PyCLP productive documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=514cf933" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=def86cc0" />
     
     <script src="_static/documentation_options.js?v=794e455b"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
@@ -18,7 +18,7 @@
     <link rel="next" title="PyCLP Module Reference" href="pyclp.html" />
     <link rel="prev" title="Introduction" href="introduction.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -59,10 +59,6 @@
 <li><p><a class="reference external" href="http://www.eclipseclp.org/">ECLiPSe Constraint Programming System 7.0</a></p></li>
 </ul>
 </section>
-<section id="download">
-<h3>Download<a class="headerlink" href="#download" title="Link to this heading">¶</a></h3>
-<p>Download source files from <a class="reference external" href="https://github.com/pellico/pyclp">PyCLP sources</a></p>
-</section>
 <section id="compilation-installation">
 <h3>Compilation &amp; Installation<a class="headerlink" href="#compilation-installation" title="Link to this heading">¶</a></h3>
 <p>Setup Environmental variables for ECLiPSe:</p>
@@ -70,11 +66,15 @@
 This is required for compiling and using PyCLP.</p>
 <p><strong>LD_LIBRARY_PATH</strong> environmental variable shall contains the path of folder that contains
 the ECLiPSe sharable library. E.g. &lt;eclipsedir&gt;/lib/&lt;platform&gt;.</p>
-<section id="id1">
-<h4>Installation<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<section id="installation-from-pypi">
+<h4>Installation from PyPi<a class="headerlink" href="#installation-from-pypi" title="Link to this heading">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pyclp
 </pre></div>
 </div>
+</section>
+<section id="compilation-and-installation-from-sources">
+<h4>Compilation and installation from sources<a class="headerlink" href="#compilation-and-installation-from-sources" title="Link to this heading">¶</a></h4>
+<p>Download source files from <a class="reference external" href="https://github.com/pellico/pyclp">PyCLP sources</a></p>
 </section>
 <section id="generate-wheel-and-source-package">
 <h4>Generate wheel and source package<a class="headerlink" href="#generate-wheel-and-source-package" title="Link to this heading">¶</a></h4>
@@ -89,14 +89,14 @@ the ECLiPSe sharable library. E.g. &lt;eclipsedir&gt;/lib/&lt;platform&gt;.</p>
 poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w">  </span>./test/test.py
 </pre></div>
 </div>
+</section>
 <section id="generate-documentation">
-<h5>Generate documentation<a class="headerlink" href="#generate-documentation" title="Link to this heading">¶</a></h5>
+<h4>Generate documentation<a class="headerlink" href="#generate-documentation" title="Link to this heading">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>install
 <span class="nb">cd</span><span class="w"> </span>doc
 poetry<span class="w"> </span>run<span class="w"> </span>make<span class="w"> </span>html
 </pre></div>
 </div>
-</section>
 </section>
 </section>
 <section id="tested-environment">
@@ -148,8 +148,8 @@ This is required for compiling and using PyCLP.</p>
 </pre></div>
 </div>
 </section>
-<section id="id4">
-<h4>Download<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<section id="download">
+<h4>Download<a class="headerlink" href="#download" title="Link to this heading">¶</a></h4>
 <p>Download source files from <a class="reference external" href="https://github.com/pellico/pyclp">PyCLP sources</a></p>
 </section>
 <section id="create-wheel-and-source-package">
@@ -159,15 +159,15 @@ This is required for compiling and using PyCLP.</p>
 </div>
 <p>Wheel distribution will be available in <code class="docutils literal notranslate"><span class="pre">dist</span></code> folder</p>
 </section>
-<section id="id5">
-<h4>Regression test<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<section id="id3">
+<h4>Regression test<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>install
 poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w">  </span>./test/test.py
 </pre></div>
 </div>
 </section>
-<section id="id6">
-<h4>Generate documentation<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<section id="id4">
+<h4>Generate documentation<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>install
 <span class="nb">cd</span><span class="w"> </span>doc
 poetry<span class="w"> </span>run<span class="w"> </span>make<span class="w"> </span>html
@@ -175,8 +175,8 @@ poetry<span class="w"> </span>run<span class="w"> </span>make<span class="w"> </
 </div>
 </section>
 </section>
-<section id="id7">
-<h3>Tested environment<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<section id="id5">
+<h3>Tested environment<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
 <p>The present version of pyclp is tested on</p>
 <ul class="simple">
 <li><p>Windows 11 (64bit), Python 3.11</p></li>
@@ -191,7 +191,7 @@ poetry<span class="w"> </span>run<span class="w"> </span>make<span class="w"> </
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
@@ -199,14 +199,12 @@ poetry<span class="w"> </span>run<span class="w"> </span>make<span class="w"> </
 <li><a class="reference internal" href="#">Installation</a><ul>
 <li><a class="reference internal" href="#linux">Linux</a><ul>
 <li><a class="reference internal" href="#requirements">Requirements</a></li>
-<li><a class="reference internal" href="#download">Download</a></li>
 <li><a class="reference internal" href="#compilation-installation">Compilation &amp; Installation</a><ul>
-<li><a class="reference internal" href="#id1">Installation</a></li>
+<li><a class="reference internal" href="#installation-from-pypi">Installation from PyPi</a></li>
+<li><a class="reference internal" href="#compilation-and-installation-from-sources">Compilation and installation from sources</a></li>
 <li><a class="reference internal" href="#generate-wheel-and-source-package">Generate wheel and source package</a></li>
-<li><a class="reference internal" href="#regression-test">Regression test</a><ul>
+<li><a class="reference internal" href="#regression-test">Regression test</a></li>
 <li><a class="reference internal" href="#generate-documentation">Generate documentation</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#tested-environment">Tested environment</a></li>
@@ -221,13 +219,13 @@ poetry<span class="w"> </span>run<span class="w"> </span>make<span class="w"> </
 </li>
 <li><a class="reference internal" href="#build-distribution-packages-from-sources">Build distribution packages from sources</a><ul>
 <li><a class="reference internal" href="#extra-requirements">Extra requirements</a></li>
-<li><a class="reference internal" href="#id4">Download</a></li>
+<li><a class="reference internal" href="#download">Download</a></li>
 <li><a class="reference internal" href="#create-wheel-and-source-package">Create wheel and source package</a></li>
-<li><a class="reference internal" href="#id5">Regression test</a></li>
-<li><a class="reference internal" href="#id6">Generate documentation</a></li>
+<li><a class="reference internal" href="#id3">Regression test</a></li>
+<li><a class="reference internal" href="#id4">Generate documentation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id7">Tested environment</a></li>
+<li><a class="reference internal" href="#id5">Tested environment</a></li>
 </ul>
 </li>
 </ul>
@@ -252,7 +250,7 @@ poetry<span class="w"> </span>run<span class="w"> </span>make<span class="w"> </
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -260,13 +258,13 @@ poetry<span class="w"> </span>run<span class="w"> </span>make<span class="w"> </
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -287,7 +285,7 @@ poetry<span class="w"> </span>run<span class="w"> </span>make<span class="w"> </
     </div>
     <div class="footer" role="contentinfo">
     &#169; Copyright 2012,2013,2016,2023 Oreste Bernardi.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
   </body>
 </html>
