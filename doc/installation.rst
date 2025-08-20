@@ -5,14 +5,14 @@ At this moment only Linux and MINGW64 platforms are supported.
 
 Linux
 *****
-Tested platform Ubuntu 20.04
+Tested platform Ubuntu 24.04
 
 Requirements
 ============
 Following packages shall be preinstalled before proceeding the installation of PyCLP
 
 * `Python 3.11 or greater  <http://www.python.org/>`_
-* `Poetry 1.5.1 or greater <https://python-poetry.org/>`_
+* `Poetry 2.0.0 or greater <https://python-poetry.org/>`_
 * gcc
 * `ECLiPSe Constraint Programming System 7.0 <http://www.eclipseclp.org/>`_
 
@@ -119,11 +119,6 @@ Following packages shall be preinstalled using ``pacman``
 *  mingw-w64-x86_64-python-poetry
 *  mingw-w64-x86_64-python-pip
 
-The following environment variable shall be set due to limitation of setuptool see `Fails to install on MinGW x64 <https://github.com/pyproj4/pyproj/issues/1009>`_
-
-.. code-block:: bash
-
-   export SETUPTOOLS_USE_DISTUTILS=stdlib
 
 Download
 --------
@@ -160,7 +155,7 @@ Tested environment
 
 The present version of pyclp is tested on
 
-* Windows 11 (64bit), Python 3.11
+* Windows 11 (64bit) / (MSYS2 MINGW64), Python 3.12
 
 However it is expected working on other platform that fullfil the requirements.
 

@@ -48,13 +48,13 @@
 <p>At this moment only Linux and MINGW64 platforms are supported.</p>
 <section id="linux">
 <h2>Linux<a class="headerlink" href="#linux" title="Link to this heading">¶</a></h2>
-<p>Tested platform Ubuntu 20.04</p>
+<p>Tested platform Ubuntu 24.04</p>
 <section id="requirements">
 <h3>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">¶</a></h3>
 <p>Following packages shall be preinstalled before proceeding the installation of PyCLP</p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://www.python.org/">Python 3.11 or greater</a></p></li>
-<li><p><a class="reference external" href="https://python-poetry.org/">Poetry 1.5.1 or greater</a></p></li>
+<li><p><a class="reference external" href="https://python-poetry.org/">Poetry 2.0.0 or greater</a></p></li>
 <li><p>gcc</p></li>
 <li><p><a class="reference external" href="http://www.eclipseclp.org/">ECLiPSe Constraint Programming System 7.0</a></p></li>
 </ul>
@@ -143,10 +143,6 @@ This is required for compiling and using PyCLP.</p>
 <li><p>mingw-w64-x86_64-python-poetry</p></li>
 <li><p>mingw-w64-x86_64-python-pip</p></li>
 </ul>
-<p>The following environment variable shall be set due to limitation of setuptool see <a class="reference external" href="https://github.com/pyproj4/pyproj/issues/1009">Fails to install on MinGW x64</a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">SETUPTOOLS_USE_DISTUTILS</span><span class="o">=</span>stdlib
-</pre></div>
-</div>
 </section>
 <section id="download">
 <h4>Download<a class="headerlink" href="#download" title="Link to this heading">¶</a></h4>
@@ -179,7 +175,7 @@ poetry<span class="w"> </span>run<span class="w"> </span>make<span class="w"> </
 <h3>Tested environment<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
 <p>The present version of pyclp is tested on</p>
 <ul class="simple">
-<li><p>Windows 11 (64bit), Python 3.11</p></li>
+<li><p>Windows 11 (64bit) / (MSYS2 MINGW64), Python 3.12</p></li>
 </ul>
 <p>However it is expected working on other platform that fullfil the requirements.</p>
 </section>

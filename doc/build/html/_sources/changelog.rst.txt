@@ -1,6 +1,15 @@
 Changelog
 #########
 
+Version 2.1
+***********
+
+**Enhancements**
+
+* Added ``post_string`` function
+* Added ``__eq__`` to ``Stream`` class
+
+
 Version 2.0
 ***********
 
