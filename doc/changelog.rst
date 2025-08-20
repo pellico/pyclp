@@ -1,6 +1,14 @@
 Changelog
 #########
 
+
+Version 2.1.1
+*************
+
+**Bugs fixed**
+Fixed bug in pyclp.pxd. The type of one argument of ec_set_option was too small int instead of word.
+
+
 Version 2.1
 ***********
 
