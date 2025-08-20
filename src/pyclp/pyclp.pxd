@@ -49,7 +49,7 @@ cdef extern from "eclipse.h":
     int ec_resume1(ec_ref ToC)
     int ec_resume2(pword FromC,ec_ref ToC)
     void ec_cut_to_chp(ec_ref)
-    int ec_set_option_long(int, long)
+    int ec_set_option_long(int, word)
     int ec_set_option_ptr(int, char *)
     
     int    PSUCCEED
